@@ -12,201 +12,232 @@
       --blue-light: #2d55d4;
       --blue-dark: #0f1f5c;
       --white: #f5f5f0;
-      --black: #1e1e2a;
+      --off-white: #eaeae4;
+      --black: #0c0c0c;
+      --gray: #6b6b6b;
       --gold: #d4a32a;
     }
     * { margin:0; padding:0; box-sizing:border-box; }
     html { scroll-behavior:smooth; }
-    body { font-family:'DM Sans',sans-serif; background:var(--black); color:var(--white); overflow-x:hidden; }
+    body { font-family:'DM Sans',sans-serif; background:#23232f; color:var(--white); overflow-x:hidden; }
 
     /* NAV */
     nav {
       position:fixed; top:0; left:0; right:0; z-index:100;
-      padding:16px 48px;
+      padding:18px 48px;
       display:flex; justify-content:space-between; align-items:center;
-      background:rgba(20,20,34,0.95); backdrop-filter:blur(12px);
+      background:rgba(30,30,42,0.95);
+      backdrop-filter:blur(12px);
       border-bottom:1px solid rgba(255,255,255,0.06);
     }
     .nav-logo { display:flex; align-items:center; gap:10px; text-decoration:none; }
-    .nav-logo img { height:40px; width:40px; object-fit:contain; }
+    .nav-logo img { height:42px; width:42px; object-fit:contain; }
     .nav-logo span { font-family:'Bebas Neue',sans-serif; font-size:18px; letter-spacing:2px; color:var(--gold); }
-    .nav-links { display:flex; gap:32px; list-style:none; }
+    .nav-links { display:flex; gap:36px; list-style:none; }
     .nav-links a { color:rgba(245,245,240,0.7); text-decoration:none; font-size:13px; letter-spacing:1.5px; text-transform:uppercase; font-weight:500; transition:color .2s; }
     .nav-links a:hover { color:var(--gold); }
     .btn-primary {
       background:var(--blue); color:var(--white); border:none;
-      padding:12px 24px; font-family:'DM Sans',sans-serif; font-size:13px;
+      padding:12px 28px; font-family:'DM Sans',sans-serif; font-size:13px;
       font-weight:700; letter-spacing:1px; text-transform:uppercase;
-      cursor:pointer; text-decoration:none; display:inline-block;
-      transition:background .2s; clip-path:polygon(0 0,calc(100% - 10px) 0,100% 10px,100% 100%,10px 100%,0 calc(100% - 10px));
+      cursor:pointer; text-decoration:none; transition:background .2s, transform .2s;
+      clip-path:polygon(0 0,calc(100% - 10px) 0,100% 10px,100% 100%,10px 100%,0 calc(100% - 10px));
     }
-    .btn-primary:hover { background:var(--blue-light); }
+    .btn-primary:hover { background:var(--blue-light); transform:translateY(-2px); }
     .btn-outline {
-      background:transparent; color:var(--white); border:1px solid rgba(255,255,255,0.3);
-      padding:12px 24px; font-family:'DM Sans',sans-serif; font-size:13px;
+      background:transparent; color:var(--white); border:1px solid rgba(255,255,255,0.25);
+      padding:12px 28px; font-family:'DM Sans',sans-serif; font-size:13px;
       font-weight:500; letter-spacing:1px; text-transform:uppercase;
-      cursor:pointer; text-decoration:none; display:inline-block; transition:border-color .2s, color .2s;
+      cursor:pointer; text-decoration:none; transition:border-color .2s, color .2s;
     }
     .btn-outline:hover { border-color:var(--gold); color:var(--gold); }
 
     /* HERO */
     .hero {
-      min-height:100vh; position:relative;
-      display:flex; align-items:center;
-      padding:0 48px; overflow:hidden;
+      height:100vh; position:relative;
+      display:flex; align-items:flex-end;
+      padding:0 48px 80px; overflow:hidden;
     }
     .hero-bg {
       position:absolute; inset:0;
-      background:radial-gradient(ellipse 70% 60% at 65% 45%, rgba(26,63,160,0.2) 0%, transparent 70%),
-        linear-gradient(160deg, #131320 0%, #0d1225 50%, #131320 100%);
+      background:
+        radial-gradient(ellipse 70% 60% at 65% 45%, rgba(26,63,160,0.2) 0%, transparent 70%),
+        linear-gradient(160deg, #0c0c0c 0%, #0d1220 50%, #0c0c0c 100%);
     }
     .hero-logo-bg {
-      position:absolute; right:4%; top:50%; transform:translateY(-50%);
-      width:44%; max-width:520px; opacity:0.15; pointer-events:none;
-      filter:drop-shadow(0 0 60px rgba(45,85,212,0.3));
+      position:absolute; right:0; left:0; top:50%;
+      transform:translateY(-50%);
+      margin:0 auto;
+      width:52%; max-width:560px;
+      display:block;
+      opacity:0.13; pointer-events:none;
+      filter:drop-shadow(0 0 80px rgba(45,85,212,0.4));
     }
-    .hero-content { position:relative; z-index:2; max-width:520px; }
+    .hero-content { position:relative; z-index:2; max-width:680px; }
     .hero-badge {
       display:inline-flex; align-items:center; gap:8px;
-      background:rgba(26,63,160,0.3); border:1px solid rgba(45,85,212,0.5);
-      border-radius:40px; padding:6px 16px; font-size:11px; letter-spacing:2px;
-      text-transform:uppercase; color:var(--gold); margin-bottom:24px;
+      background:rgba(26,63,160,0.3);
+      border:1px solid rgba(45,85,212,0.5);
+      border-radius:40px; padding:6px 16px;
+      font-size:11px; letter-spacing:2px; text-transform:uppercase;
+      color:var(--gold); margin-bottom:28px;
     }
-    .hero-badge::before { content:''; width:6px; height:6px; background:var(--gold); border-radius:50%; animation:pulse 2s infinite; }
-    @keyframes pulse { 0%,100% { opacity:1; } 50% { opacity:.4; } }
-    .hero h1 { font-family:'Bebas Neue',sans-serif; font-size:clamp(56px,6vw,110px); line-height:.95; letter-spacing:2px; margin-bottom:20px; }
+    .hero-badge::before {
+      content:''; width:6px; height:6px;
+      background:var(--gold); border-radius:50%;
+      animation:pulse 2s infinite;
+    }
+    @keyframes pulse { 0%,100% { opacity:1; transform:scale(1); } 50% { opacity:.4; transform:scale(.8); } }
+    .hero h1 {
+      font-family:'Bebas Neue',sans-serif;
+      font-size:clamp(64px,10vw,110px);
+      line-height:.95; letter-spacing:2px; margin-bottom:24px;
+    }
     .hero h1 span { color:var(--blue-light); }
-    .hero-sub { font-size:16px; color:rgba(245,245,240,0.6); font-weight:300; line-height:1.7; margin-bottom:36px; }
-    .hero-cta { display:flex; gap:14px; flex-wrap:wrap; }
-
-    /* Deco SVGs */
-    .hero-deco { position:absolute; top:0; height:100%; width:280px; pointer-events:none; z-index:1; }
-    .hero-deco-left { left:0; }
-    .hero-deco-right { right:0; }
-
-    /* Glow dots */
-    .glow-dot { position:absolute; border-radius:50%; pointer-events:none; z-index:1; }
-    .glow-dot.blue { background:radial-gradient(circle, rgba(45,85,212,0.7) 0%, rgba(45,85,212,0.2) 50%, transparent 70%); }
-    .glow-dot.gold { background:radial-gradient(circle, rgba(212,163,42,0.8) 0%, rgba(212,163,42,0.25) 50%, transparent 70%); }
-    .glow-dot.white { background:radial-gradient(circle, rgba(255,255,255,0.5) 0%, rgba(255,255,255,0.1) 50%, transparent 70%); }
-    .dots-layer { position:absolute; inset:0; pointer-events:none; z-index:1; overflow:hidden; }
+    .hero-sub {
+      font-size:17px; color:rgba(245,245,240,0.6);
+      font-weight:300; max-width:480px; line-height:1.7; margin-bottom:40px;
+    }
+    .hero-cta { display:flex; gap:16px; flex-wrap:wrap; }
 
     /* STATS */
     .stats-bar {
-      background:var(--blue-dark); padding:28px 48px;
+      background:var(--blue-dark);
       border-top:1px solid rgba(255,255,255,0.06);
       border-bottom:1px solid rgba(255,255,255,0.06);
-      display:flex; justify-content:space-around; flex-wrap:wrap; gap:20px;
+      padding:32px 48px;
+      display:flex; justify-content:space-around; flex-wrap:wrap; gap:24px;
     }
     .stat-item { text-align:center; }
-    .stat-num { font-family:'Bebas Neue',sans-serif; font-size:44px; color:var(--gold); line-height:1; }
+    .stat-num { font-family:'Bebas Neue',sans-serif; font-size:48px; color:var(--gold); line-height:1; }
     .stat-label { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:rgba(245,245,240,0.5); margin-top:4px; }
 
     /* SECTIONS */
-    section { padding:90px 48px; position:relative; }
-    .cards-section, .news-section, .about, .contact { padding-left:max(48px, calc(50% - 700px)); padding-right:max(48px, calc(50% - 700px)); }
-    .section-tag { font-size:11px; letter-spacing:3px; text-transform:uppercase; color:var(--blue-light); margin-bottom:14px; }
-    .section-title { font-family:'Bebas Neue',sans-serif; font-size:clamp(36px,5vw,60px); line-height:1; margin-bottom:18px; }
-    .section-sub { font-size:15px; color:rgba(245,245,240,0.55); font-weight:300; max-width:500px; line-height:1.75; }
+    section { padding:100px 48px; }
+    .section-tag { font-size:11px; letter-spacing:3px; text-transform:uppercase; color:var(--blue-light); margin-bottom:16px; }
+    .section-title { font-family:'Bebas Neue',sans-serif; font-size:clamp(40px,6vw,64px); line-height:1; margin-bottom:20px; }
+    .section-sub { font-size:16px; color:rgba(245,245,240,0.55); font-weight:300; max-width:520px; line-height:1.75; }
 
     /* ABOUT */
-    .about { background:#181826; display:grid; grid-template-columns:1fr 1fr; gap:72px; align-items:center; }
+    .about { background:#282836; display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:center; }
     .about-logo-wrap {
-      display:flex; align-items:center; justify-content:center; padding:40px;
-      background:linear-gradient(135deg, rgba(26,63,160,0.15) 0%, transparent 100%);
-      border:1px solid rgba(26,63,160,0.2); position:relative;
+      display:flex; align-items:center; justify-content:center;
+      padding:40px;
+      background:linear-gradient(135deg, rgba(26,63,160,0.15) 0%, rgba(12,12,12,0) 100%);
+      border:1px solid rgba(26,63,160,0.2);
+      position:relative;
     }
-    .about-logo-wrap img { width:80%; max-width:320px; object-fit:contain; filter:drop-shadow(0 8px 40px rgba(45,85,212,0.3)); }
+    .about-logo-wrap img { width:80%; max-width:340px; object-fit:contain; filter:drop-shadow(0 8px 40px rgba(45,85,212,0.3)); }
     .about-accent-box {
-      position:absolute; bottom:-18px; right:-18px;
-      background:var(--gold); color:var(--black); padding:14px 22px;
-      font-family:'Bebas Neue',sans-serif;
+      position:absolute; bottom:-20px; right:-20px;
+      background:var(--gold); color:var(--black);
+      padding:16px 24px; font-family:'Bebas Neue',sans-serif;
     }
-    .about-accent-box .big { font-size:32px; line-height:1; }
+    .about-accent-box .big { font-size:36px; line-height:1; }
     .about-accent-box .small { font-size:11px; letter-spacing:1px; }
-    .about-list { margin-top:28px; display:flex; flex-direction:column; gap:10px; }
-    .about-item { display:flex; align-items:center; gap:12px; font-size:14px; color:rgba(245,245,240,0.7); }
-    .about-item::before { content:''; width:18px; height:2px; background:var(--blue-light); flex-shrink:0; }
+    .about-list { margin-top:32px; display:flex; flex-direction:column; gap:12px; }
+    .about-item { display:flex; align-items:center; gap:12px; font-size:15px; color:rgba(245,245,240,0.7); }
+    .about-item::before { content:''; width:20px; height:2px; background:var(--blue-light); flex-shrink:0; }
 
     /* CARDS */
-    .cards-section { background:#1e1e2a; }
-    .cards-grid { margin-top:52px; display:grid; grid-template-columns:repeat(3,1fr); gap:2px; }
-    .card {
-      background:#242433; padding:32px 26px;
-      border:1px solid rgba(255,255,255,0.05);
-      transition:background .2s, transform .2s; position:relative; overflow:hidden;
-      max-width:100%;
+    .cards-section { background:#23232f; }
+    .cards-grid {
+      margin-top:56px;
+      display:grid; grid-template-columns:repeat(auto-fill,minmax(260px,1fr)); gap:2px;
     }
-    .card::before { content:''; position:absolute; top:0; left:0; width:3px; height:0; background:var(--blue-light); transition:height .3s; }
-    .card:hover { background:#1e2a3a; transform:translateY(-3px); }
+    .card {
+      background:#2c2c3a; padding:36px 28px;
+      border:1px solid rgba(255,255,255,0.05);
+      transition:background .2s, transform .2s;
+      position:relative; overflow:hidden;
+    }
+    .card::before {
+      content:''; position:absolute; top:0; left:0;
+      width:3px; height:0; background:var(--blue-light);
+      transition:height .3s;
+    }
+    .card:hover { background:#131a2a; transform:translateY(-4px); }
     .card:hover::before { height:100%; }
-    .card-icon { font-size:26px; margin-bottom:14px; }
-    .card-name { font-family:'Bebas Neue',sans-serif; font-size:20px; letter-spacing:1px; margin-bottom:8px; }
+    .card-icon { font-size:26px; margin-bottom:16px; }
+    .card-name { font-family:'Bebas Neue',sans-serif; font-size:22px; letter-spacing:1px; margin-bottom:8px; }
     .card-desc { font-size:13px; color:rgba(245,245,240,0.45); line-height:1.6; }
 
     /* NEWS */
-    .news-section { background:#161622; }
-    .news-grid { margin-top:52px; display:grid; grid-template-columns:repeat(3,1fr); gap:2px; }
-    .news-card {
-      background:#242433; padding:26px;
-      border:1px solid rgba(255,255,255,0.05);
-      transition:background .2s; cursor:pointer; text-decoration:none; display:block;
-      max-width:100%;
+    .news-section { background:#20202c; }
+    .news-grid {
+      margin-top:56px;
+      display:grid; grid-template-columns:repeat(auto-fill,minmax(300px,1fr)); gap:2px;
     }
-    .news-card:hover { background:#1e2a3a; }
-    .news-source { display:inline-block; background:var(--blue); color:var(--white); font-size:10px; letter-spacing:2px; text-transform:uppercase; padding:3px 10px; margin-bottom:12px; }
-    .news-date { font-size:11px; color:rgba(245,245,240,0.35); margin-bottom:8px; }
-    .news-title { font-family:'Bebas Neue',sans-serif; font-size:18px; letter-spacing:.5px; line-height:1.2; margin-bottom:10px; color:var(--white); }
-    .news-excerpt { font-size:12px; color:rgba(245,245,240,0.45); line-height:1.6; }
+    .news-card {
+      background:#2c2c3a; padding:28px;
+      border:1px solid rgba(255,255,255,0.05);
+      transition:background .2s; cursor:pointer; text-decoration:none;
+      display:block;
+    }
+    .news-card:hover { background:#131a2a; }
+    .news-source {
+      display:inline-block; background:var(--blue); color:var(--white);
+      font-size:10px; letter-spacing:2px; text-transform:uppercase;
+      padding:3px 10px; margin-bottom:14px;
+    }
+    .news-date { font-size:11px; color:rgba(245,245,240,0.35); margin-bottom:10px; }
+    .news-title { font-family:'Bebas Neue',sans-serif; font-size:20px; letter-spacing:.5px; line-height:1.2; margin-bottom:10px; color:var(--white); }
+    .news-excerpt { font-size:13px; color:rgba(245,245,240,0.5); line-height:1.6; }
     .news-loading { color:rgba(245,245,240,0.4); font-size:14px; padding:40px 0; }
+    .news-error { color:rgba(245,245,240,0.35); font-size:13px; padding:20px 0; }
 
     /* CONTACT */
-    .contact { background:var(--blue-dark); display:grid; grid-template-columns:1fr 1fr; gap:72px; align-items:start; }
-    .contact-info { display:flex; flex-direction:column; gap:22px; margin-top:36px; }
-    .contact-row { display:flex; gap:14px; align-items:flex-start; }
-    .contact-icon { width:38px; height:38px; background:rgba(255,255,255,0.08); display:flex; align-items:center; justify-content:center; font-size:15px; flex-shrink:0; }
-    .contact-label { font-size:11px; letter-spacing:1px; color:rgba(245,245,240,0.4); text-transform:uppercase; margin-bottom:3px; }
-    .contact-value { font-size:14px; color:var(--white); }
-    .form-group { margin-bottom:18px; }
-    .form-group label { display:block; font-size:11px; letter-spacing:1.5px; text-transform:uppercase; color:rgba(245,245,240,0.5); margin-bottom:7px; }
+    .contact { background:var(--blue-dark); display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:start; }
+    .contact-info { display:flex; flex-direction:column; gap:24px; margin-top:40px; }
+    .contact-row { display:flex; gap:16px; align-items:flex-start; }
+    .contact-icon { width:40px; height:40px; background:rgba(255,255,255,0.08); display:flex; align-items:center; justify-content:center; font-size:16px; flex-shrink:0; }
+    .contact-label { font-size:11px; letter-spacing:1px; color:rgba(245,245,240,0.4); text-transform:uppercase; margin-bottom:4px; }
+    .contact-value { font-size:15px; color:var(--white); }
+    .form-group { margin-bottom:20px; }
+    .form-group label { display:block; font-size:11px; letter-spacing:1.5px; text-transform:uppercase; color:rgba(245,245,240,0.5); margin-bottom:8px; }
     .form-group input, .form-group textarea {
-      width:100%; background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.12);
-      color:var(--white); padding:12px 14px; font-family:'DM Sans',sans-serif; font-size:14px; outline:none; transition:border-color .2s;
+      width:100%; background:rgba(255,255,255,0.06);
+      border:1px solid rgba(255,255,255,0.12); color:var(--white);
+      padding:14px 16px; font-family:'DM Sans',sans-serif; font-size:14px;
+      outline:none; transition:border-color .2s;
     }
     .form-group input:focus, .form-group textarea:focus { border-color:var(--blue-light); }
     .form-group textarea { resize:vertical; min-height:100px; }
 
     /* FOOTER */
     footer {
-      background:#0e0e1a; padding:32px 48px;
+      background:#1c1c26; padding:36px 48px;
       display:flex; justify-content:space-between; align-items:center;
-      border-top:1px solid rgba(255,255,255,0.06); flex-wrap:wrap; gap:16px;
+      border-top:1px solid rgba(255,255,255,0.06); flex-wrap:wrap; gap:20px;
     }
-    .footer-logo { font-family:'Bebas Neue',sans-serif; font-size:17px; letter-spacing:2px; color:var(--gold); }
+    .footer-logo { font-family:'Bebas Neue',sans-serif; font-size:18px; letter-spacing:2px; color:var(--gold); }
     .footer-copy { font-size:12px; color:rgba(245,245,240,0.3); }
-    .footer-links { display:flex; gap:20px; }
+    .footer-links { display:flex; gap:24px; }
     .footer-links a { font-size:12px; color:rgba(245,245,240,0.35); text-decoration:none; transition:color .2s; }
     .footer-links a:hover { color:var(--white); }
 
-    /* FADE */
-    .fade-in { opacity:0; transform:translateY(20px); transition:opacity .6s ease, transform .6s ease; }
+    /* FADE IN */
+    .fade-in { opacity:0; transform:translateY(24px); transition:opacity .6s ease, transform .6s ease; }
     .fade-in.visible { opacity:1; transform:translateY(0); }
 
+    /* MOBILE */
     /* ── RESPONSIVE ── */
-    @media(max-width:1024px) {
-      .hero-content { max-width:460px; }
-      .hero h1 { font-size:clamp(48px,5.5vw,90px); }
-      .hero-logo-bg { width:44%; }
+
+    /* 27" and large monitors: limit content width */
+    @media(min-width:1400px) {
+      .cards-grid { grid-template-columns: repeat(3, minmax(0, 420px)); }
+      .news-grid  { grid-template-columns: repeat(3, minmax(0, 420px)); }
     }
+
+    /* Tablet 900px */
     @media(max-width:900px) {
       nav { padding:14px 24px; }
       .nav-links { display:none; }
-      .hero { padding:90px 24px 64px; align-items:flex-end; }
-      .hero-content { max-width:55%; }
-      .hero-logo-bg { left:auto; right:0; transform:translateY(-50%); width:48%; opacity:0.1; }
+      .hero { padding:0 24px 60px; }
+      .hero-logo-bg { width:48%; opacity:0.09; right:-10px; }
       .hero-deco { display:none; }
       section { padding:64px 24px; }
-      .about { grid-template-columns:1fr; gap:36px; }
+      .about { grid-template-columns:1fr; gap:40px; }
       .about-logo-wrap { max-width:280px; margin:0 auto; }
       .about-accent-box { display:none; }
       .contact { grid-template-columns:1fr; gap:36px; }
@@ -217,27 +248,43 @@
       footer { flex-direction:column; text-align:center; gap:10px; padding:24px; }
       .footer-links { justify-content:center; }
     }
+
+    /* Mobile 600px */
     @media(max-width:600px) {
       nav { padding:12px 16px; }
       .nav-logo span { font-size:13px; }
-      .hero { padding:80px 16px 52px; }
-      .hero-content { max-width:100%; }
-      .hero-logo-bg { width:75%; opacity:0.07; right:-20px; }
+      .hero { padding:0 16px 52px; }
+      .hero-logo-bg { width:75%; opacity:0.06; right:-20px; }
       .hero-sub { font-size:14px; }
       section { padding:52px 16px; }
       .cards-grid { grid-template-columns:repeat(2,1fr); gap:1px; }
-      .card { padding:20px 14px; }
+      .card { padding:22px 16px; }
       .news-grid { grid-template-columns:1fr; }
       .stats-bar { padding:16px; gap:8px; }
       .stat-num { font-size:30px; }
       footer { padding:20px 16px; }
     }
+
+    /* Small phone 400px */
     @media(max-width:400px) {
       .hero-logo-bg { display:none; }
       .cards-grid { grid-template-columns:1fr; }
       .hero-cta { flex-direction:column; }
       .nav-logo span { display:none; }
     }
+
+    /* Glow dots */
+    .glow-dot { position:absolute; border-radius:50%; pointer-events:none; z-index:1; }
+    .glow-dot.blue { background:radial-gradient(circle, rgba(45,85,212,0.7) 0%, rgba(45,85,212,0.2) 50%, transparent 70%); }
+    .glow-dot.gold { background:radial-gradient(circle, rgba(212,163,42,0.8) 0%, rgba(212,163,42,0.25) 50%, transparent 70%); }
+    .glow-dot.white { background:radial-gradient(circle, rgba(255,255,255,0.5) 0%, rgba(255,255,255,0.1) 50%, transparent 70%); }
+    .dots-layer { position:absolute; inset:0; pointer-events:none; z-index:1; overflow:hidden; }
+
+
+    .hero-deco { position:absolute; top:0; height:100%; width:280px; pointer-events:none; z-index:1; }
+    .hero-deco-left { left:0; }
+    .hero-deco-right { right:0; }
+
   </style>
 </head>
 <body>
@@ -249,16 +296,16 @@
     </a>
     <ul class="nav-links">
       <li><a href="#about">Über uns</a></li>
-      <li><a href="#community">Gemeinschaft</a></li>
+      <li><a href="#about">Gemeinschaft</a></li>
       <li><a href="#news">Aktuelles</a></li>
       <li><a href="#contact">Kontakt</a></li>
     </ul>
     <a href="#contact" class="btn-primary">Mitmachen</a>
   </nav>
 
+  <!-- HERO -->
   <section class="hero">
     <div class="hero-bg"></div>
-    <img src="logo.png" class="hero-logo-bg" alt="">
     <svg class="hero-deco hero-deco-left" viewBox="0 0 300 700" xmlns="http://www.w3.org/2000/svg">
       <line x1="250" y1="0" x2="250" y2="700" stroke="rgba(255,255,255,0.07)" stroke-width="1"/>
       <line x1="180" y1="0" x2="180" y2="700" stroke="rgba(255,255,255,0.03)" stroke-width="1"/>
@@ -296,6 +343,7 @@
       <div class="glow-dot gold" style="width:9px;height:9px;top:60%;right:5%"></div>
       <div class="glow-dot blue" style="width:12px;height:12px;top:25%;right:4%"></div>
     </div>
+    <img src="logo.png" class="hero-logo-bg" alt="">
     <div class="hero-content">
       <div class="hero-badge">Gegründet 1989 · Heilbronn</div>
       <h1><span style="color:var(--white)">Sportfreunde</span><br><span>Heilbronn</span></h1>
@@ -307,6 +355,7 @@
     </div>
   </section>
 
+  <!-- STATS -->
   <div class="stats-bar">
     <div class="stat-item"><div class="stat-num">35+</div><div class="stat-label">Jahre Geschichte</div></div>
     <div class="stat-item"><div class="stat-num">35</div><div class="stat-label">Mitglieder</div></div>
@@ -314,12 +363,13 @@
     <div class="stat-item"><div class="stat-num">∞</div><div class="stat-label">Leidenschaft</div></div>
   </div>
 
+  <!-- ABOUT -->
   <section class="about" id="about">
     <div class="dots-layer">
       <div class="glow-dot gold" style="width:10px;height:10px;top:12%;left:22%"></div>
-      <div class="glow-dot blue" style="width:13px;height:13px;top:50%;left:42%"></div>
+      <div class="glow-dot blue" style="width:13px;height:13px;top:50%;left:45%"></div>
       <div class="glow-dot white" style="width:8px;height:8px;top:80%;left:18%"></div>
-      <div class="glow-dot gold" style="width:11px;height:11px;top:25%;left:68%"></div>
+      <div class="glow-dot gold" style="width:11px;height:11px;top:25%;left:70%"></div>
       <div class="glow-dot blue" style="width:9px;height:9px;top:65%;left:85%"></div>
     </div>
     <div class="about-logo-wrap fade-in">
@@ -340,6 +390,7 @@
     </div>
   </section>
 
+  <!-- CARDS -->
   <section class="cards-section" id="community">
     <div class="dots-layer">
       <div class="glow-dot gold" style="width:11px;height:11px;top:15%;left:18%"></div>
@@ -361,6 +412,7 @@
     </div>
   </section>
 
+  <!-- NEWS -->
   <section class="news-section" id="news">
     <div class="dots-layer">
       <div class="glow-dot blue" style="width:12px;height:12px;top:8%;left:25%"></div>
@@ -371,12 +423,13 @@
     </div>
     <p class="section-tag fade-in">Aktuelles aus Heilbronn</p>
     <h2 class="section-title fade-in">Neuigkeiten</h2>
-    <p class="section-sub fade-in">Aktuelle Nachrichten aus der Region — automatisch geladen von Google News.</p>
+    <p class="section-sub fade-in">Aktuelle Nachrichten aus der Region — automatisch geladen von der Heilbronner Stimme.</p>
     <div class="news-grid" id="newsGrid">
       <div class="news-loading">Nachrichten werden geladen...</div>
     </div>
   </section>
 
+  <!-- CONTACT -->
   <section class="contact" id="contact">
     <div class="dots-layer">
       <div class="glow-dot white" style="width:11px;height:11px;top:10%;left:20%"></div>
@@ -400,59 +453,42 @@
         </div>
         <div class="contact-row">
           <div class="contact-icon">📅</div>
-          <div><div class="contact-label">Training</div><div class="contact-value">So 09:00 – 11:00 Uhr</div></div>
+          <div><div class="contact-label">Training</div><div class="contact-value">Di & Do 18:30 · Sa 10:00 Uhr</div></div>
         </div>
       </div>
     </div>
     <div class="fade-in">
-      <form id="contactForm" action="https://formspree.io/f/xojrqadk" method="POST">
-        <input type="hidden" name="_replyto" value="casper19851106@yahoo.com">
-        <input type="hidden" name="_subject" value="Neue Nachricht von sportfreunde-heilbronn.de">
-        <div class="form-group"><label>Name</label><input type="text" name="name" placeholder="Dein vollständiger Name" required></div>
-        <div class="form-group"><label>E-Mail</label><input type="email" name="email" placeholder="deine@email.de" required></div>
-        <div class="form-group"><label>Nachricht</label><textarea name="message" placeholder="Ich möchte gerne mitspielen..." required></textarea></div>
-        <button type="submit" class="btn-primary" id="submitBtn">Nachricht senden</button>
-        <div id="formMsg" style="margin-top:14px;font-size:14px;display:none;"></div>
-      </form>
+      <div class="form-group"><label>Name</label><input type="text" placeholder="Dein vollständiger Name"></div>
+      <div class="form-group"><label>E-Mail</label><input type="email" placeholder="deine@email.de"></div>
+      <div class="form-group"><label>Nachricht</label><textarea placeholder="Ich möchte gerne mitspielen..."></textarea></div>
+      <a href="#" class="btn-primary">Nachricht senden</a>
     </div>
   </section>
 
   <footer>
     <div class="footer-logo">Sportfreunde Heilbronn 1989</div>
     <div class="footer-copy">© 2026 Sportfreunde Heilbronn · Alle Rechte vorbehalten</div>
-    <div class="footer-links"><a href="#">Impressum</a><a href="#">Datenschutz</a></div>
+    <div class="footer-links">
+      <a href="#">Impressum</a>
+      <a href="#">Datenschutz</a>
+    </div>
   </footer>
 
   <script>
-    const form = document.getElementById('contactForm');
-    if (form) {
-      form.addEventListener('submit', async function(e) {
-        e.preventDefault();
-        const btn = document.getElementById('submitBtn');
-        const msg = document.getElementById('formMsg');
-        btn.textContent = 'Wird gesendet...'; btn.style.opacity = '0.7';
-        try {
-          const res = await fetch(form.action, { method:'POST', body:new FormData(form), headers:{'Accept':'application/json'} });
-          if (res.ok) {
-            msg.style.display='block'; msg.style.color='#4ade80';
-            msg.textContent='✓ Nachricht gesendet! Wir melden uns bald.';
-            form.reset();
-          } else throw new Error();
-        } catch { msg.style.display='block'; msg.style.color='#f87171'; msg.textContent='✗ Fehler. Bitte versuche es erneut.'; }
-        btn.textContent='Nachricht senden'; btn.style.opacity='1';
-      });
-    }
-
+    // Scroll animations
     const observer = new IntersectionObserver((entries) => {
-      entries.forEach((e,i) => { if(e.isIntersecting) setTimeout(()=>e.target.classList.add('visible'),i*80); });
-    }, {threshold:0.1});
-    document.querySelectorAll('.fade-in').forEach(el=>observer.observe(el));
+      entries.forEach((e, i) => {
+        if (e.isIntersecting) setTimeout(() => e.target.classList.add('visible'), i * 80);
+      });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 
+    // RSS News via rss2json
     function renderCard(item) {
-      const date = new Date(item.pubDate).toLocaleDateString('de-DE',{day:'2-digit',month:'long',year:'numeric'});
-      const excerpt = (item.description||'').replace(/<[^>]+>/g,'').slice(0,110)+'...';
+      const date = new Date(item.pubDate).toLocaleDateString('de-DE', { day:'2-digit', month:'long', year:'numeric' });
+      const excerpt = (item.description || '').replace(/<[^>]+>/g,'').slice(0,110) + '...';
       const parts = item.title.split(' - ');
-      const source = parts.length>1 ? parts.pop().trim() : 'Heilbronn';
+      const source = parts.length > 1 ? parts.pop().trim() : 'Heilbronn';
       const cleanTitle = parts.join(' - ').trim();
       return `<a class="news-card fade-in" href="${item.link}" target="_blank" rel="noopener">
         <div class="news-source">${source}</div>
@@ -461,27 +497,33 @@
         <div class="news-excerpt">${excerpt}</div>
       </a>`;
     }
+
     async function loadNews() {
       const grid = document.getElementById('newsGrid');
       try {
         const base = 'https://api.rss2json.com/v1/api.json?rss_url=';
-        const [r1,r2] = await Promise.all([
-          fetch(base+encodeURIComponent('https://news.google.com/rss/search?q=Heilbronn&hl=de&gl=DE&ceid=DE:de')),
-          fetch(base+encodeURIComponent('https://news.google.com/rss/search?q=Heilbronn+aktuell&hl=de&gl=DE&ceid=DE:de'))
-        ]);
-        const [d1,d2] = await Promise.all([r1.json(),r2.json()]);
-        const seen=new Set(); const items=[];
-        for (const item of [...(d1.items||[]),...(d2.items||[])]) {
-          const key=item.title.split(/\s+/).slice(0,4).join(' ').toLowerCase();
-          if(!seen.has(key)){seen.add(key);items.push(item);}
-          if(items.length>=12) break;
+        const url1 = base + encodeURIComponent('https://news.google.com/rss/search?q=Heilbronn&hl=de&gl=DE&ceid=DE:de');
+        const url2 = base + encodeURIComponent('https://news.google.com/rss/search?q=Heilbronn+aktuell&hl=de&gl=DE&ceid=DE:de');
+
+        const [r1, r2] = await Promise.all([fetch(url1), fetch(url2)]);
+        const [d1, d2] = await Promise.all([r1.json(), r2.json()]);
+
+        const seen = new Set();
+        const items = [];
+        for (const item of [...(d1.items||[]), ...(d2.items||[])]) {
+          const key = item.title.slice(0,40);
+          if (!seen.has(key)) { seen.add(key); items.push(item); }
+          if (items.length >= 12) break;
         }
-        if(!items.length) throw new Error();
-        grid.innerHTML=items.map(renderCard).join('');
-        document.querySelectorAll('.news-card').forEach(el=>observer.observe(el));
-        setTimeout(loadNews,30*60*1000);
+        if (!items.length) throw new Error('no items');
+
+        grid.innerHTML = items.map(renderCard).join('');
+        document.querySelectorAll('.news-card').forEach(el => observer.observe(el));
+
+        // Auto-refresh every 30 minutes
+        setTimeout(loadNews, 30 * 60 * 1000);
       } catch(e) {
-        grid.innerHTML='<p class="news-loading">Nachrichten konnten nicht geladen werden.</p>';
+        grid.innerHTML = `<p class="news-error">Nachrichten konnten nicht geladen werden. <a href="https://news.google.com/search?q=Heilbronn&hl=de" target="_blank" style="color:var(--blue-light)">Direkt bei Google News lesen →</a></p>`;
       }
     }
     loadNews();
