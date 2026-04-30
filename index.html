@@ -154,7 +154,10 @@
     .cards-section { background:#23232f; }
     .cards-grid {
       margin-top:56px;
-      display:grid; grid-template-columns:repeat(auto-fill,minmax(260px,1fr)); gap:2px;
+      display:grid; grid-template-columns:repeat(3, 1fr); gap:2px;
+    }
+    @media(max-width:900px) {
+      .cards-grid { grid-template-columns:repeat(2, 1fr); }
     }
     .card {
       background:#2c2c3a; padding:36px 28px;
@@ -459,7 +462,7 @@
         </div>
         <div class="contact-row">
           <div class="contact-icon">📅</div>
-          <div><div class="contact-label">Training</div><div class="contact-value">So 09:00 – 11:00 Uhr</div></div>
+          <div><div class="contact-label">Training</div><div class="contact-value">Di & Do 18:30 · Sa 10:00 Uhr</div></div>
         </div>
       </div>
     </div>
