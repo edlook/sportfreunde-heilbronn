@@ -52,7 +52,7 @@
     /* HERO */
     .hero {
       min-height:100vh; position:relative;
-      display:flex; align-items:flex-end;
+      display:flex; align-items:center;
       padding:100px 48px 80px; overflow:hidden;
     }
     .hero-bg {
@@ -61,11 +61,11 @@
         linear-gradient(160deg, #131320 0%, #0d1225 50%, #131320 100%);
     }
     .hero-logo-bg {
-      position:absolute; right:3%; top:50%; transform:translateY(-50%);
-      width:46%; max-width:560px; opacity:0.15; pointer-events:none;
+      position:absolute; left:50%; top:50%; transform:translate(-10%, -50%);
+      width:46%; max-width:540px; opacity:0.15; pointer-events:none;
       filter:drop-shadow(0 0 60px rgba(45,85,212,0.3));
     }
-    .hero-content { position:relative; z-index:2; width:46%; }
+    .hero-content { position:relative; z-index:2; max-width:520px; }
     .hero-badge {
       display:inline-flex; align-items:center; gap:8px;
       background:rgba(26,63,160,0.3); border:1px solid rgba(45,85,212,0.5);
@@ -74,7 +74,7 @@
     }
     .hero-badge::before { content:''; width:6px; height:6px; background:var(--gold); border-radius:50%; animation:pulse 2s infinite; }
     @keyframes pulse { 0%,100% { opacity:1; } 50% { opacity:.4; } }
-    .hero h1 { font-family:'Bebas Neue',sans-serif; font-size:clamp(48px,5vw,100px); line-height:.95; letter-spacing:2px; margin-bottom:20px; }
+    .hero h1 { font-family:'Bebas Neue',sans-serif; font-size:clamp(56px,6vw,110px); line-height:.95; letter-spacing:2px; margin-bottom:20px; }
     .hero h1 span { color:var(--blue-light); }
     .hero-sub { font-size:16px; color:rgba(245,245,240,0.6); font-weight:300; line-height:1.7; margin-bottom:36px; }
     .hero-cta { display:flex; gap:14px; flex-wrap:wrap; }
@@ -103,8 +103,7 @@
     .stat-label { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:rgba(245,245,240,0.5); margin-top:4px; }
 
     /* SECTIONS */
-    section { padding:90px 48px; position:relative; max-width:100%; }
-    @media(min-width:1280px) { .cards-section, .news-section, .about, .contact { padding-left:calc((100% - 1280px)/2 + 48px); padding-right:calc((100% - 1280px)/2 + 48px); } }
+    section { padding:90px 48px; position:relative; }
     .section-tag { font-size:11px; letter-spacing:3px; text-transform:uppercase; color:var(--blue-light); margin-bottom:14px; }
     .section-title { font-family:'Bebas Neue',sans-serif; font-size:clamp(36px,5vw,60px); line-height:1; margin-bottom:18px; }
     .section-sub { font-size:15px; color:rgba(245,245,240,0.55); font-weight:300; max-width:500px; line-height:1.75; }
@@ -130,10 +129,10 @@
 
     /* CARDS */
     .cards-section { background:#1e1e2a; }
-    .cards-grid { margin-top:52px; display:grid; grid-template-columns:repeat(3,1fr); gap:2px; max-width:1280px; }
-    .card { height:100%; }
+    .cards-grid { margin-top:52px; display:grid; grid-template-columns:repeat(3,1fr); gap:2px; }
     .card {
-      background:#242433; padding:32px 26px; border:1px solid rgba(255,255,255,0.05);
+      background:#242433; padding:32px 26px;
+      border:1px solid rgba(255,255,255,0.05);
       transition:background .2s, transform .2s; position:relative; overflow:hidden;
     }
     .card::before { content:''; position:absolute; top:0; left:0; width:3px; height:0; background:var(--blue-light); transition:height .3s; }
@@ -145,10 +144,10 @@
 
     /* NEWS */
     .news-section { background:#161622; }
-    .news-grid { margin-top:52px; display:grid; grid-template-columns:repeat(3,1fr); gap:2px; max-width:1280px; }
-    .news-card { height:100%; }
+    .news-grid { margin-top:52px; display:grid; grid-template-columns:repeat(3,1fr); gap:2px; }
     .news-card {
-      background:#242433; padding:26px; border:1px solid rgba(255,255,255,0.05);
+      background:#242433; padding:26px;
+      border:1px solid rgba(255,255,255,0.05);
       transition:background .2s; cursor:pointer; text-decoration:none; display:block;
     }
     .news-card:hover { background:#1e2a3a; }
@@ -191,15 +190,17 @@
     .fade-in.visible { opacity:1; transform:translateY(0); }
 
     /* ── RESPONSIVE ── */
-    @media(max-width:1100px) {
-      .hero-content { width:52%; }
+    @media(max-width:1024px) {
+      .hero-content { max-width:460px; }
+      .hero h1 { font-size:clamp(48px,5.5vw,90px); }
+      .hero-logo-bg { width:44%; }
     }
     @media(max-width:900px) {
       nav { padding:14px 24px; }
       .nav-links { display:none; }
-      .hero { padding:90px 24px 64px; }
-      .hero-content { width:58%; }
-      .hero-logo-bg { width:42%; opacity:0.1; }
+      .hero { padding:90px 24px 64px; align-items:flex-end; }
+      .hero-content { max-width:55%; }
+      .hero-logo-bg { left:auto; right:0; transform:translateY(-50%); width:48%; opacity:0.1; }
       .hero-deco { display:none; }
       section { padding:64px 24px; }
       .about { grid-template-columns:1fr; gap:36px; }
@@ -217,14 +218,13 @@
       nav { padding:12px 16px; }
       .nav-logo span { font-size:13px; }
       .hero { padding:80px 16px 52px; }
-      .hero-content { width:100%; }
-      .hero-logo-bg { width:80%; opacity:0.07; right:-20px; top:40%; }
+      .hero-content { max-width:100%; }
+      .hero-logo-bg { width:75%; opacity:0.07; right:-20px; }
       .hero-sub { font-size:14px; }
       section { padding:52px 16px; }
       .cards-grid { grid-template-columns:repeat(2,1fr); gap:1px; }
       .card { padding:20px 14px; }
       .news-grid { grid-template-columns:1fr; }
-      .news-card { padding:20px 16px; }
       .stats-bar { padding:16px; gap:8px; }
       .stat-num { font-size:30px; }
       footer { padding:20px 16px; }
@@ -256,8 +256,6 @@
   <section class="hero">
     <div class="hero-bg"></div>
     <img src="logo.png" class="hero-logo-bg" alt="">
-
-    <!-- Deco SVGs -->
     <svg class="hero-deco hero-deco-left" viewBox="0 0 300 700" xmlns="http://www.w3.org/2000/svg">
       <line x1="250" y1="0" x2="250" y2="700" stroke="rgba(255,255,255,0.07)" stroke-width="1"/>
       <line x1="180" y1="0" x2="180" y2="700" stroke="rgba(255,255,255,0.03)" stroke-width="1"/>
@@ -288,7 +286,6 @@
       <circle cx="70" cy="500" r="3.5" fill="rgba(212,163,42,0.65)"/>
       <circle cx="260" cy="640" r="2.5" fill="rgba(45,85,212,0.6)"/>
     </svg>
-
     <div class="dots-layer">
       <div class="glow-dot gold" style="width:10px;height:10px;top:18%;left:8%"></div>
       <div class="glow-dot blue" style="width:14px;height:14px;top:40%;left:14%"></div>
@@ -296,7 +293,6 @@
       <div class="glow-dot gold" style="width:9px;height:9px;top:60%;right:5%"></div>
       <div class="glow-dot blue" style="width:12px;height:12px;top:25%;right:4%"></div>
     </div>
-
     <div class="hero-content">
       <div class="hero-badge">Gegründet 1989 · Heilbronn</div>
       <h1><span style="color:var(--white)">Sportfreunde</span><br><span>Heilbronn</span></h1>
@@ -421,49 +417,39 @@
   <footer>
     <div class="footer-logo">Sportfreunde Heilbronn 1989</div>
     <div class="footer-copy">© 2026 Sportfreunde Heilbronn · Alle Rechte vorbehalten</div>
-    <div class="footer-links">
-      <a href="#">Impressum</a>
-      <a href="#">Datenschutz</a>
-    </div>
+    <div class="footer-links"><a href="#">Impressum</a><a href="#">Datenschutz</a></div>
   </footer>
 
   <script>
-    // Contact form
     const form = document.getElementById('contactForm');
     if (form) {
       form.addEventListener('submit', async function(e) {
         e.preventDefault();
         const btn = document.getElementById('submitBtn');
         const msg = document.getElementById('formMsg');
-        btn.textContent = 'Wird gesendet...';
-        btn.style.opacity = '0.7';
+        btn.textContent = 'Wird gesendet...'; btn.style.opacity = '0.7';
         try {
           const res = await fetch(form.action, { method:'POST', body:new FormData(form), headers:{'Accept':'application/json'} });
           if (res.ok) {
-            msg.style.display = 'block'; msg.style.color = '#4ade80';
-            msg.textContent = '✓ Nachricht gesendet! Wir melden uns bald.';
+            msg.style.display='block'; msg.style.color='#4ade80';
+            msg.textContent='✓ Nachricht gesendet! Wir melden uns bald.';
             form.reset();
           } else throw new Error();
-        } catch {
-          msg.style.display = 'block'; msg.style.color = '#f87171';
-          msg.textContent = '✗ Fehler. Bitte versuche es erneut.';
-        }
-        btn.textContent = 'Nachricht senden'; btn.style.opacity = '1';
+        } catch { msg.style.display='block'; msg.style.color='#f87171'; msg.textContent='✗ Fehler. Bitte versuche es erneut.'; }
+        btn.textContent='Nachricht senden'; btn.style.opacity='1';
       });
     }
 
-    // Scroll animations
     const observer = new IntersectionObserver((entries) => {
-      entries.forEach((e, i) => { if (e.isIntersecting) setTimeout(() => e.target.classList.add('visible'), i * 80); });
-    }, { threshold: 0.1 });
-    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+      entries.forEach((e,i) => { if(e.isIntersecting) setTimeout(()=>e.target.classList.add('visible'),i*80); });
+    }, {threshold:0.1});
+    document.querySelectorAll('.fade-in').forEach(el=>observer.observe(el));
 
-    // News RSS
     function renderCard(item) {
-      const date = new Date(item.pubDate).toLocaleDateString('de-DE', {day:'2-digit',month:'long',year:'numeric'});
+      const date = new Date(item.pubDate).toLocaleDateString('de-DE',{day:'2-digit',month:'long',year:'numeric'});
       const excerpt = (item.description||'').replace(/<[^>]+>/g,'').slice(0,110)+'...';
       const parts = item.title.split(' - ');
-      const source = parts.length > 1 ? parts.pop().trim() : 'Heilbronn';
+      const source = parts.length>1 ? parts.pop().trim() : 'Heilbronn';
       const cleanTitle = parts.join(' - ').trim();
       return `<a class="news-card fade-in" href="${item.link}" target="_blank" rel="noopener">
         <div class="news-source">${source}</div>
@@ -481,18 +467,18 @@
           fetch(base+encodeURIComponent('https://news.google.com/rss/search?q=Heilbronn+aktuell&hl=de&gl=DE&ceid=DE:de'))
         ]);
         const [d1,d2] = await Promise.all([r1.json(),r2.json()]);
-        const seen = new Set(); const items = [];
+        const seen=new Set(); const items=[];
         for (const item of [...(d1.items||[]),...(d2.items||[])]) {
-          const key = item.title.split(/\s+/).slice(0,4).join(' ').toLowerCase();
-          if (!seen.has(key)) { seen.add(key); items.push(item); }
-          if (items.length >= 12) break;
+          const key=item.title.split(/\s+/).slice(0,4).join(' ').toLowerCase();
+          if(!seen.has(key)){seen.add(key);items.push(item);}
+          if(items.length>=12) break;
         }
-        if (!items.length) throw new Error();
-        grid.innerHTML = items.map(renderCard).join('');
-        document.querySelectorAll('.news-card').forEach(el => observer.observe(el));
-        setTimeout(loadNews, 30*60*1000);
+        if(!items.length) throw new Error();
+        grid.innerHTML=items.map(renderCard).join('');
+        document.querySelectorAll('.news-card').forEach(el=>observer.observe(el));
+        setTimeout(loadNews,30*60*1000);
       } catch(e) {
-        grid.innerHTML = '<p class="news-loading">Nachrichten konnten nicht geladen werden.</p>';
+        grid.innerHTML='<p class="news-loading">Nachrichten konnten nicht geladen werden.</p>';
       }
     }
     loadNews();
