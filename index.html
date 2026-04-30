@@ -143,7 +143,7 @@
     .cards-section { background:#23232f; }
     .cards-grid {
       margin-top:56px;
-      display:grid; grid-template-columns:repeat(auto-fill,minmax(260px,1fr)); gap:2px;
+      display:grid; grid-template-columns:repeat(3,1fr); gap:2px;
     }
     .card {
       background:#2c2c3a; padding:36px 28px;
@@ -166,7 +166,7 @@
     .news-section { background:#20202c; }
     .news-grid {
       margin-top:56px;
-      display:grid; grid-template-columns:repeat(auto-fill,minmax(300px,1fr)); gap:2px;
+      display:grid; grid-template-columns:repeat(3,1fr); gap:2px;
     }
     .news-card {
       background:#2c2c3a; padding:28px;
@@ -221,26 +221,16 @@
     .fade-in.visible { opacity:1; transform:translateY(0); }
 
     /* MOBILE */
-    /* ── RESPONSIVE ── */
-
-    /* 27" and large monitors: limit content width */
-    @media(min-width:1400px) {
-      .cards-grid { grid-template-columns: repeat(3, minmax(0, 420px)); }
-      .news-grid  { grid-template-columns: repeat(3, minmax(0, 420px)); }
-    }
-
-    /* Tablet 900px */
+    /* Responsive */
     @media(max-width:900px) {
       nav { padding:14px 24px; }
       .nav-links { display:none; }
       .hero { padding:0 24px 60px; }
-      .hero-logo-bg { width:48%; opacity:0.09; right:-10px; }
+      .hero-logo-bg { width:48%; opacity:0.09; }
       .hero-deco { display:none; }
       section { padding:64px 24px; }
-      .about { grid-template-columns:1fr; gap:40px; }
-      .about-logo-wrap { max-width:280px; margin:0 auto; }
+      .about, .contact { grid-template-columns:1fr; gap:40px; }
       .about-accent-box { display:none; }
-      .contact { grid-template-columns:1fr; gap:36px; }
       .cards-grid { grid-template-columns:repeat(2,1fr); }
       .news-grid { grid-template-columns:repeat(2,1fr); }
       .stats-bar { padding:22px 24px; }
@@ -248,24 +238,17 @@
       footer { flex-direction:column; text-align:center; gap:10px; padding:24px; }
       .footer-links { justify-content:center; }
     }
-
-    /* Mobile 600px */
     @media(max-width:600px) {
       nav { padding:12px 16px; }
-      .nav-logo span { font-size:13px; }
       .hero { padding:0 16px 52px; }
       .hero-logo-bg { width:75%; opacity:0.06; right:-20px; }
-      .hero-sub { font-size:14px; }
       section { padding:52px 16px; }
       .cards-grid { grid-template-columns:repeat(2,1fr); gap:1px; }
-      .card { padding:22px 16px; }
       .news-grid { grid-template-columns:1fr; }
       .stats-bar { padding:16px; gap:8px; }
       .stat-num { font-size:30px; }
       footer { padding:20px 16px; }
     }
-
-    /* Small phone 400px */
     @media(max-width:400px) {
       .hero-logo-bg { display:none; }
       .cards-grid { grid-template-columns:1fr; }
@@ -273,14 +256,11 @@
       .nav-logo span { display:none; }
     }
 
-    /* Glow dots */
     .glow-dot { position:absolute; border-radius:50%; pointer-events:none; z-index:1; }
     .glow-dot.blue { background:radial-gradient(circle, rgba(45,85,212,0.7) 0%, rgba(45,85,212,0.2) 50%, transparent 70%); }
     .glow-dot.gold { background:radial-gradient(circle, rgba(212,163,42,0.8) 0%, rgba(212,163,42,0.25) 50%, transparent 70%); }
     .glow-dot.white { background:radial-gradient(circle, rgba(255,255,255,0.5) 0%, rgba(255,255,255,0.1) 50%, transparent 70%); }
     .dots-layer { position:absolute; inset:0; pointer-events:none; z-index:1; overflow:hidden; }
-
-
     .hero-deco { position:absolute; top:0; height:100%; width:280px; pointer-events:none; z-index:1; }
     .hero-deco-left { left:0; }
     .hero-deco-right { right:0; }
@@ -319,7 +299,6 @@
       <circle cx="200" cy="100" r="3.5" fill="rgba(212,163,42,0.65)"/>
       <circle cx="70" cy="260" r="3" fill="rgba(212,163,42,0.55)"/>
       <circle cx="230" cy="500" r="3.5" fill="rgba(212,163,42,0.65)"/>
-      <circle cx="40" cy="640" r="2.5" fill="rgba(45,85,212,0.6)"/>
     </svg>
     <svg class="hero-deco hero-deco-right" viewBox="0 0 300 700" xmlns="http://www.w3.org/2000/svg">
       <line x1="50" y1="0" x2="50" y2="700" stroke="rgba(255,255,255,0.07)" stroke-width="1"/>
@@ -334,7 +313,6 @@
       <circle cx="100" cy="100" r="3.5" fill="rgba(212,163,42,0.65)"/>
       <circle cx="230" cy="260" r="3" fill="rgba(212,163,42,0.55)"/>
       <circle cx="70" cy="500" r="3.5" fill="rgba(212,163,42,0.65)"/>
-      <circle cx="260" cy="640" r="2.5" fill="rgba(45,85,212,0.6)"/>
     </svg>
     <div class="dots-layer">
       <div class="glow-dot gold" style="width:10px;height:10px;top:18%;left:8%"></div>
