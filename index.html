@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sportfreunde Heilbronn 1989</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --blue: #1a3fa0;
+      --blue-light: #2d55d4;
+      --blue-dark: #0f1f5c;
+      --white: #f5f5f0;
+      --off-white: #eaeae4;
+      --black: #0c0c0c;
+      --gray: #6b6b6b;
+      --gold: #d4a32a;
+    }
+    * { margin:0; padding:0; box-sizing:border-box; }
+    html { scroll-behavior:smooth; }
+    body {
+      font-family:'DM Sans',sans-serif;
+      background:#23232f;
+      color:var(--white);
+      overflow-x:hidden;
+    }
+
+    /* NAV */
+    nav {
+      position:fixed; top:0; left:0; right:0; z-index:100;
+      padding:18px 48px;
+      display:flex; justify-content:space-between; align-items:center;
+      background:rgba(30,30,42,0.95);
+      backdrop-filter:blur(12px);
+      border-bottom:1px solid rgba(255,255,255,0.06);
+    }
+    .nav-logo { display:flex; align-items:center; gap:10px; text-decoration:none; }
+    .nav-logo img { height:42px; width:42px; object-fit:contain; }
+    .nav-logo span { font-family:'Bebas Neue',sans-serif; font-size:18px; letter-spacing:2px; color:var(--gold); }
+    .nav-links { display:flex; gap:36px; list-style:none; }
+    .nav-links a { color:rgba(245,245,240,0.7); text-decoration:none; font-size:13px; letter-spacing:1.5px; text-transform:uppercase; font-weight:500; transition:color .2s; }
+    .nav-links a:hover { color:var(--gold); }
+    .btn-primary {
+      background:var(--blue); color:var(--white); border:none;
+      padding:12px 28px; font-family:'DM Sans',sans-serif; font-size:13px;
+      font-weight:700; letter-spacing:1px; text-transform:uppercase;
+      cursor:pointer; text-decoration:none; transition:background .2s, transform .2s;
+      clip-path:polygon(0 0,calc(100% - 10px) 0,100% 10px,100% 100%,10px 100%,0 calc(100% - 10px));
+    }
+    .btn-primary:hover { background:var(--blue-light); transform:translateY(-2px); }
+    .btn-outline {
+      background:transparent; color:var(--white); border:1px solid rgba(255,255,255,0.25);
+      padding:12px 28px; font-family:'DM Sans',sans-serif; font-size:13px;
+      font-weight:500; letter-spacing:1px; text-transform:uppercase;
+      cursor:pointer; text-decoration:none; transition:border-color .2s, color .2s;
+    }
+    .btn-outline:hover { border-color:var(--gold); color:var(--gold); }
+
+    /* HERO */
+    .hero {
+      height:100vh; position:relative;
+      display:flex; align-items:flex-end;
+      padding:0 48px 80px; overflow:hidden;
+    }
+    .hero-bg {
+      position:absolute; inset:0;
+      background:
+        radial-gradient(ellipse 70% 60% at 65% 45%, rgba(26,63,160,0.2) 0%, transparent 70%),
+        linear-gradient(160deg, #0c0c0c 0%, #0d1220 50%, #0c0c0c 100%);
+    }
+    .hero-deco {
+      position:absolute; top:0; height:100%; width:320px;
+      pointer-events:none; z-index:1;
+    }
+    .hero-deco-left { left:0; }
+    .hero-deco-right { right:0; }
+    .hero-logo-bg {
+      position:absolute; right:0; left:0; top:50%;
+      transform:translateY(-50%);
+      margin:0 auto;
+      width:52%; max-width:560px;
+      display:block;
+      opacity:0.13; pointer-events:none;
+      filter:drop-shadow(0 0 80px rgba(45,85,212,0.4));
+    }
+    .hero-content { position:relative; z-index:2; max-width:680px; }
+    .hero-badge {
+      display:inline-flex; align-items:center; gap:8px;
+      background:rgba(26,63,160,0.3);
+      border:1px solid rgba(45,85,212,0.5);
+      border-radius:40px; padding:6px 16px;
+      font-size:11px; letter-spacing:2px; text-transform:uppercase;
+      color:var(--gold); margin-bottom:28px;
+    }
+    .hero-badge::before {
+      content:''; width:6px; height:6px;
+      background:var(--gold); border-radius:50%;
+      animation:pulse 2s infinite;
+    }
+    @keyframes pulse { 0%,100% { opacity:1; transform:scale(1); } 50% { opacity:.4; transform:scale(.8); } }
+    .hero h1 {
+      font-family:'Bebas Neue',sans-serif;
+      font-size:clamp(64px,10vw,110px);
+      line-height:.95; letter-spacing:2px; margin-bottom:24px;
+    }
+    .hero h1 span { color:var(--blue-light); }
+    .hero-sub {
+      font-size:17px; color:rgba(245,245,240,0.6);
+      font-weight:300; max-width:480px; line-height:1.7; margin-bottom:40px;
+    }
+    .hero-cta { display:flex; gap:16px; flex-wrap:wrap; }
+
+    /* STATS */
+    .stats-bar {
+      background:var(--blue-dark);
+      border-top:1px solid rgba(255,255,255,0.06);
+      border-bottom:1px solid rgba(255,255,255,0.06);
+      padding:32px 48px;
+      display:flex; justify-content:space-around; flex-wrap:wrap; gap:24px;
+    }
+    .stat-item { text-align:center; }
+    .stat-num { font-family:'Bebas Neue',sans-serif; font-size:48px; color:var(--gold); line-height:1; }
+    .stat-label { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:rgba(245,245,240,0.5); margin-top:4px; }
+
+    /* SECTIONS */
+    section { padding:100px 48px; position:relative; }
+    .section-tag { font-size:11px; letter-spacing:3px; text-transform:uppercase; color:var(--blue-light); margin-bottom:16px; }
+    .section-title { font-family:'Bebas Neue',sans-serif; font-size:clamp(40px,6vw,64px); line-height:1; margin-bottom:20px; }
+    .section-sub { font-size:16px; color:rgba(245,245,240,0.55); font-weight:300; max-width:520px; line-height:1.75; }
+
+    /* ABOUT */
+    .about { background:#282836; display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:center; }
+    .about-logo-wrap {
+      display:flex; align-items:center; justify-content:center;
+      padding:40px;
+      background:linear-gradient(135deg, rgba(26,63,160,0.15) 0%, rgba(12,12,12,0) 100%);
+      border:1px solid rgba(26,63,160,0.2);
+      position:relative;
+    }
+    .about-logo-wrap img { width:80%; max-width:340px; object-fit:contain; filter:drop-shadow(0 8px 40px rgba(45,85,212,0.3)); }
+    .about-accent-box {
+      position:absolute; bottom:-20px; right:-20px;
+      background:var(--gold); color:var(--black);
+      padding:16px 24px; font-family:'Bebas Neue',sans-serif;
+    }
+    .about-accent-box .big { font-size:36px; line-height:1; }
+    .about-accent-box .small { font-size:11px; letter-spacing:1px; }
+    .about-list { margin-top:32px; display:flex; flex-direction:column; gap:12px; }
+    .about-item { display:flex; align-items:center; gap:12px; font-size:15px; color:rgba(245,245,240,0.7); }
+    .about-item::before { content:''; width:20px; height:2px; background:var(--blue-light); flex-shrink:0; }
+
+    /* CARDS */
+    .cards-section { background:#23232f; }
+    .cards-grid {
+      margin-top:56px;
+      display:grid; grid-template-columns:repeat(auto-fill,minmax(260px,1fr)); gap:2px;
+    }
+    .card {
+      background:#2c2c3a; padding:36px 28px;
+      border:1px solid rgba(255,255,255,0.05);
+      transition:background .2s, transform .2s;
+      position:relative; overflow:hidden;
+    }
+    .card::before {
+      content:''; position:absolute; top:0; left:0;
+      width:3px; height:0; background:var(--blue-light);
+      transition:height .3s;
+    }
+    .card:hover { background:#131a2a; transform:translateY(-4px); }
+    .card:hover::before { height:100%; }
+    .card-icon { font-size:26px; margin-bottom:16px; }
+    .card-name { font-family:'Bebas Neue',sans-serif; font-size:22px; letter-spacing:1px; margin-bottom:8px; }
+    .card-desc { font-size:13px; color:rgba(245,245,240,0.45); line-height:1.6; }
+
+    /* NEWS */
+    .news-section { background:#20202c; }
+    .news-grid {
+      margin-top:56px;
+      display:grid; grid-template-columns:repeat(auto-fill,minmax(300px,1fr)); gap:2px;
+    }
+    .news-card {
+      background:#2c2c3a; padding:28px;
+      border:1px solid rgba(255,255,255,0.05);
+      transition:background .2s; cursor:pointer; text-decoration:none;
+      display:block;
+    }
+    .news-card:hover { background:#131a2a; }
+    .news-source {
+      display:inline-block; background:var(--blue); color:var(--white);
+      font-size:10px; letter-spacing:2px; text-transform:uppercase;
+      padding:3px 10px; margin-bottom:14px;
+    }
+    .news-date { font-size:11px; color:rgba(245,245,240,0.35); margin-bottom:10px; }
+    .news-title { font-family:'Bebas Neue',sans-serif; font-size:20px; letter-spacing:.5px; line-height:1.2; margin-bottom:10px; color:var(--white); }
+    .news-excerpt { font-size:13px; color:rgba(245,245,240,0.5); line-height:1.6; }
+    .news-loading { color:rgba(245,245,240,0.4); font-size:14px; padding:40px 0; }
+    .news-error { color:rgba(245,245,240,0.35); font-size:13px; padding:20px 0; }
+
+    /* CONTACT */
+    .contact { background:var(--blue-dark); display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:start; }
+    .contact-info { display:flex; flex-direction:column; gap:24px; margin-top:40px; }
+    .contact-row { display:flex; gap:16px; align-items:flex-start; }
+    .contact-icon { width:40px; height:40px; background:rgba(255,255,255,0.08); display:flex; align-items:center; justify-content:center; font-size:16px; flex-shrink:0; }
+    .contact-label { font-size:11px; letter-spacing:1px; color:rgba(245,245,240,0.4); text-transform:uppercase; margin-bottom:4px; }
+    .contact-value { font-size:15px; color:var(--white); }
+    .form-group { margin-bottom:20px; }
+    .form-group label { display:block; font-size:11px; letter-spacing:1.5px; text-transform:uppercase; color:rgba(245,245,240,0.5); margin-bottom:8px; }
+    .form-group input, .form-group textarea {
+      width:100%; background:rgba(255,255,255,0.06);
+      border:1px solid rgba(255,255,255,0.12); color:var(--white);
+      padding:14px 16px; font-family:'DM Sans',sans-serif; font-size:14px;
+      outline:none; transition:border-color .2s;
+    }
+    .form-group input:focus, .form-group textarea:focus { border-color:var(--blue-light); }
+    .form-group textarea { resize:vertical; min-height:100px; }
+
+    /* FOOTER */
+    footer {
+      background:#1c1c26; padding:36px 48px;
+      display:flex; justify-content:space-between; align-items:center;
+      border-top:1px solid rgba(255,255,255,0.06); flex-wrap:wrap; gap:20px;
+    }
+    .footer-logo { font-family:'Bebas Neue',sans-serif; font-size:18px; letter-spacing:2px; color:var(--gold); }
+    .footer-copy { font-size:12px; color:rgba(245,245,240,0.3); }
+    .footer-links { display:flex; gap:24px; }
+    .footer-links a { font-size:12px; color:rgba(245,245,240,0.35); text-decoration:none; transition:color .2s; }
+    .footer-links a:hover { color:var(--white); }
+
+    /* FADE IN */
+    .fade-in { opacity:0; transform:translateY(24px); transition:opacity .6s ease, transform .6s ease; }
+    .fade-in.visible { opacity:1; transform:translateY(0); }
+
+    /* MOBILE */
+    @media(max-width:768px) {
+      nav { padding:14px 20px; }
+      .nav-links { display:none; }
+      .hero { padding:0 20px 60px; }
+      .hero-deco {
+      position:absolute; top:0; height:100%; width:320px;
+      pointer-events:none; z-index:1;
+    }
+    .hero-deco-left { left:0; }
+    .hero-deco-right { right:0; }
+    .hero-logo-bg { width:90%; opacity:.08; right:-20px; }
+      section { padding:60px 20px; }
+      .about, .contact { grid-template-columns:1fr; gap:40px; }
+      .about-accent-box { display:none; }
+      .stats-bar { padding:24px 20px; }
+      footer { flex-direction:column; text-align:center; padding:24px 20px; }
+    }
+
+
+
+    /* Floating glow dots */
+    .glow-dot {
+      position: absolute;
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 1;
+    }
+    .glow-dot.blue {
+      background: radial-gradient(circle, rgba(45,85,212,0.7) 0%, rgba(45,85,212,0.2) 50%, transparent 70%);
+    }
+    .glow-dot.gold {
+      background: radial-gradient(circle, rgba(212,163,42,0.8) 0%, rgba(212,163,42,0.25) 50%, transparent 70%);
+    }
+    .glow-dot.white {
+      background: radial-gradient(circle, rgba(255,255,255,0.5) 0%, rgba(255,255,255,0.1) 50%, transparent 70%);
+    }
+    .dots-layer {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: 1;
+      overflow: hidden;
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="#" class="nav-logo">
+      <img src="logo.png" alt="Sportfreunde Heilbronn">
+      <span>Sportfreunde Heilbronn</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#about">Über uns</a></li>
+      <li><a href="#about">Gemeinschaft</a></li>
+      <li><a href="#news">Aktuelles</a></li>
+      <li><a href="#contact">Kontakt</a></li>
+    </ul>
+    <a href="#contact" class="btn-primary">Mitmachen</a>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <!-- Decorative SVG elements -->
+    <svg class="hero-deco hero-deco-left" viewBox="0 0 400 700" xmlns="http://www.w3.org/2000/svg">
+      <line x1="380" y1="0" x2="380" y2="700" stroke="rgba(255,255,255,0.15)" stroke-width="1"/>
+      <line x1="300" y1="0" x2="300" y2="700" stroke="rgba(255,255,255,0.07)" stroke-width="1"/>
+      <path d="M 380 350 A 200 200 0 0 1 180 550" stroke="rgba(255,255,255,0.12)" stroke-width="1.5" fill="none"/>
+      <path d="M 380 350 A 200 200 0 0 0 180 150" stroke="rgba(255,255,255,0.12)" stroke-width="1.5" fill="none"/>
+      <polygon points="40,70 90,42 140,70 140,126 90,154 40,126" stroke="rgba(45,85,212,0.6)" stroke-width="2" fill="rgba(45,85,212,0.1)"/>
+      <polygon points="200,200 250,172 300,200 300,256 250,284 200,256" stroke="rgba(45,85,212,0.45)" stroke-width="2" fill="rgba(45,85,212,0.08)"/>
+      <polygon points="20,350 70,322 120,350 120,406 70,434 20,406" stroke="rgba(45,85,212,0.5)" stroke-width="2" fill="rgba(45,85,212,0.1)"/>
+      <polygon points="160,490 210,462 260,490 260,546 210,574 160,546" stroke="rgba(45,85,212,0.4)" stroke-width="2" fill="rgba(45,85,212,0.07)"/>
+      <polygon points="60,610 95,590 130,610 130,650 95,670 60,650" stroke="rgba(212,163,42,0.5)" stroke-width="1.5" fill="rgba(212,163,42,0.06)"/>
+      <circle cx="320" cy="100" r="4" fill="rgba(212,163,42,0.7)"/>
+      <circle cx="100" cy="260" r="3.5" fill="rgba(212,163,42,0.6)"/>
+      <circle cx="350" cy="520" r="4" fill="rgba(212,163,42,0.7)"/>
+      <circle cx="60" cy="640" r="3" fill="rgba(45,85,212,0.7)"/>
+      <circle cx="240" cy="380" r="3" fill="rgba(255,255,255,0.25)"/>
+      <circle cx="160" cy="140" r="2.5" fill="rgba(255,255,255,0.2)"/>
+    </svg>
+    <svg class="hero-deco hero-deco-right" viewBox="0 0 400 700" xmlns="http://www.w3.org/2000/svg">
+      <line x1="20" y1="0" x2="20" y2="700" stroke="rgba(255,255,255,0.15)" stroke-width="1"/>
+      <line x1="100" y1="0" x2="100" y2="700" stroke="rgba(255,255,255,0.07)" stroke-width="1"/>
+      <path d="M 20 350 A 200 200 0 0 0 220 550" stroke="rgba(255,255,255,0.12)" stroke-width="1.5" fill="none"/>
+      <path d="M 20 350 A 200 200 0 0 1 220 150" stroke="rgba(255,255,255,0.12)" stroke-width="1.5" fill="none"/>
+      <polygon points="260,70 310,42 360,70 360,126 310,154 260,126" stroke="rgba(45,85,212,0.6)" stroke-width="2" fill="rgba(45,85,212,0.1)"/>
+      <polygon points="100,200 150,172 200,200 200,256 150,284 100,256" stroke="rgba(45,85,212,0.45)" stroke-width="2" fill="rgba(45,85,212,0.08)"/>
+      <polygon points="280,350 330,322 380,350 380,406 330,434 280,406" stroke="rgba(45,85,212,0.5)" stroke-width="2" fill="rgba(45,85,212,0.1)"/>
+      <polygon points="140,490 190,462 240,490 240,546 190,574 140,546" stroke="rgba(45,85,212,0.4)" stroke-width="2" fill="rgba(45,85,212,0.07)"/>
+      <polygon points="270,610 305,590 340,610 340,650 305,670 270,650" stroke="rgba(212,163,42,0.5)" stroke-width="1.5" fill="rgba(212,163,42,0.06)"/>
+      <circle cx="80" cy="100" r="4" fill="rgba(212,163,42,0.7)"/>
+      <circle cx="300" cy="260" r="3.5" fill="rgba(212,163,42,0.6)"/>
+      <circle cx="50" cy="520" r="4" fill="rgba(212,163,42,0.7)"/>
+      <circle cx="340" cy="640" r="3" fill="rgba(45,85,212,0.7)"/>
+      <circle cx="160" cy="380" r="3" fill="rgba(255,255,255,0.25)"/>
+      <circle cx="240" cy="140" r="2.5" fill="rgba(255,255,255,0.2)"/>
+    </svg>
+    <img src="logo.png" class="hero-logo-bg" alt="">
+    <div class="dots-layer">
+      <div class="glow-dot gold" style="width:12px;height:12px;top:18%;left:8%"></div>
+      <div class="glow-dot blue" style="width:18px;height:18px;top:35%;left:15%"></div>
+      <div class="glow-dot white" style="width:8px;height:8px;top:60%;left:6%"></div>
+      <div class="glow-dot gold" style="width:10px;height:10px;top:75%;left:20%"></div>
+      <div class="glow-dot blue" style="width:14px;height:14px;top:20%;right:6%"></div>
+      <div class="glow-dot gold" style="width:9px;height:9px;top:55%;right:4%"></div>
+      <div class="glow-dot white" style="width:7px;height:7px;top:80%;right:12%"></div>
+    </div>
+    <div class="hero-content">
+      <div class="hero-badge">Gegründet 1989 · Heilbronn</div>
+      <h1><span style="color:var(--white)">Sportfreunde</span><br><span>Heilbronn</span></h1>
+      <p class="hero-sub">Leidenschaft, Zusammenhalt und Fußball seit über 35 Jahren. Wir sind 35 Freunde — kein Ligastress, nur echte Begeisterung.</p>
+      <div class="hero-cta">
+        <a href="#about" class="btn-primary">Mehr erfahren</a>
+        <a href="#contact" class="btn-outline">Mitmachen</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS -->
+  <div class="stats-bar">
+    <div class="stat-item"><div class="stat-num">35+</div><div class="stat-label">Jahre Geschichte</div></div>
+    <div class="stat-item"><div class="stat-num">35</div><div class="stat-label">Mitglieder</div></div>
+    <div class="stat-item"><div class="stat-num">1989</div><div class="stat-label">Gründungsjahr</div></div>
+    <div class="stat-item"><div class="stat-num">∞</div><div class="stat-label">Leidenschaft</div></div>
+  </div>
+
+  <!-- ABOUT -->
+  <section class="about" id="about">
+    <div class="dots-layer">
+      <div class="glow-dot gold" style="width:10px;height:10px;top:12%;left:22%"></div>
+      <div class="glow-dot blue" style="width:14px;height:14px;top:45%;left:38%"></div>
+      <div class="glow-dot white" style="width:8px;height:8px;top:78%;left:15%"></div>
+      <div class="glow-dot gold" style="width:12px;height:12px;top:20%;left:65%"></div>
+      <div class="glow-dot blue" style="width:9px;height:9px;top:60%;left:55%"></div>
+      <div class="glow-dot white" style="width:11px;height:11px;top:85%;left:75%"></div>
+      <div class="glow-dot gold" style="width:8px;height:8px;top:35%;left:82%"></div>
+      <div class="glow-dot blue" style="width:10px;height:10px;top:70%;left:90%"></div>
+    </div>
+    <div class="about-logo-wrap fade-in">
+      <img src="logo.png" alt="Sportfreunde Heilbronn Logo">
+      <div class="about-accent-box"><div class="big">1989</div><div class="small">Seit</div></div>
+    </div>
+    <div class="fade-in">
+      <p class="section-tag">Über uns</p>
+      <h2 class="section-title">Mehr als nur Fußball</h2>
+      <p class="section-sub">Sportfreunde Heilbronn wurde 1989 gegründet — nicht als Verein mit Ligabetrieb, sondern als echte Gemeinschaft von Fußballbegeisterten. Wir sind 35 Freunde, die den Sport lieben und regelmäßig zusammen kicken.</p>
+      <div class="about-list">
+        <div class="about-item">Offen für alle — egal ob Anfänger oder erfahrener Spieler</div>
+        <div class="about-item">Kein Ligabetrieb, kein Druck — nur echte Freude am Spiel</div>
+        <div class="about-item">Regelmäßige Trainings und Freundschaftsspiele</div>
+        <div class="about-item">Verwurzelt in Heilbronn seit über 35 Jahren</div>
+        <div class="about-item">Gemeinschaft, Events und mehr als nur Fußball</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CARDS -->
+  <section class="cards-section" id="community">
+    <div class="dots-layer">
+      <div class="glow-dot gold" style="width:11px;height:11px;top:8%;left:18%"></div>
+      <div class="glow-dot blue" style="width:14px;height:14px;top:30%;left:42%"></div>
+      <div class="glow-dot white" style="width:8px;height:8px;top:65%;left:28%"></div>
+      <div class="glow-dot gold" style="width:9px;height:9px;top:85%;left:60%"></div>
+      <div class="glow-dot blue" style="width:12px;height:12px;top:15%;left:70%"></div>
+      <div class="glow-dot white" style="width:10px;height:10px;top:50%;left:85%"></div>
+      <div class="glow-dot gold" style="width:8px;height:8px;top:78%;left:12%"></div>
+      <div class="glow-dot blue" style="width:9px;height:9px;top:40%;left:92%"></div>
+    </div>
+    <p class="section-tag fade-in">Gemeinschaft</p>
+    <h2 class="section-title fade-in">Was uns ausmacht</h2>
+    <p class="section-sub fade-in">35 Freunde, eine Leidenschaft. Kein Ligabetrieb — einfach Fußball wie er sein soll.</p>
+    <div class="cards-grid">
+      <div class="card fade-in"><div class="card-icon">⚽</div><div class="card-name">Gemeinsam kicken</div><div class="card-desc">Kein Ligastress, kein Druck. Wir spielen weil wir es lieben — zusammen, jede Woche.</div></div>
+      <div class="card fade-in"><div class="card-icon">🤝</div><div class="card-name">35 Mitglieder</div><div class="card-desc">Eine überschaubare, echte Gemeinschaft. Hier kennt jeder jeden — und jeder ist willkommen.</div></div>
+      <div class="card fade-in"><div class="card-icon">📅</div><div class="card-name">Regelmäßige Treffen</div><div class="card-desc">Festes Training und Freundschaftsspiele — Fußball als sozialer Treffpunkt.</div></div>
+      <div class="card fade-in"><div class="card-icon">🏙️</div><div class="card-name">Verwurzelt in Heilbronn</div><div class="card-desc">Seit 1989 ein Teil dieser Stadt. Wir sind stolz auf unsere Heimat.</div></div>
+      <div class="card fade-in"><div class="card-icon">🎉</div><div class="card-name">Events & Grillfeste</div><div class="card-desc">Freundschaftsspiele, Grillfeste und Gemeinschaftsevents — mehr als nur Fußball.</div></div>
+      <div class="card fade-in"><div class="card-icon">🚪</div><div class="card-name">Offen für alle</div><div class="card-desc">Egal ob Profi oder Hobbyist — bei uns zählt die Leidenschaft, nicht die Leistung.</div></div>
+    </div>
+  </section>
+
+  <!-- NEWS -->
+  <section class="news-section" id="news">
+    <div class="dots-layer">
+      <div class="glow-dot blue" style="width:13px;height:13px;top:6%;left:25%"></div>
+      <div class="glow-dot gold" style="width:9px;height:9px;top:22%;left:55%"></div>
+      <div class="glow-dot white" style="width:8px;height:8px;top:45%;left:15%"></div>
+      <div class="glow-dot gold" style="width:11px;height:11px;top:60%;left:72%"></div>
+      <div class="glow-dot blue" style="width:10px;height:10px;top:75%;left:38%"></div>
+      <div class="glow-dot white" style="width:9px;height:9px;top:88%;left:85%"></div>
+      <div class="glow-dot gold" style="width:8px;height:8px;top:35%;left:90%"></div>
+    </div>
+    <p class="section-tag fade-in">Aktuelles aus Heilbronn</p>
+    <h2 class="section-title fade-in">Neuigkeiten</h2>
+    <p class="section-sub fade-in">Aktuelle Nachrichten aus der Region — automatisch geladen von der Heilbronner Stimme.</p>
+    <div class="news-grid" id="newsGrid">
+      <div class="news-loading">Nachrichten werden geladen...</div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact" id="contact">
+    <div class="dots-layer">
+      <div class="glow-dot white" style="width:11px;height:11px;top:10%;left:20%"></div>
+      <div class="glow-dot gold" style="width:13px;height:13px;top:35%;left:48%"></div>
+      <div class="glow-dot white" style="width:8px;height:8px;top:70%;left:30%"></div>
+      <div class="glow-dot gold" style="width:10px;height:10px;top:20%;left:75%"></div>
+      <div class="glow-dot white" style="width:9px;height:9px;top:55%;left:88%"></div>
+      <div class="glow-dot gold" style="width:12px;height:12px;top:85%;left:62%"></div>
+    </div>
+    <div class="fade-in">
+      <p class="section-tag">Kontakt & Mitmachen</p>
+      <h2 class="section-title">Werde Teil der Familie</h2>
+      <p class="section-sub">Du willst mitspielen oder einfach vorbeikommen? Wir freuen uns von dir zu hören.</p>
+      <div class="contact-info">
+        <div class="contact-row">
+          <div class="contact-icon">📍</div>
+          <div><div class="contact-label">Adresse</div><div class="contact-value">Heilbronn, Deutschland</div></div>
+        </div>
+        <div class="contact-row">
+          <div class="contact-icon">✉️</div>
+          <div><div class="contact-label">E-Mail</div><div class="contact-value">info@sportfreunde-heilbronn.de</div></div>
+        </div>
+        <div class="contact-row">
+          <div class="contact-icon">📅</div>
+          <div><div class="contact-label">Training</div><div class="contact-value">Di & Do 18:30 · Sa 10:00 Uhr</div></div>
+        </div>
+      </div>
+    </div>
+    <div class="fade-in">
+      <form id="contactForm" action="https://formspree.io/f/xojrqadk" method="POST">
+        <input type="hidden" name="_replyto" value="casper19851106@yahoo.com">
+        <input type="hidden" name="_subject" value="Neue Nachricht von sportfreunde-heilbronn.de">
+        <div class="form-group"><label>Name</label><input type="text" name="name" placeholder="Dein vollständiger Name" required></div>
+        <div class="form-group"><label>E-Mail</label><input type="email" name="email" placeholder="deine@email.de" required></div>
+        <div class="form-group"><label>Nachricht</label><textarea name="message" placeholder="Ich möchte gerne mitspielen..." required></textarea></div>
+        <button type="submit" class="btn-primary" id="submitBtn">Nachricht senden</button>
+        <div id="formMsg" style="margin-top:16px;font-size:14px;display:none;"></div>
+      </form>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-logo">Sportfreunde Heilbronn 1989</div>
+    <div class="footer-copy">© 2026 Sportfreunde Heilbronn · Alle Rechte vorbehalten</div>
+    <div class="footer-links">
+      <a href="#">Impressum</a>
+      <a href="#">Datenschutz</a>
+    </div>
+  </footer>
+
+  <script>
+    // Contact form AJAX
+    const form = document.getElementById('contactForm');
+    if (form) {
+      form.addEventListener('submit', async function(e) {
+        e.preventDefault();
+        const btn = document.getElementById('submitBtn');
+        const msg = document.getElementById('formMsg');
+        btn.textContent = 'Wird gesendet...';
+        btn.style.opacity = '0.7';
+        try {
+          const res = await fetch(form.action, {
+            method: 'POST',
+            body: new FormData(form),
+            headers: { 'Accept': 'application/json' }
+          });
+          if (res.ok) {
+            msg.style.display = 'block';
+            msg.style.color = '#4ade80';
+            msg.textContent = '✓ Nachricht gesendet! Wir melden uns bald.';
+            form.reset();
+            btn.textContent = 'Nachricht senden';
+            btn.style.opacity = '1';
+          } else {
+            throw new Error();
+          }
+        } catch {
+          msg.style.display = 'block';
+          msg.style.color = '#f87171';
+          msg.textContent = '✗ Fehler beim Senden. Bitte versuche es erneut.';
+          btn.textContent = 'Nachricht senden';
+          btn.style.opacity = '1';
+        }
+      });
+    }
+
+    // Scroll animations
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((e, i) => {
+        if (e.isIntersecting) setTimeout(() => e.target.classList.add('visible'), i * 80);
+      });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+    // RSS News via rss2json
+    function renderCard(item) {
+      const date = new Date(item.pubDate).toLocaleDateString('de-DE', { day:'2-digit', month:'long', year:'numeric' });
+      const excerpt = (item.description || '').replace(/<[^>]+>/g,'').slice(0,110) + '...';
+      const parts = item.title.split(' - ');
+      const source = parts.length > 1 ? parts.pop().trim() : 'Heilbronn';
+      const cleanTitle = parts.join(' - ').trim();
+      return `<a class="news-card fade-in" href="${item.link}" target="_blank" rel="noopener">
+        <div class="news-source">${source}</div>
+        <div class="news-date">${date}</div>
+        <div class="news-title">${cleanTitle}</div>
+        <div class="news-excerpt">${excerpt}</div>
+      </a>`;
+    }
+
+    async function loadNews() {
+      const grid = document.getElementById('newsGrid');
+      try {
+        const base = 'https://api.rss2json.com/v1/api.json?rss_url=';
+        const url1 = base + encodeURIComponent('https://news.google.com/rss/search?q=Heilbronn&hl=de&gl=DE&ceid=DE:de');
+        const url2 = base + encodeURIComponent('https://news.google.com/rss/search?q=Heilbronn+aktuell&hl=de&gl=DE&ceid=DE:de');
+
+        const [r1, r2] = await Promise.all([fetch(url1), fetch(url2)]);
+        const [d1, d2] = await Promise.all([r1.json(), r2.json()]);
+
+        // Deduplicate by first 4 words (catches same story from different sources)
+        const seen = new Set();
+        const items = [];
+        for (const item of [...(d1.items||[]), ...(d2.items||[])]) {
+          const key = item.title.split(/\s+/).slice(0,4).join(' ').toLowerCase();
+          if (!seen.has(key)) { seen.add(key); items.push(item); }
+          if (items.length >= 12) break;
+        }
+        if (!items.length) throw new Error('no items');
+
+        grid.innerHTML = items.map(renderCard).join('');
+        document.querySelectorAll('.news-card').forEach(el => observer.observe(el));
+
+        // Auto-refresh every 30 minutes
+        setTimeout(loadNews, 30 * 60 * 1000);
+      } catch(e) {
+        grid.innerHTML = `<p class="news-error">Nachrichten konnten nicht geladen werden. <a href="https://news.google.com/search?q=Heilbronn&hl=de" target="_blank" style="color:var(--blue-light)">Direkt bei Google News lesen →</a></p>`;
+      }
+    }
+    loadNews();
+  </script>
+</body>
+</html>
