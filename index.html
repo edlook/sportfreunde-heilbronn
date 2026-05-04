@@ -19,7 +19,12 @@
     }
     * { margin:0; padding:0; box-sizing:border-box; }
     html { scroll-behavior:smooth; }
-    body { font-family:'DM Sans',sans-serif; background:#23232f; color:var(--white); overflow-x:hidden; }
+    body {
+      font-family:'DM Sans',sans-serif;
+      background:#23232f;
+      color:var(--white);
+      overflow-x:hidden;
+    }
 
     /* NAV */
     nav {
@@ -64,6 +69,12 @@
         radial-gradient(ellipse 70% 60% at 65% 45%, rgba(26,63,160,0.2) 0%, transparent 70%),
         linear-gradient(160deg, #0c0c0c 0%, #0d1220 50%, #0c0c0c 100%);
     }
+    .hero-deco {
+      position:absolute; top:0; height:100%; width:320px;
+      pointer-events:none; z-index:1;
+    }
+    .hero-deco-left { left:0; }
+    .hero-deco-right { right:0; }
     .hero-logo-bg {
       position:absolute; right:0; left:0; top:50%;
       transform:translateY(-50%);
@@ -113,7 +124,7 @@
     .stat-label { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:rgba(245,245,240,0.5); margin-top:4px; }
 
     /* SECTIONS */
-    section { padding:100px 48px; }
+    section { padding:100px 48px; position:relative; }
     .section-tag { font-size:11px; letter-spacing:3px; text-transform:uppercase; color:var(--blue-light); margin-bottom:16px; }
     .section-title { font-family:'Bebas Neue',sans-serif; font-size:clamp(40px,6vw,64px); line-height:1; margin-bottom:20px; }
     .section-sub { font-size:16px; color:rgba(245,245,240,0.55); font-weight:300; max-width:520px; line-height:1.75; }
@@ -143,7 +154,7 @@
     .cards-section { background:#23232f; }
     .cards-grid {
       margin-top:56px;
-      display:grid; grid-template-columns:repeat(3,1fr); gap:2px;
+      display:grid; grid-template-columns:repeat(auto-fill,minmax(260px,1fr)); gap:2px;
     }
     .card {
       background:#2c2c3a; padding:36px 28px;
@@ -166,7 +177,7 @@
     .news-section { background:#20202c; }
     .news-grid {
       margin-top:56px;
-      display:grid; grid-template-columns:repeat(3,1fr); gap:2px;
+      display:grid; grid-template-columns:repeat(auto-fill,minmax(300px,1fr)); gap:2px;
     }
     .news-card {
       background:#2c2c3a; padding:28px;
@@ -221,18 +232,62 @@
     .fade-in.visible { opacity:1; transform:translateY(0); }
 
     /* MOBILE */
-    /* Responsive */
+    @media(max-width:768px) {
+      nav { padding:14px 20px; }
+      .nav-links { display:none; }
+      .hero { padding:0 20px 60px; }
+      .hero-deco {
+      position:absolute; top:0; height:100%; width:320px;
+      pointer-events:none; z-index:1;
+    }
+    .hero-deco-left { left:0; }
+    .hero-deco-right { right:0; }
+    .hero-logo-bg { width:90%; opacity:.08; right:-20px; }
+      section { padding:60px 20px; }
+      .about, .contact { grid-template-columns:1fr; gap:40px; }
+      .about-accent-box { display:none; }
+      .stats-bar { padding:24px 20px; }
+      footer { flex-direction:column; text-align:center; padding:24px 20px; }
+    }
+
+
+
+    /* Floating glow dots */
+    .glow-dot {
+      position: absolute;
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 1;
+    }
+    .glow-dot.blue {
+      background: radial-gradient(circle, rgba(45,85,212,0.7) 0%, rgba(45,85,212,0.2) 50%, transparent 70%);
+    }
+    .glow-dot.gold {
+      background: radial-gradient(circle, rgba(212,163,42,0.8) 0%, rgba(212,163,42,0.25) 50%, transparent 70%);
+    }
+    .glow-dot.white {
+      background: radial-gradient(circle, rgba(255,255,255,0.5) 0%, rgba(255,255,255,0.1) 50%, transparent 70%);
+    }
+    .dots-layer {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: 1;
+      overflow: hidden;
+    }
+
+    @media(max-width:1024px) { .hero h1 { font-size:clamp(52px,6vw,90px); } }
     @media(max-width:900px) {
       nav { padding:14px 24px; }
       .nav-links { display:none; }
       .hero { padding:0 24px 60px; }
       .hero-logo-bg { width:48%; opacity:0.09; }
-      .hero-deco { display:none; }
+      .hero-deco { display:none !important; }
       section { padding:64px 24px; }
-      .about, .contact { grid-template-columns:1fr; gap:40px; }
+      .about, .contact { grid-template-columns:1fr !important; gap:40px; }
       .about-accent-box { display:none; }
-      .cards-grid { grid-template-columns:repeat(2,1fr); }
-      .news-grid { grid-template-columns:repeat(2,1fr); }
+      .cards-grid { grid-template-columns:repeat(2,1fr) !important; }
+      .news-grid { grid-template-columns:repeat(2,1fr) !important; }
       .stats-bar { padding:22px 24px; }
       .stat-num { font-size:36px; }
       footer { flex-direction:column; text-align:center; gap:10px; padding:24px; }
@@ -243,28 +298,18 @@
       .hero { padding:0 16px 52px; }
       .hero-logo-bg { width:75%; opacity:0.06; right:-20px; }
       section { padding:52px 16px; }
-      .cards-grid { grid-template-columns:repeat(2,1fr); gap:1px; }
-      .news-grid { grid-template-columns:1fr; }
+      .cards-grid { grid-template-columns:repeat(2,1fr) !important; gap:1px; }
+      .news-grid { grid-template-columns:1fr !important; }
       .stats-bar { padding:16px; gap:8px; }
       .stat-num { font-size:30px; }
       footer { padding:20px 16px; }
     }
     @media(max-width:400px) {
       .hero-logo-bg { display:none; }
-      .cards-grid { grid-template-columns:1fr; }
+      .cards-grid { grid-template-columns:1fr !important; }
       .hero-cta { flex-direction:column; }
       .nav-logo span { display:none; }
     }
-
-    .glow-dot { position:absolute; border-radius:50%; pointer-events:none; z-index:1; }
-    .glow-dot.blue { background:radial-gradient(circle, rgba(45,85,212,0.7) 0%, rgba(45,85,212,0.2) 50%, transparent 70%); }
-    .glow-dot.gold { background:radial-gradient(circle, rgba(212,163,42,0.8) 0%, rgba(212,163,42,0.25) 50%, transparent 70%); }
-    .glow-dot.white { background:radial-gradient(circle, rgba(255,255,255,0.5) 0%, rgba(255,255,255,0.1) 50%, transparent 70%); }
-    .dots-layer { position:absolute; inset:0; pointer-events:none; z-index:1; overflow:hidden; }
-    .hero-deco { position:absolute; top:0; height:100%; width:280px; pointer-events:none; z-index:1; }
-    .hero-deco-left { left:0; }
-    .hero-deco-right { right:0; }
-
   </style>
 </head>
 <body>
@@ -286,42 +331,51 @@
   <!-- HERO -->
   <section class="hero">
     <div class="hero-bg"></div>
-    <svg class="hero-deco hero-deco-left" viewBox="0 0 300 700" xmlns="http://www.w3.org/2000/svg">
-      <line x1="250" y1="0" x2="250" y2="700" stroke="rgba(255,255,255,0.07)" stroke-width="1"/>
-      <line x1="180" y1="0" x2="180" y2="700" stroke="rgba(255,255,255,0.03)" stroke-width="1"/>
-      <path d="M 250 350 A 150 150 0 0 1 100 500" stroke="rgba(255,255,255,0.06)" stroke-width="1.5" fill="none"/>
-      <path d="M 250 350 A 150 150 0 0 0 100 200" stroke="rgba(255,255,255,0.06)" stroke-width="1.5" fill="none"/>
-      <polygon points="30,60 65,40 100,60 100,100 65,120 30,100" stroke="rgba(45,85,212,0.5)" stroke-width="1.5" fill="rgba(45,85,212,0.06)"/>
-      <polygon points="150,200 185,180 220,200 220,240 185,260 150,240" stroke="rgba(45,85,212,0.4)" stroke-width="1.5" fill="rgba(45,85,212,0.05)"/>
-      <polygon points="10,330 45,310 80,330 80,370 45,390 10,370" stroke="rgba(45,85,212,0.45)" stroke-width="1.5" fill="rgba(45,85,212,0.06)"/>
-      <polygon points="110,480 145,460 180,480 180,520 145,540 110,520" stroke="rgba(45,85,212,0.35)" stroke-width="1.5" fill="rgba(45,85,212,0.04)"/>
-      <polygon points="50,600 75,586 100,600 100,628 75,642 50,628" stroke="rgba(212,163,42,0.4)" stroke-width="1" fill="none"/>
-      <circle cx="200" cy="100" r="3.5" fill="rgba(212,163,42,0.65)"/>
-      <circle cx="70" cy="260" r="3" fill="rgba(212,163,42,0.55)"/>
-      <circle cx="230" cy="500" r="3.5" fill="rgba(212,163,42,0.65)"/>
+    <!-- Decorative SVG elements -->
+    <svg class="hero-deco hero-deco-left" viewBox="0 0 400 700" xmlns="http://www.w3.org/2000/svg">
+      <line x1="380" y1="0" x2="380" y2="700" stroke="rgba(255,255,255,0.15)" stroke-width="1"/>
+      <line x1="300" y1="0" x2="300" y2="700" stroke="rgba(255,255,255,0.07)" stroke-width="1"/>
+      <path d="M 380 350 A 200 200 0 0 1 180 550" stroke="rgba(255,255,255,0.12)" stroke-width="1.5" fill="none"/>
+      <path d="M 380 350 A 200 200 0 0 0 180 150" stroke="rgba(255,255,255,0.12)" stroke-width="1.5" fill="none"/>
+      <polygon points="40,70 90,42 140,70 140,126 90,154 40,126" stroke="rgba(45,85,212,0.6)" stroke-width="2" fill="rgba(45,85,212,0.1)"/>
+      <polygon points="200,200 250,172 300,200 300,256 250,284 200,256" stroke="rgba(45,85,212,0.45)" stroke-width="2" fill="rgba(45,85,212,0.08)"/>
+      <polygon points="20,350 70,322 120,350 120,406 70,434 20,406" stroke="rgba(45,85,212,0.5)" stroke-width="2" fill="rgba(45,85,212,0.1)"/>
+      <polygon points="160,490 210,462 260,490 260,546 210,574 160,546" stroke="rgba(45,85,212,0.4)" stroke-width="2" fill="rgba(45,85,212,0.07)"/>
+      <polygon points="60,610 95,590 130,610 130,650 95,670 60,650" stroke="rgba(212,163,42,0.5)" stroke-width="1.5" fill="rgba(212,163,42,0.06)"/>
+      <circle cx="320" cy="100" r="4" fill="rgba(212,163,42,0.7)"/>
+      <circle cx="100" cy="260" r="3.5" fill="rgba(212,163,42,0.6)"/>
+      <circle cx="350" cy="520" r="4" fill="rgba(212,163,42,0.7)"/>
+      <circle cx="60" cy="640" r="3" fill="rgba(45,85,212,0.7)"/>
+      <circle cx="240" cy="380" r="3" fill="rgba(255,255,255,0.25)"/>
+      <circle cx="160" cy="140" r="2.5" fill="rgba(255,255,255,0.2)"/>
     </svg>
-    <svg class="hero-deco hero-deco-right" viewBox="0 0 300 700" xmlns="http://www.w3.org/2000/svg">
-      <line x1="50" y1="0" x2="50" y2="700" stroke="rgba(255,255,255,0.07)" stroke-width="1"/>
-      <line x1="120" y1="0" x2="120" y2="700" stroke="rgba(255,255,255,0.03)" stroke-width="1"/>
-      <path d="M 50 350 A 150 150 0 0 0 200 500" stroke="rgba(255,255,255,0.06)" stroke-width="1.5" fill="none"/>
-      <path d="M 50 350 A 150 150 0 0 1 200 200" stroke="rgba(255,255,255,0.06)" stroke-width="1.5" fill="none"/>
-      <polygon points="200,60 235,40 270,60 270,100 235,120 200,100" stroke="rgba(45,85,212,0.5)" stroke-width="1.5" fill="rgba(45,85,212,0.06)"/>
-      <polygon points="80,200 115,180 150,200 150,240 115,260 80,240" stroke="rgba(45,85,212,0.4)" stroke-width="1.5" fill="rgba(45,85,212,0.05)"/>
-      <polygon points="220,330 255,310 290,330 290,370 255,390 220,370" stroke="rgba(45,85,212,0.45)" stroke-width="1.5" fill="rgba(45,85,212,0.06)"/>
-      <polygon points="120,480 155,460 190,480 190,520 155,540 120,520" stroke="rgba(45,85,212,0.35)" stroke-width="1.5" fill="rgba(45,85,212,0.04)"/>
-      <polygon points="200,600 225,586 250,600 250,628 225,642 200,628" stroke="rgba(212,163,42,0.4)" stroke-width="1" fill="none"/>
-      <circle cx="100" cy="100" r="3.5" fill="rgba(212,163,42,0.65)"/>
-      <circle cx="230" cy="260" r="3" fill="rgba(212,163,42,0.55)"/>
-      <circle cx="70" cy="500" r="3.5" fill="rgba(212,163,42,0.65)"/>
+    <svg class="hero-deco hero-deco-right" viewBox="0 0 400 700" xmlns="http://www.w3.org/2000/svg">
+      <line x1="20" y1="0" x2="20" y2="700" stroke="rgba(255,255,255,0.15)" stroke-width="1"/>
+      <line x1="100" y1="0" x2="100" y2="700" stroke="rgba(255,255,255,0.07)" stroke-width="1"/>
+      <path d="M 20 350 A 200 200 0 0 0 220 550" stroke="rgba(255,255,255,0.12)" stroke-width="1.5" fill="none"/>
+      <path d="M 20 350 A 200 200 0 0 1 220 150" stroke="rgba(255,255,255,0.12)" stroke-width="1.5" fill="none"/>
+      <polygon points="260,70 310,42 360,70 360,126 310,154 260,126" stroke="rgba(45,85,212,0.6)" stroke-width="2" fill="rgba(45,85,212,0.1)"/>
+      <polygon points="100,200 150,172 200,200 200,256 150,284 100,256" stroke="rgba(45,85,212,0.45)" stroke-width="2" fill="rgba(45,85,212,0.08)"/>
+      <polygon points="280,350 330,322 380,350 380,406 330,434 280,406" stroke="rgba(45,85,212,0.5)" stroke-width="2" fill="rgba(45,85,212,0.1)"/>
+      <polygon points="140,490 190,462 240,490 240,546 190,574 140,546" stroke="rgba(45,85,212,0.4)" stroke-width="2" fill="rgba(45,85,212,0.07)"/>
+      <polygon points="270,610 305,590 340,610 340,650 305,670 270,650" stroke="rgba(212,163,42,0.5)" stroke-width="1.5" fill="rgba(212,163,42,0.06)"/>
+      <circle cx="80" cy="100" r="4" fill="rgba(212,163,42,0.7)"/>
+      <circle cx="300" cy="260" r="3.5" fill="rgba(212,163,42,0.6)"/>
+      <circle cx="50" cy="520" r="4" fill="rgba(212,163,42,0.7)"/>
+      <circle cx="340" cy="640" r="3" fill="rgba(45,85,212,0.7)"/>
+      <circle cx="160" cy="380" r="3" fill="rgba(255,255,255,0.25)"/>
+      <circle cx="240" cy="140" r="2.5" fill="rgba(255,255,255,0.2)"/>
     </svg>
-    <div class="dots-layer">
-      <div class="glow-dot gold" style="width:10px;height:10px;top:18%;left:8%"></div>
-      <div class="glow-dot blue" style="width:14px;height:14px;top:40%;left:14%"></div>
-      <div class="glow-dot white" style="width:8px;height:8px;top:70%;left:6%"></div>
-      <div class="glow-dot gold" style="width:9px;height:9px;top:60%;right:5%"></div>
-      <div class="glow-dot blue" style="width:12px;height:12px;top:25%;right:4%"></div>
-    </div>
     <img src="logo.png" class="hero-logo-bg" alt="">
+    <div class="dots-layer">
+      <div class="glow-dot gold" style="width:12px;height:12px;top:18%;left:8%"></div>
+      <div class="glow-dot blue" style="width:18px;height:18px;top:35%;left:15%"></div>
+      <div class="glow-dot white" style="width:8px;height:8px;top:60%;left:6%"></div>
+      <div class="glow-dot gold" style="width:10px;height:10px;top:75%;left:20%"></div>
+      <div class="glow-dot blue" style="width:14px;height:14px;top:20%;right:6%"></div>
+      <div class="glow-dot gold" style="width:9px;height:9px;top:55%;right:4%"></div>
+      <div class="glow-dot white" style="width:7px;height:7px;top:80%;right:12%"></div>
+    </div>
     <div class="hero-content">
       <div class="hero-badge">Gegründet 1989 · Heilbronn</div>
       <h1><span style="color:var(--white)">Sportfreunde</span><br><span>Heilbronn</span></h1>
@@ -345,10 +399,13 @@
   <section class="about" id="about">
     <div class="dots-layer">
       <div class="glow-dot gold" style="width:10px;height:10px;top:12%;left:22%"></div>
-      <div class="glow-dot blue" style="width:13px;height:13px;top:50%;left:45%"></div>
-      <div class="glow-dot white" style="width:8px;height:8px;top:80%;left:18%"></div>
-      <div class="glow-dot gold" style="width:11px;height:11px;top:25%;left:70%"></div>
-      <div class="glow-dot blue" style="width:9px;height:9px;top:65%;left:85%"></div>
+      <div class="glow-dot blue" style="width:14px;height:14px;top:45%;left:38%"></div>
+      <div class="glow-dot white" style="width:8px;height:8px;top:78%;left:15%"></div>
+      <div class="glow-dot gold" style="width:12px;height:12px;top:20%;left:65%"></div>
+      <div class="glow-dot blue" style="width:9px;height:9px;top:60%;left:55%"></div>
+      <div class="glow-dot white" style="width:11px;height:11px;top:85%;left:75%"></div>
+      <div class="glow-dot gold" style="width:8px;height:8px;top:35%;left:82%"></div>
+      <div class="glow-dot blue" style="width:10px;height:10px;top:70%;left:90%"></div>
     </div>
     <div class="about-logo-wrap fade-in">
       <img src="logo.png" alt="Sportfreunde Heilbronn Logo">
@@ -371,11 +428,14 @@
   <!-- CARDS -->
   <section class="cards-section" id="community">
     <div class="dots-layer">
-      <div class="glow-dot gold" style="width:11px;height:11px;top:15%;left:18%"></div>
-      <div class="glow-dot blue" style="width:9px;height:9px;top:55%;left:42%"></div>
-      <div class="glow-dot white" style="width:8px;height:8px;top:80%;left:28%"></div>
-      <div class="glow-dot gold" style="width:10px;height:10px;top:30%;left:72%"></div>
-      <div class="glow-dot blue" style="width:13px;height:13px;top:70%;left:88%"></div>
+      <div class="glow-dot gold" style="width:11px;height:11px;top:8%;left:18%"></div>
+      <div class="glow-dot blue" style="width:14px;height:14px;top:30%;left:42%"></div>
+      <div class="glow-dot white" style="width:8px;height:8px;top:65%;left:28%"></div>
+      <div class="glow-dot gold" style="width:9px;height:9px;top:85%;left:60%"></div>
+      <div class="glow-dot blue" style="width:12px;height:12px;top:15%;left:70%"></div>
+      <div class="glow-dot white" style="width:10px;height:10px;top:50%;left:85%"></div>
+      <div class="glow-dot gold" style="width:8px;height:8px;top:78%;left:12%"></div>
+      <div class="glow-dot blue" style="width:9px;height:9px;top:40%;left:92%"></div>
     </div>
     <p class="section-tag fade-in">Gemeinschaft</p>
     <h2 class="section-title fade-in">Was uns ausmacht</h2>
@@ -393,11 +453,13 @@
   <!-- NEWS -->
   <section class="news-section" id="news">
     <div class="dots-layer">
-      <div class="glow-dot blue" style="width:12px;height:12px;top:8%;left:25%"></div>
-      <div class="glow-dot gold" style="width:9px;height:9px;top:35%;left:58%"></div>
-      <div class="glow-dot white" style="width:8px;height:8px;top:60%;left:15%"></div>
-      <div class="glow-dot gold" style="width:11px;height:11px;top:75%;left:78%"></div>
-      <div class="glow-dot blue" style="width:10px;height:10px;top:88%;left:42%"></div>
+      <div class="glow-dot blue" style="width:13px;height:13px;top:6%;left:25%"></div>
+      <div class="glow-dot gold" style="width:9px;height:9px;top:22%;left:55%"></div>
+      <div class="glow-dot white" style="width:8px;height:8px;top:45%;left:15%"></div>
+      <div class="glow-dot gold" style="width:11px;height:11px;top:60%;left:72%"></div>
+      <div class="glow-dot blue" style="width:10px;height:10px;top:75%;left:38%"></div>
+      <div class="glow-dot white" style="width:9px;height:9px;top:88%;left:85%"></div>
+      <div class="glow-dot gold" style="width:8px;height:8px;top:35%;left:90%"></div>
     </div>
     <p class="section-tag fade-in">Aktuelles aus Heilbronn</p>
     <h2 class="section-title fade-in">Neuigkeiten</h2>
@@ -411,10 +473,11 @@
   <section class="contact" id="contact">
     <div class="dots-layer">
       <div class="glow-dot white" style="width:11px;height:11px;top:10%;left:20%"></div>
-      <div class="glow-dot gold" style="width:13px;height:13px;top:45%;left:50%"></div>
-      <div class="glow-dot white" style="width:8px;height:8px;top:75%;left:32%"></div>
-      <div class="glow-dot gold" style="width:10px;height:10px;top:25%;left:78%"></div>
-      <div class="glow-dot white" style="width:9px;height:9px;top:65%;left:88%"></div>
+      <div class="glow-dot gold" style="width:13px;height:13px;top:35%;left:48%"></div>
+      <div class="glow-dot white" style="width:8px;height:8px;top:70%;left:30%"></div>
+      <div class="glow-dot gold" style="width:10px;height:10px;top:20%;left:75%"></div>
+      <div class="glow-dot white" style="width:9px;height:9px;top:55%;left:88%"></div>
+      <div class="glow-dot gold" style="width:12px;height:12px;top:85%;left:62%"></div>
     </div>
     <div class="fade-in">
       <p class="section-tag">Kontakt & Mitmachen</p>
@@ -436,10 +499,15 @@
       </div>
     </div>
     <div class="fade-in">
-      <div class="form-group"><label>Name</label><input type="text" placeholder="Dein vollständiger Name"></div>
-      <div class="form-group"><label>E-Mail</label><input type="email" placeholder="deine@email.de"></div>
-      <div class="form-group"><label>Nachricht</label><textarea placeholder="Ich möchte gerne mitspielen..."></textarea></div>
-      <a href="#" class="btn-primary">Nachricht senden</a>
+      <form id="contactForm" action="https://formspree.io/f/xojrqadk" method="POST">
+        <input type="hidden" name="_replyto" value="casper19851106@yahoo.com">
+        <input type="hidden" name="_subject" value="Neue Nachricht von sportfreunde-heilbronn.de">
+        <div class="form-group"><label>Name</label><input type="text" name="name" placeholder="Dein vollständiger Name" required></div>
+        <div class="form-group"><label>E-Mail</label><input type="email" name="email" placeholder="deine@email.de" required></div>
+        <div class="form-group"><label>Nachricht</label><textarea name="message" placeholder="Ich möchte gerne mitspielen..." required></textarea></div>
+        <button type="submit" class="btn-primary" id="submitBtn">Nachricht senden</button>
+        <div id="formMsg" style="margin-top:14px;font-size:14px;display:none;"></div>
+      </form>
     </div>
   </section>
 
@@ -486,10 +554,11 @@
         const [r1, r2] = await Promise.all([fetch(url1), fetch(url2)]);
         const [d1, d2] = await Promise.all([r1.json(), r2.json()]);
 
+        // Deduplicate by first 4 words (catches same story from different sources)
         const seen = new Set();
         const items = [];
         for (const item of [...(d1.items||[]), ...(d2.items||[])]) {
-          const key = item.title.slice(0,40);
+          const key = item.title.split(/\s+/).slice(0,4).join(' ').toLowerCase();
           if (!seen.has(key)) { seen.add(key); items.push(item); }
           if (items.length >= 12) break;
         }
@@ -505,6 +574,23 @@
       }
     }
     loadNews();
+  </script>
+  <script>
+    const form = document.getElementById('contactForm');
+    if (form) {
+      form.addEventListener('submit', async function(e) {
+        e.preventDefault();
+        const btn = document.getElementById('submitBtn');
+        const msg = document.getElementById('formMsg');
+        btn.textContent = 'Wird gesendet...'; btn.style.opacity = '0.7';
+        try {
+          const res = await fetch(form.action, { method:'POST', body:new FormData(form), headers:{'Accept':'application/json'} });
+          if (res.ok) { msg.style.display='block'; msg.style.color='#4ade80'; msg.textContent='✓ Nachricht gesendet!'; form.reset(); }
+          else throw new Error();
+        } catch { msg.style.display='block'; msg.style.color='#f87171'; msg.textContent='✗ Fehler. Bitte versuche es erneut.'; }
+        btn.textContent='Nachricht senden'; btn.style.opacity='1';
+      });
+    }
   </script>
 </body>
 </html>
