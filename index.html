@@ -528,8 +528,7 @@
     <div class="footer-logo">Sportfreunde Heilbronn 1989</div>
     <div class="footer-copy">© 2026 Sportfreunde Heilbronn · Alle Rechte vorbehalten</div>
     <div class="footer-links">
-      <a href="#">Impressum</a>
-      <a href="#">Datenschutz</a>
+      <a href="#datenschutz" id="datenschutz-link">Datenschutz</a>
     </div>
   </footer>
 
@@ -604,6 +603,45 @@
         btn.textContent='Nachricht senden'; btn.style.opacity='1';
       });
     }
+  </script>
+
+  <!-- Datenschutz Modal -->
+  <div id="datenschutz-modal" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.85); z-index:1000; overflow-y:auto; padding:40px 20px;">
+    <div style="max-width:760px; margin:0 auto; background:#1e1e2a; border:1px solid rgba(255,255,255,0.1); padding:48px; position:relative;">
+      <button onclick="document.getElementById('datenschutz-modal').style.display='none'" style="position:absolute; top:20px; right:20px; background:none; border:none; color:#fff; font-size:24px; cursor:pointer;">✕</button>
+      <h2 style="font-family:'Bebas Neue',sans-serif; font-size:36px; margin-bottom:24px; color:#f5f5f0;">Datenschutzerklärung</h2>
+      
+      <h3 style="font-size:16px; font-weight:700; margin:24px 0 8px; color:#f5f5f0;">1. Verantwortlicher</h3>
+      <p style="font-size:14px; color:rgba(245,245,240,0.7); line-height:1.7;">Sportfreunde Heilbronn<br>Heilbronn, Deutschland<br>E-Mail: info@sportfreunde-heilbronn.de</p>
+
+      <h3 style="font-size:16px; font-weight:700; margin:24px 0 8px; color:#f5f5f0;">2. Erhebung und Verarbeitung personenbezogener Daten</h3>
+      <p style="font-size:14px; color:rgba(245,245,240,0.7); line-height:1.7;">Wir erheben personenbezogene Daten nur, wenn Sie uns diese im Rahmen des Kontaktformulars freiwillig mitteilen. Die von Ihnen eingegebenen Daten (Name, E-Mail-Adresse, Nachricht) werden ausschließlich zur Beantwortung Ihrer Anfrage verwendet.</p>
+
+      <h3 style="font-size:16px; font-weight:700; margin:24px 0 8px; color:#f5f5f0;">3. Kontaktformular</h3>
+      <p style="font-size:14px; color:rgba(245,245,240,0.7); line-height:1.7;">Die über das Kontaktformular übermittelten Daten werden über den Dienstleister Formspree (formspree.io) verarbeitet. Die Datenübertragung erfolgt verschlüsselt (SSL). Ihre Daten werden nicht an Dritte weitergegeben und nach Abschluss der Kommunikation gelöscht.</p>
+
+      <h3 style="font-size:16px; font-weight:700; margin:24px 0 8px; color:#f5f5f0;">4. Cookies</h3>
+      <p style="font-size:14px; color:rgba(245,245,240,0.7); line-height:1.7;">Diese Website verwendet keine Cookies.</p>
+
+      <h3 style="font-size:16px; font-weight:700; margin:24px 0 8px; color:#f5f5f0;">5. Hosting</h3>
+      <p style="font-size:14px; color:rgba(245,245,240,0.7); line-height:1.7;">Diese Website wird über GitHub Pages gehostet. Anbieter ist GitHub Inc., 88 Colin P. Kelly Jr. St., San Francisco, CA 94107, USA. GitHub kann beim Aufruf dieser Seiten technische Informationen inklusive Ihrer IP-Adresse aufzeichnen.</p>
+
+      <h3 style="font-size:16px; font-weight:700; margin:24px 0 8px; color:#f5f5f0;">6. Ihre Rechte</h3>
+      <p style="font-size:14px; color:rgba(245,245,240,0.7); line-height:1.7;">Sie haben das Recht auf Auskunft, Berichtigung, Löschung und Einschränkung der Verarbeitung Ihrer personenbezogenen Daten. Bei Fragen wenden Sie sich an: info@sportfreunde-heilbronn.de</p>
+
+      <h3 style="font-size:16px; font-weight:700; margin:24px 0 8px; color:#f5f5f0;">7. Aktualität</h3>
+      <p style="font-size:14px; color:rgba(245,245,240,0.7); line-height:1.7;">Diese Datenschutzerklärung ist aktuell gültig und hat den Stand Mai 2026.</p>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById('datenschutz-link').addEventListener('click', function(e) {
+      e.preventDefault();
+      document.getElementById('datenschutz-modal').style.display = 'block';
+    });
+    document.getElementById('datenschutz-modal').addEventListener('click', function(e) {
+      if (e.target === this) this.style.display = 'none';
+    });
   </script>
 </body>
 </html>
