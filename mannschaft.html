@@ -7,330 +7,392 @@
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
   <link rel="apple-touch-icon" href="apple-touch-icon.png">
-  <meta name="theme-color" content="#0a1560">
+  <meta name="theme-color" content="#0c0c0c">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Mannschaft · Sportfreunde 1989 Heilbronn</title>
 <meta name="description" content="Die Mannschaft der Sportfreunde 1989 Heilbronn — Spieler, Nummern und Positionen.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
 <style>
-:root{--navy-d:#050b25;--gold:#c9a227;--gold-l:#e8c96a;--silver:#90a4ae;--paper:#eef2f7;--line:rgba(255,255,255,.09)}
-*{box-sizing:border-box;margin:0;padding:0}
-html{-webkit-text-size-adjust:100%}
-body{background:var(--navy-d);color:var(--paper);font-family:Oswald,system-ui,sans-serif;
- -webkit-font-smoothing:antialiased;overflow-x:hidden}
-.hg{position:fixed;inset:0;z-index:-2;background:
- radial-gradient(ellipse 80% 60% at 50% 0%,rgba(30,58,138,.55),transparent 70%),
- linear-gradient(180deg,#0b1540,#050b25 55%,#02050f)}
-.punkte{position:fixed;inset:0;z-index:-1;opacity:.5;pointer-events:none}
-.wrap{max-width:1240px;margin:0 auto;padding:0 20px 80px}
-.zurueck-oben{display:inline-flex;align-items:center;gap:8px;margin-top:22px;
- color:var(--silver);text-decoration:none;font-size:12px;letter-spacing:.2em;
- text-transform:uppercase;transition:color .25s}
-.zurueck-oben:hover{color:var(--gold-l)}
+    :root {
+      --blue: #1a3fa0;
+      --blue-light: #2d55d4;
+      --blue-dark: #0f1f5c;
+      --white: #f5f5f0;
+      --off-white: #eaeae4;
+      --black: #0c0c0c;
+      --gray: #6b6b6b;
+      --gold: #d4a32a;
+    }
+    * { margin:0; padding:0; box-sizing:border-box; }
+    html { -webkit-text-size-adjust:100%; }
+    body {
+      font-family:'DM Sans',sans-serif;
+      background:#23232f;
+      color:var(--white);
+      overflow-x:hidden;
+    }
 
-header{padding:26px 0 30px;text-align:center;border-bottom:1px solid var(--line)}
-.marke{font-size:11px;letter-spacing:.4em;color:var(--gold-l);font-weight:500;text-transform:uppercase}
-header h1{font-size:clamp(32px,8vw,72px);font-weight:700;letter-spacing:.02em;margin:10px 0 6px}
-header .ort{color:var(--silver);font-size:clamp(11px,2.6vw,14px);letter-spacing:.2em;text-transform:uppercase}
-.strich{width:min(190px,50vw);height:2px;margin:20px auto 0;
- background:linear-gradient(90deg,transparent,var(--gold-l),transparent)}
+    /* Hintergrund wie auf der Startseite */
+    .seiten-bg {
+      position:fixed; inset:0; z-index:0; pointer-events:none;
+      background:
+        radial-gradient(ellipse 70% 60% at 65% 30%, rgba(26,63,160,0.2) 0%, transparent 70%),
+        linear-gradient(160deg, #0c0c0c 0%, #0d1220 50%, #0c0c0c 100%);
+    }
+    .hero-deco {
+      position:fixed; top:0; height:100%; width:320px;
+      pointer-events:none; z-index:1;
+    }
+    .hero-deco-left { left:0; }
+    .hero-deco-right { right:0; }
 
-.linie{margin-top:clamp(38px,7vw,64px)}
-.linie-kopf{display:flex;align-items:center;gap:12px;margin-bottom:clamp(16px,3vw,26px)}
-.linie-kopf h2{font-size:clamp(12px,3vw,15px);font-weight:600;letter-spacing:.28em;
- text-transform:uppercase;color:var(--gold-l);white-space:nowrap}
-.linie-kopf .anzahl{font-size:11px;color:var(--silver);border:1px solid var(--line);border-radius:2px;padding:2px 7px}
-.linie-kopf::after{content:"";flex:1;height:1px;background:var(--line)}
+    .glow-dot { position:absolute; border-radius:50%; pointer-events:none; z-index:1; }
+    .glow-dot.blue  { background:radial-gradient(circle, rgba(45,85,212,0.7) 0%, rgba(45,85,212,0.2) 50%, transparent 70%); }
+    .glow-dot.gold  { background:radial-gradient(circle, rgba(212,163,42,0.8) 0%, rgba(212,163,42,0.25) 50%, transparent 70%); }
+    .glow-dot.white { background:radial-gradient(circle, rgba(255,255,255,0.5) 0%, rgba(255,255,255,0.1) 50%, transparent 70%); }
+    .dots-layer { position:fixed; inset:0; pointer-events:none; z-index:1; overflow:hidden; }
 
-.raster{display:grid;grid-template-columns:repeat(4,1fr);gap:2px}
-@media(max-width:1000px){.raster{grid-template-columns:repeat(3,1fr)}}
-@media(max-width:640px){.raster{grid-template-columns:repeat(2,1fr)}}
+    .wrap { position:relative; z-index:2; max-width:1240px; margin:0 auto; padding:0 48px 90px; }
+    @media(max-width:900px) { .wrap { padding:0 24px 70px; } }
+    @media(max-width:600px) { .wrap { padding:0 20px 60px; } }
 
-.karte{position:relative;background:#0b1236;overflow:hidden;
- transition:transform .35s,box-shadow .35s;-webkit-tap-highlight-color:transparent}
-.karte:hover{transform:translateY(-5px);box-shadow:0 18px 40px rgba(0,0,0,.5);z-index:2}
-.foto{position:relative;aspect-ratio:520/660;overflow:hidden}
-.foto img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;
- filter:saturate(.92) contrast(1.04);transition:opacity .45s ease,transform .6s ease}
-.foto .p2{opacity:0}
-.karte:hover .p1,.karte.gedreht .p1{opacity:0;transform:scale(1.03)}
-.karte:hover .p2,.karte.gedreht .p2{opacity:1;transform:scale(1.03)}
-.foto::after{content:"";position:absolute;inset:0;z-index:1;
- background:linear-gradient(180deg,transparent 45%,rgba(5,11,37,.9) 100%)}
-.nr{position:absolute;right:10px;top:6px;z-index:2;font-weight:700;line-height:1;color:#fff;
- opacity:.16;letter-spacing:-.03em;font-size:clamp(40px,9vw,64px)}
-.info{position:absolute;left:0;right:0;bottom:0;padding:0 clamp(10px,2.5vw,16px) clamp(10px,2.5vw,16px);z-index:3}
-.vor{font-size:clamp(9px,2.2vw,12px);letter-spacing:.22em;text-transform:uppercase;
- color:var(--silver);margin-bottom:2px}
-.info h3{font-size:clamp(15px,3.8vw,22px);font-weight:600;line-height:1.12}
-.karte::before{content:"";position:absolute;left:0;bottom:0;width:100%;height:3px;background:var(--gold);
- transform:scaleX(0);transform-origin:left;transition:transform .35s;z-index:4}
-.karte:hover::before,.karte.gedreht::before{transform:scaleX(1)}
-@media(prefers-reduced-motion:reduce){.foto img,.karte,.karte::before{transition:none}}
+    .zurueck {
+      display:inline-flex; align-items:center; gap:8px; margin-top:26px;
+      color:rgba(245,245,240,0.55); text-decoration:none;
+      font-size:13px; letter-spacing:1.5px; text-transform:uppercase; font-weight:500;
+      transition:color .25s;
+    }
+    .zurueck:hover { color:var(--gold); }
 
-footer{margin-top:clamp(48px,9vw,80px);padding-top:24px;border-top:1px solid var(--line);text-align:center}
-footer a{color:var(--gold-l);text-decoration:none;font-size:12px;letter-spacing:.18em;text-transform:uppercase}
-.hinweis{max-width:660px;margin:38px auto 0;padding:13px 16px;border-left:3px solid var(--gold);
- background:rgba(255,255,255,.04);font-size:12.5px;line-height:1.7;color:var(--silver)}
-.hinweis b{color:var(--gold-l);font-weight:500}
+    header { padding:44px 0 34px; text-align:center; }
+    .marke {
+      display:inline-block; padding:7px 18px; border:1px solid rgba(212,163,42,0.35);
+      border-radius:100px; font-size:12px; letter-spacing:3px; text-transform:uppercase;
+      color:var(--gold); font-weight:500;
+    }
+    header h1 {
+      font-family:'Bebas Neue',sans-serif; font-weight:400;
+      font-size:clamp(48px,9vw,104px); line-height:0.95; letter-spacing:1px;
+      margin:20px 0 10px;
+    }
+    header h1 span { color:var(--blue-light); display:block; }
+    header .ort { color:var(--gray); font-size:clamp(12px,2.6vw,15px); letter-spacing:2.5px; text-transform:uppercase; }
+    .strich { width:min(200px,52vw); height:2px; margin:26px auto 0;
+      background:linear-gradient(90deg,transparent,var(--gold),transparent); }
+
+    .linie { margin-top:clamp(44px,7vw,72px); }
+    .linie-kopf { display:flex; align-items:center; gap:14px; margin-bottom:clamp(18px,3vw,28px); }
+    .linie-kopf h2 {
+      font-family:'Bebas Neue',sans-serif; font-weight:400;
+      font-size:clamp(20px,4vw,28px); letter-spacing:3px; text-transform:uppercase;
+      color:var(--gold); white-space:nowrap;
+    }
+    .linie-kopf .anzahl {
+      font-size:12px; color:var(--gray); border:1px solid rgba(255,255,255,0.12);
+      border-radius:2px; padding:2px 8px;
+    }
+    .linie-kopf::after { content:""; flex:1; height:1px; background:rgba(255,255,255,0.08); }
+
+    .raster { display:grid; grid-template-columns:repeat(4,1fr); gap:2px; }
+    @media(max-width:1000px) { .raster { grid-template-columns:repeat(3,1fr); } }
+    @media(max-width:640px)  { .raster { grid-template-columns:repeat(2,1fr); } }
+
+    .karte {
+      position:relative; background:#141420; overflow:hidden;
+      transition:transform .35s, box-shadow .35s; -webkit-tap-highlight-color:transparent;
+    }
+    .karte:hover { transform:translateY(-5px); box-shadow:0 18px 44px rgba(0,0,0,.55); z-index:3; }
+    .foto { position:relative; aspect-ratio:520/660; overflow:hidden; }
+    .foto img {
+      position:absolute; inset:0; width:100%; height:100%; object-fit:cover; display:block;
+      filter:saturate(.92) contrast(1.04); transition:opacity .45s ease, transform .6s ease;
+    }
+    .foto .p2 { opacity:0; }
+    .karte:hover .p1, .karte.gedreht .p1 { opacity:0; transform:scale(1.03); }
+    .karte:hover .p2, .karte.gedreht .p2 { opacity:1; transform:scale(1.03); }
+    .foto::after {
+      content:""; position:absolute; inset:0; z-index:1;
+      background:linear-gradient(180deg, transparent 45%, rgba(12,12,12,.92) 100%);
+    }
+    .nr {
+      position:absolute; right:10px; top:4px; z-index:2;
+      font-family:'Bebas Neue',sans-serif; font-weight:400; line-height:1;
+      color:#fff; opacity:.18; letter-spacing:0; font-size:clamp(46px,10vw,74px);
+    }
+    .info { position:absolute; left:0; right:0; bottom:0; z-index:3;
+      padding:0 clamp(11px,2.5vw,17px) clamp(11px,2.5vw,16px); }
+    .vor { font-size:clamp(9px,2.2vw,11px); letter-spacing:2.4px; text-transform:uppercase;
+      color:var(--gray); margin-bottom:3px; }
+    .info h3 { font-family:'Bebas Neue',sans-serif; font-weight:400;
+      font-size:clamp(19px,4.4vw,28px); line-height:1.05; letter-spacing:0.5px; }
+    .karte::before {
+      content:""; position:absolute; left:0; bottom:0; width:100%; height:3px;
+      background:var(--gold); transform:scaleX(0); transform-origin:left;
+      transition:transform .35s; z-index:4;
+    }
+    .karte:hover::before, .karte.gedreht::before { transform:scaleX(1); }
+    @media(prefers-reduced-motion:reduce) { .foto img, .karte, .karte::before { transition:none; } }
+
+    footer { margin-top:clamp(56px,9vw,90px); padding-top:28px;
+      border-top:1px solid rgba(255,255,255,0.08); text-align:center; }
+    footer a { color:var(--gold); text-decoration:none; font-size:12px;
+      letter-spacing:2px; text-transform:uppercase; }
+    .hinweis { max-width:680px; margin:42px auto 0; padding:14px 18px;
+      border-left:3px solid var(--gold); background:rgba(255,255,255,0.035);
+      font-size:13px; line-height:1.75; color:var(--gray); }
+    .hinweis b { color:var(--gold); font-weight:500; }
+    @media(max-width:900px) { .hero-deco { display:none !important; } }
 </style>
 </head>
 <body>
-<div class="hg"></div>
-<svg class="punkte" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="62.3%" cy="74.2%" r="2.1" fill="#7fa8d8" opacity="0.32"/>
-<circle cx="92.2%" cy="2.9%" r="1.5" fill="#7fa8d8" opacity="0.29"/>
-<circle cx="90.1%" cy="11.3%" r="1.6" fill="#e8c96a" opacity="0.26"/>
-<circle cx="57.4%" cy="1.3%" r="1.1" fill="#e8c96a" opacity="0.37"/>
-<circle cx="76.6%" cy="16.0%" r="2.1" fill="#e8c96a" opacity="0.29"/>
-<circle cx="12.7%" cy="0.2%" r="2.2" fill="#e8c96a" opacity="0.16"/>
-<circle cx="98.2%" cy="87.2%" r="1.3" fill="#7fa8d8" opacity="0.26"/>
-<circle cx="67.8%" cy="20.5%" r="2.3" fill="#7fa8d8" opacity="0.39"/>
-<circle cx="89.4%" cy="29.9%" r="1.4" fill="#e8c96a" opacity="0.14"/>
-<circle cx="6.5%" cy="30.1%" r="1.8" fill="#e8c96a" opacity="0.30"/>
-<circle cx="33.8%" cy="31.0%" r="2.1" fill="#7fa8d8" opacity="0.19"/>
-<circle cx="48.1%" cy="70.5%" r="0.9" fill="#7fa8d8" opacity="0.11"/>
-<circle cx="75.0%" cy="84.5%" r="0.8" fill="#7fa8d8" opacity="0.21"/>
-<circle cx="57.9%" cy="0.9%" r="0.9" fill="#e8c96a" opacity="0.39"/>
-<circle cx="19.7%" cy="75.6%" r="2.3" fill="#7fa8d8" opacity="0.20"/>
-<circle cx="35.5%" cy="52.5%" r="2.0" fill="#e8c96a" opacity="0.32"/>
-<circle cx="79.7%" cy="86.0%" r="0.9" fill="#7fa8d8" opacity="0.13"/>
-<circle cx="34.1%" cy="61.1%" r="2.3" fill="#7fa8d8" opacity="0.38"/>
-<circle cx="54.5%" cy="31.2%" r="1.3" fill="#e8c96a" opacity="0.12"/>
-<circle cx="14.9%" cy="68.9%" r="2.4" fill="#e8c96a" opacity="0.11"/>
-<circle cx="98.7%" cy="53.4%" r="1.4" fill="#e8c96a" opacity="0.28"/>
-<circle cx="82.6%" cy="45.6%" r="1.5" fill="#e8c96a" opacity="0.37"/>
-<circle cx="3.3%" cy="49.4%" r="2.1" fill="#e8c96a" opacity="0.32"/>
-<circle cx="95.0%" cy="63.0%" r="2.1" fill="#e8c96a" opacity="0.23"/>
-<circle cx="14.9%" cy="84.5%" r="1.3" fill="#7fa8d8" opacity="0.40"/>
-<circle cx="85.2%" cy="97.6%" r="1.5" fill="#7fa8d8" opacity="0.32"/>
-<circle cx="47.9%" cy="29.1%" r="1.4" fill="#e8c96a" opacity="0.21"/>
-<circle cx="98.8%" cy="96.0%" r="1.8" fill="#7fa8d8" opacity="0.20"/>
-<circle cx="8.9%" cy="27.2%" r="2.1" fill="#7fa8d8" opacity="0.21"/>
-<circle cx="78.6%" cy="77.5%" r="1.9" fill="#7fa8d8" opacity="0.33"/>
-<circle cx="36.3%" cy="70.4%" r="1.2" fill="#7fa8d8" opacity="0.33"/>
-<circle cx="69.1%" cy="29.4%" r="2.3" fill="#7fa8d8" opacity="0.27"/>
-<circle cx="1.2%" cy="54.7%" r="1.2" fill="#7fa8d8" opacity="0.24"/>
-<circle cx="81.7%" cy="64.7%" r="2.1" fill="#7fa8d8" opacity="0.29"/>
-<circle cx="73.8%" cy="82.8%" r="1.4" fill="#7fa8d8" opacity="0.36"/>
-<circle cx="68.8%" cy="97.6%" r="2.3" fill="#7fa8d8" opacity="0.26"/>
-<circle cx="16.6%" cy="83.7%" r="2.3" fill="#7fa8d8" opacity="0.31"/>
-<circle cx="72.0%" cy="73.0%" r="1.1" fill="#7fa8d8" opacity="0.27"/>
-<circle cx="66.6%" cy="42.1%" r="1.8" fill="#7fa8d8" opacity="0.29"/>
-<circle cx="72.0%" cy="2.8%" r="1.1" fill="#7fa8d8" opacity="0.30"/>
-<circle cx="21.9%" cy="68.6%" r="1.8" fill="#e8c96a" opacity="0.24"/>
-<circle cx="22.6%" cy="5.4%" r="1.0" fill="#e8c96a" opacity="0.15"/>
-<circle cx="19.3%" cy="3.6%" r="1.5" fill="#7fa8d8" opacity="0.28"/>
-<circle cx="59.0%" cy="23.8%" r="2.2" fill="#e8c96a" opacity="0.22"/>
-<circle cx="27.9%" cy="41.0%" r="1.0" fill="#7fa8d8" opacity="0.21"/>
-<circle cx="3.6%" cy="61.4%" r="1.0" fill="#7fa8d8" opacity="0.20"/>
-<circle cx="58.1%" cy="95.8%" r="2.1" fill="#7fa8d8" opacity="0.34"/>
-<circle cx="64.2%" cy="36.9%" r="1.0" fill="#7fa8d8" opacity="0.27"/>
-<circle cx="95.7%" cy="96.8%" r="1.8" fill="#7fa8d8" opacity="0.37"/>
-<circle cx="0.1%" cy="10.8%" r="1.7" fill="#7fa8d8" opacity="0.14"/>
-<circle cx="62.9%" cy="89.1%" r="1.4" fill="#7fa8d8" opacity="0.17"/>
-<circle cx="29.1%" cy="97.2%" r="1.4" fill="#7fa8d8" opacity="0.37"/>
-<circle cx="59.6%" cy="26.0%" r="2.4" fill="#7fa8d8" opacity="0.22"/>
-<circle cx="31.9%" cy="98.4%" r="1.6" fill="#e8c96a" opacity="0.24"/>
-<circle cx="12.2%" cy="62.2%" r="1.5" fill="#e8c96a" opacity="0.33"/>
-<circle cx="82.7%" cy="1.3%" r="1.7" fill="#e8c96a" opacity="0.38"/>
-<circle cx="78.2%" cy="24.6%" r="1.2" fill="#e8c96a" opacity="0.40"/>
-<circle cx="29.3%" cy="60.8%" r="1.6" fill="#7fa8d8" opacity="0.28"/>
-<circle cx="74.3%" cy="11.8%" r="2.0" fill="#e8c96a" opacity="0.26"/>
-<circle cx="33.6%" cy="29.7%" r="1.6" fill="#7fa8d8" opacity="0.21"/>
-<circle cx="74.5%" cy="59.1%" r="0.9" fill="#e8c96a" opacity="0.24"/>
-<circle cx="91.7%" cy="88.8%" r="1.7" fill="#e8c96a" opacity="0.33"/>
-<circle cx="42.8%" cy="57.6%" r="1.9" fill="#7fa8d8" opacity="0.24"/>
-<circle cx="91.2%" cy="38.5%" r="1.4" fill="#7fa8d8" opacity="0.16"/>
-<circle cx="29.6%" cy="83.0%" r="0.9" fill="#7fa8d8" opacity="0.31"/>
-<circle cx="43.3%" cy="28.6%" r="2.0" fill="#7fa8d8" opacity="0.14"/>
-<circle cx="47.8%" cy="54.9%" r="1.6" fill="#7fa8d8" opacity="0.15"/>
-<circle cx="58.6%" cy="81.2%" r="0.9" fill="#e8c96a" opacity="0.35"/>
-<circle cx="79.2%" cy="66.4%" r="0.8" fill="#7fa8d8" opacity="0.39"/>
-<circle cx="99.8%" cy="70.1%" r="0.9" fill="#7fa8d8" opacity="0.17"/></svg>
+
+<div class="seiten-bg"></div>
+<svg class="hero-deco hero-deco-left" viewBox="0 0 320 1000" xmlns="http://www.w3.org/2000/svg">
+      <line x1="290" y1="0" x2="290" y2="1000" stroke="rgba(255,255,255,0.07)" stroke-width="1"/>
+      <line x1="220" y1="0" x2="220" y2="1000" stroke="rgba(255,255,255,0.03)" stroke-width="1"/>
+      <path d="M 290 250 A 130 130 0 0 1 160 380" stroke="rgba(255,255,255,0.06)" stroke-width="1.5" fill="none"/>
+      <path d="M 290 250 A 130 130 0 0 0 160 120" stroke="rgba(255,255,255,0.06)" stroke-width="1.5" fill="none"/>
+      <path d="M 290 750 A 130 130 0 0 1 160 880" stroke="rgba(255,255,255,0.05)" stroke-width="1.5" fill="none"/>
+      <path d="M 290 750 A 130 130 0 0 0 160 620" stroke="rgba(255,255,255,0.05)" stroke-width="1.5" fill="none"/>
+      <polygon points="20,50 55,30 90,50 90,90 55,110 20,90" stroke="rgba(45,85,212,0.5)" stroke-width="1.5" fill="rgba(45,85,212,0.06)"/>
+      <polygon points="150,180 185,160 220,180 220,220 185,240 150,220" stroke="rgba(45,85,212,0.4)" stroke-width="1.5" fill="rgba(45,85,212,0.05)"/>
+      <polygon points="10,320 45,300 80,320 80,360 45,380 10,360" stroke="rgba(45,85,212,0.45)" stroke-width="1.5" fill="rgba(45,85,212,0.06)"/>
+      <polygon points="140,460 175,440 210,460 210,500 175,520 140,500" stroke="rgba(45,85,212,0.35)" stroke-width="1.5" fill="rgba(45,85,212,0.04)"/>
+      <polygon points="30,600 65,580 100,600 100,640 65,660 30,640" stroke="rgba(212,163,42,0.4)" stroke-width="1.5" fill="rgba(212,163,42,0.04)"/>
+      <polygon points="160,720 195,700 230,720 230,760 195,780 160,760" stroke="rgba(45,85,212,0.4)" stroke-width="1.5" fill="rgba(45,85,212,0.05)"/>
+      <polygon points="20,850 55,830 90,850 90,890 55,910 20,890" stroke="rgba(45,85,212,0.35)" stroke-width="1.5" fill="rgba(45,85,212,0.04)"/>
+      <polygon points="150,950 180,933 210,950 210,984 180,1001 150,984" stroke="rgba(212,163,42,0.35)" stroke-width="1" fill="none"/>
+      <circle cx="250" cy="100" r="3.5" fill="rgba(212,163,42,0.65)"/>
+      <circle cx="60" cy="240" r="3" fill="rgba(212,163,42,0.55)"/>
+      <circle cx="270" cy="410" r="3.5" fill="rgba(212,163,42,0.6)"/>
+      <circle cx="40" cy="540" r="2.5" fill="rgba(45,85,212,0.6)"/>
+      <circle cx="200" cy="670" r="3" fill="rgba(212,163,42,0.5)"/>
+      <circle cx="70" cy="790" r="3" fill="rgba(45,85,212,0.55)"/>
+      <circle cx="240" cy="920" r="2.5" fill="rgba(212,163,42,0.5)"/>
+    </svg>
+<svg class="hero-deco hero-deco-right" viewBox="0 0 320 1000" xmlns="http://www.w3.org/2000/svg">
+      <line x1="30" y1="0" x2="30" y2="1000" stroke="rgba(255,255,255,0.07)" stroke-width="1"/>
+      <line x1="100" y1="0" x2="100" y2="1000" stroke="rgba(255,255,255,0.03)" stroke-width="1"/>
+      <path d="M 30 250 A 130 130 0 0 0 160 380" stroke="rgba(255,255,255,0.06)" stroke-width="1.5" fill="none"/>
+      <path d="M 30 250 A 130 130 0 0 1 160 120" stroke="rgba(255,255,255,0.06)" stroke-width="1.5" fill="none"/>
+      <path d="M 30 750 A 130 130 0 0 0 160 880" stroke="rgba(255,255,255,0.05)" stroke-width="1.5" fill="none"/>
+      <path d="M 30 750 A 130 130 0 0 1 160 620" stroke="rgba(255,255,255,0.05)" stroke-width="1.5" fill="none"/>
+      <polygon points="230,50 265,30 300,50 300,90 265,110 230,90" stroke="rgba(45,85,212,0.5)" stroke-width="1.5" fill="rgba(45,85,212,0.06)"/>
+      <polygon points="100,180 135,160 170,180 170,220 135,240 100,220" stroke="rgba(45,85,212,0.4)" stroke-width="1.5" fill="rgba(45,85,212,0.05)"/>
+      <polygon points="240,320 275,300 310,320 310,360 275,380 240,360" stroke="rgba(45,85,212,0.45)" stroke-width="1.5" fill="rgba(45,85,212,0.06)"/>
+      <polygon points="110,460 145,440 180,460 180,500 145,520 110,500" stroke="rgba(45,85,212,0.35)" stroke-width="1.5" fill="rgba(45,85,212,0.04)"/>
+      <polygon points="220,600 255,580 290,600 290,640 255,660 220,640" stroke="rgba(212,163,42,0.4)" stroke-width="1.5" fill="rgba(212,163,42,0.04)"/>
+      <polygon points="90,720 125,700 160,720 160,760 125,780 90,760" stroke="rgba(45,85,212,0.4)" stroke-width="1.5" fill="rgba(45,85,212,0.05)"/>
+      <polygon points="230,850 265,830 300,850 300,890 265,910 230,890" stroke="rgba(45,85,212,0.35)" stroke-width="1.5" fill="rgba(45,85,212,0.04)"/>
+      <polygon points="100,950 130,933 160,950 160,984 130,1001 100,984" stroke="rgba(212,163,42,0.35)" stroke-width="1" fill="none"/>
+      <circle cx="70" cy="100" r="3.5" fill="rgba(212,163,42,0.65)"/>
+      <circle cx="260" cy="240" r="3" fill="rgba(212,163,42,0.55)"/>
+      <circle cx="50" cy="410" r="3.5" fill="rgba(212,163,42,0.6)"/>
+      <circle cx="280" cy="540" r="2.5" fill="rgba(45,85,212,0.6)"/>
+      <circle cx="120" cy="670" r="3" fill="rgba(212,163,42,0.5)"/>
+      <circle cx="250" cy="790" r="3" fill="rgba(45,85,212,0.55)"/>
+      <circle cx="80" cy="920" r="2.5" fill="rgba(212,163,42,0.5)"/>
+    </svg>
+<div class="dots-layer">
+      <div class="glow-dot gold" style="width:12px;height:12px;top:18%;left:8%"></div>
+      <div class="glow-dot blue" style="width:18px;height:18px;top:35%;left:15%"></div>
+      <div class="glow-dot white" style="width:8px;height:8px;top:60%;left:6%"></div>
+      <div class="glow-dot gold" style="width:10px;height:10px;top:75%;left:20%"></div>
+      <div class="glow-dot blue" style="width:14px;height:14px;top:20%;right:6%"></div>
+      <div class="glow-dot gold" style="width:9px;height:9px;top:55%;right:4%"></div>
+      <div class="glow-dot white" style="width:7px;height:7px;top:80%;right:12%"></div>
+      <div class="glow-dot blue" style="width:10px;height:10px;top:44%;left:32%"></div>
+      <div class="glow-dot gold" style="width:11px;height:11px;top:90%;left:26%"></div>
+      <div class="glow-dot white" style="width:9px;height:9px;top:12%;left:52%"></div>
+      <div class="glow-dot blue" style="width:13px;height:13px;top:66%;right:22%"></div>
+      <div class="glow-dot gold" style="width:8px;height:8px;top:30%;right:30%"></div>
+      <div class="glow-dot white" style="width:10px;height:10px;top:95%;left:64%"></div>
+      <div class="glow-dot blue" style="width:11px;height:11px;top:50%;left:78%"></div>
+      <div class="glow-dot gold" style="width:13px;height:13px;top:72%;right:38%"></div>
+      <div class="glow-dot white" style="width:8px;height:8px;top:86%;left:44%"></div>
+</div>
 
 <div class="wrap">
-  <a class="zurueck-oben" href="index.html">&#8592; Startseite</a>
+  <a class="zurueck" href="index.html">&#8592; Zurück zur Startseite</a>
 
   <header>
-    <p class="marke">Sportfreunde 1989</p>
-    <h1>Unsere Mannschaft</h1>
-    <p class="ort">Heilbronn · gegründet 1989</p>
+    <span class="marke">Gegründet 1989 · Heilbronn</span>
+    <h1>Unsere<span>Mannschaft</span></h1>
+    <p class="ort">35 Freunde · kein Ligastress</p>
     <div class="strich"></div>
   </header>
 
       <section class="linie">
         <div class="linie-kopf"><h2>Torwart</h2><span class="anzahl">2</span></div>
         <div class="raster">
-        <article class="karte">
-          <div class="foto">
-            <img class="p1" src="spieler_frontal.png" alt="Michael Braun" loading="lazy" width="520" height="660">
-            <img class="p2" src="spieler_halb.png" alt="" aria-hidden="true" loading="lazy" width="520" height="660">
-            <span class="nr">1</span>
-          </div>
-          <div class="info"><p class="vor">Michael</p><h3>Braun</h3></div>
-        </article>
-        <article class="karte">
-          <div class="foto">
-            <img class="p1" src="spieler_frontal.png" alt="Andreas Roth" loading="lazy" width="520" height="660">
-            <img class="p2" src="spieler_halb.png" alt="" aria-hidden="true" loading="lazy" width="520" height="660">
-            <span class="nr">12</span>
-          </div>
-          <div class="info"><p class="vor">Andreas</p><h3>Roth</h3></div>
-        </article>
+          <article class="karte">
+            <div class="foto">
+              <img class="p1" src="spieler_frontal.png" alt="Michael Braun" loading="lazy" width="520" height="660">
+              <img class="p2" src="spieler_halb.png" alt="" aria-hidden="true" loading="lazy" width="520" height="660">
+              <span class="nr">1</span>
+            </div>
+            <div class="info"><p class="vor">Michael</p><h3>Braun</h3></div>
+          </article>
+          <article class="karte">
+            <div class="foto">
+              <img class="p1" src="spieler_frontal.png" alt="Andreas Roth" loading="lazy" width="520" height="660">
+              <img class="p2" src="spieler_halb.png" alt="" aria-hidden="true" loading="lazy" width="520" height="660">
+              <span class="nr">12</span>
+            </div>
+            <div class="info"><p class="vor">Andreas</p><h3>Roth</h3></div>
+          </article>
         </div>
       </section>
 
       <section class="linie">
         <div class="linie-kopf"><h2>Abwehr</h2><span class="anzahl">5</span></div>
         <div class="raster">
-        <article class="karte">
-          <div class="foto">
-            <img class="p1" src="spieler_frontal.png" alt="Thomas Keller" loading="lazy" width="520" height="660">
-            <img class="p2" src="spieler_halb.png" alt="" aria-hidden="true" loading="lazy" width="520" height="660">
-            <span class="nr">2</span>
-          </div>
-          <div class="info"><p class="vor">Thomas</p><h3>Keller</h3></div>
-        </article>
-        <article class="karte">
-          <div class="foto">
-            <img class="p1" src="spieler_frontal.png" alt="Stefan Lang" loading="lazy" width="520" height="660">
-            <img class="p2" src="spieler_halb.png" alt="" aria-hidden="true" loading="lazy" width="520" height="660">
-            <span class="nr">3</span>
-          </div>
-          <div class="info"><p class="vor">Stefan</p><h3>Lang</h3></div>
-        </article>
-        <article class="karte">
-          <div class="foto">
-            <img class="p1" src="spieler_frontal.png" alt="Dennis Wolf" loading="lazy" width="520" height="660">
-            <img class="p2" src="spieler_halb.png" alt="" aria-hidden="true" loading="lazy" width="520" height="660">
-            <span class="nr">4</span>
-          </div>
-          <div class="info"><p class="vor">Dennis</p><h3>Wolf</h3></div>
-        </article>
-        <article class="karte">
-          <div class="foto">
-            <img class="p1" src="spieler_frontal.png" alt="Marco Berg" loading="lazy" width="520" height="660">
-            <img class="p2" src="spieler_halb.png" alt="" aria-hidden="true" loading="lazy" width="520" height="660">
-            <span class="nr">5</span>
-          </div>
-          <div class="info"><p class="vor">Marco</p><h3>Berg</h3></div>
-        </article>
-        <article class="karte">
-          <div class="foto">
-            <img class="p1" src="spieler_frontal.png" alt="Jan Hofmann" loading="lazy" width="520" height="660">
-            <img class="p2" src="spieler_halb.png" alt="" aria-hidden="true" loading="lazy" width="520" height="660">
-            <span class="nr">15</span>
-          </div>
-          <div class="info"><p class="vor">Jan</p><h3>Hofmann</h3></div>
-        </article>
+          <article class="karte">
+            <div class="foto">
+              <img class="p1" src="spieler_frontal.png" alt="Thomas Keller" loading="lazy" width="520" height="660">
+              <img class="p2" src="spieler_halb.png" alt="" aria-hidden="true" loading="lazy" width="520" height="660">
+              <span class="nr">2</span>
+            </div>
+            <div class="info"><p class="vor">Thomas</p><h3>Keller</h3></div>
+          </article>
+          <article class="karte">
+            <div class="foto">
+              <img class="p1" src="spieler_frontal.png" alt="Stefan Lang" loading="lazy" width="520" height="660">
+              <img class="p2" src="spieler_halb.png" alt="" aria-hidden="true" loading="lazy" width="520" height="660">
+              <span class="nr">3</span>
+            </div>
+            <div class="info"><p class="vor">Stefan</p><h3>Lang</h3></div>
+          </article>
+          <article class="karte">
+            <div class="foto">
+              <img class="p1" src="spieler_frontal.png" alt="Dennis Wolf" loading="lazy" width="520" height="660">
+              <img class="p2" src="spieler_halb.png" alt="" aria-hidden="true" loading="lazy" width="520" height="660">
+              <span class="nr">4</span>
+            </div>
+            <div class="info"><p class="vor">Dennis</p><h3>Wolf</h3></div>
+          </article>
+          <article class="karte">
+            <div class="foto">
+              <img class="p1" src="spieler_frontal.png" alt="Marco Berg" loading="lazy" width="520" height="660">
+              <img class="p2" src="spieler_halb.png" alt="" aria-hidden="true" loading="lazy" width="520" height="660">
+              <span class="nr">5</span>
+            </div>
+            <div class="info"><p class="vor">Marco</p><h3>Berg</h3></div>
+          </article>
+          <article class="karte">
+            <div class="foto">
+              <img class="p1" src="spieler_frontal.png" alt="Jan Hofmann" loading="lazy" width="520" height="660">
+              <img class="p2" src="spieler_halb.png" alt="" aria-hidden="true" loading="lazy" width="520" height="660">
+              <span class="nr">15</span>
+            </div>
+            <div class="info"><p class="vor">Jan</p><h3>Hofmann</h3></div>
+          </article>
         </div>
       </section>
 
       <section class="linie">
         <div class="linie-kopf"><h2>Mittelfeld</h2><span class="anzahl">6</span></div>
         <div class="raster">
-        <article class="karte">
-          <div class="foto">
-            <img class="p1" src="spieler_frontal.png" alt="Kevin Schmitt" loading="lazy" width="520" height="660">
-            <img class="p2" src="spieler_halb.png" alt="" aria-hidden="true" loading="lazy" width="520" height="660">
-            <span class="nr">6</span>
-          </div>
-          <div class="info"><p class="vor">Kevin</p><h3>Schmitt</h3></div>
-        </article>
-        <article class="karte">
-          <div class="foto">
-            <img class="p1" src="spieler_frontal.png" alt="Patrick Neu" loading="lazy" width="520" height="660">
-            <img class="p2" src="spieler_halb.png" alt="" aria-hidden="true" loading="lazy" width="520" height="660">
-            <span class="nr">8</span>
-          </div>
-          <div class="info"><p class="vor">Patrick</p><h3>Neu</h3></div>
-        </article>
-        <article class="karte">
-          <div class="foto">
-            <img class="p1" src="spieler_frontal.png" alt="Sergej Below" loading="lazy" width="520" height="660">
-            <img class="p2" src="spieler_halb.png" alt="" aria-hidden="true" loading="lazy" width="520" height="660">
-            <span class="nr">10</span>
-          </div>
-          <div class="info"><p class="vor">Sergej</p><h3>Below</h3></div>
-        </article>
-        <article class="karte">
-          <div class="foto">
-            <img class="p1" src="spieler_frontal.png" alt="Daniel Frank" loading="lazy" width="520" height="660">
-            <img class="p2" src="spieler_halb.png" alt="" aria-hidden="true" loading="lazy" width="520" height="660">
-            <span class="nr">14</span>
-          </div>
-          <div class="info"><p class="vor">Daniel</p><h3>Frank</h3></div>
-        </article>
-        <article class="karte">
-          <div class="foto">
-            <img class="p1" src="spieler_frontal.png" alt="Tobias Reiter" loading="lazy" width="520" height="660">
-            <img class="p2" src="spieler_halb.png" alt="" aria-hidden="true" loading="lazy" width="520" height="660">
-            <span class="nr">17</span>
-          </div>
-          <div class="info"><p class="vor">Tobias</p><h3>Reiter</h3></div>
-        </article>
-        <article class="karte">
-          <div class="foto">
-            <img class="p1" src="spieler_frontal.png" alt="Oliver Sanz" loading="lazy" width="520" height="660">
-            <img class="p2" src="spieler_halb.png" alt="" aria-hidden="true" loading="lazy" width="520" height="660">
-            <span class="nr">20</span>
-          </div>
-          <div class="info"><p class="vor">Oliver</p><h3>Sanz</h3></div>
-        </article>
+          <article class="karte">
+            <div class="foto">
+              <img class="p1" src="spieler_frontal.png" alt="Kevin Schmitt" loading="lazy" width="520" height="660">
+              <img class="p2" src="spieler_halb.png" alt="" aria-hidden="true" loading="lazy" width="520" height="660">
+              <span class="nr">6</span>
+            </div>
+            <div class="info"><p class="vor">Kevin</p><h3>Schmitt</h3></div>
+          </article>
+          <article class="karte">
+            <div class="foto">
+              <img class="p1" src="spieler_frontal.png" alt="Patrick Neu" loading="lazy" width="520" height="660">
+              <img class="p2" src="spieler_halb.png" alt="" aria-hidden="true" loading="lazy" width="520" height="660">
+              <span class="nr">8</span>
+            </div>
+            <div class="info"><p class="vor">Patrick</p><h3>Neu</h3></div>
+          </article>
+          <article class="karte">
+            <div class="foto">
+              <img class="p1" src="spieler_frontal.png" alt="Sergej Below" loading="lazy" width="520" height="660">
+              <img class="p2" src="spieler_halb.png" alt="" aria-hidden="true" loading="lazy" width="520" height="660">
+              <span class="nr">10</span>
+            </div>
+            <div class="info"><p class="vor">Sergej</p><h3>Below</h3></div>
+          </article>
+          <article class="karte">
+            <div class="foto">
+              <img class="p1" src="spieler_frontal.png" alt="Daniel Frank" loading="lazy" width="520" height="660">
+              <img class="p2" src="spieler_halb.png" alt="" aria-hidden="true" loading="lazy" width="520" height="660">
+              <span class="nr">14</span>
+            </div>
+            <div class="info"><p class="vor">Daniel</p><h3>Frank</h3></div>
+          </article>
+          <article class="karte">
+            <div class="foto">
+              <img class="p1" src="spieler_frontal.png" alt="Tobias Reiter" loading="lazy" width="520" height="660">
+              <img class="p2" src="spieler_halb.png" alt="" aria-hidden="true" loading="lazy" width="520" height="660">
+              <span class="nr">17</span>
+            </div>
+            <div class="info"><p class="vor">Tobias</p><h3>Reiter</h3></div>
+          </article>
+          <article class="karte">
+            <div class="foto">
+              <img class="p1" src="spieler_frontal.png" alt="Oliver Sanz" loading="lazy" width="520" height="660">
+              <img class="p2" src="spieler_halb.png" alt="" aria-hidden="true" loading="lazy" width="520" height="660">
+              <span class="nr">20</span>
+            </div>
+            <div class="info"><p class="vor">Oliver</p><h3>Sanz</h3></div>
+          </article>
         </div>
       </section>
 
       <section class="linie">
         <div class="linie-kopf"><h2>Sturm</h2><span class="anzahl">4</span></div>
         <div class="raster">
-        <article class="karte">
-          <div class="foto">
-            <img class="p1" src="spieler_frontal.png" alt="Nico Weber" loading="lazy" width="520" height="660">
-            <img class="p2" src="spieler_halb.png" alt="" aria-hidden="true" loading="lazy" width="520" height="660">
-            <span class="nr">7</span>
-          </div>
-          <div class="info"><p class="vor">Nico</p><h3>Weber</h3></div>
-        </article>
-        <article class="karte">
-          <div class="foto">
-            <img class="p1" src="spieler_frontal.png" alt="Lukas Ernst" loading="lazy" width="520" height="660">
-            <img class="p2" src="spieler_halb.png" alt="" aria-hidden="true" loading="lazy" width="520" height="660">
-            <span class="nr">9</span>
-          </div>
-          <div class="info"><p class="vor">Lukas</p><h3>Ernst</h3></div>
-        </article>
-        <article class="karte">
-          <div class="foto">
-            <img class="p1" src="spieler_frontal.png" alt="Ivan Petrow" loading="lazy" width="520" height="660">
-            <img class="p2" src="spieler_halb.png" alt="" aria-hidden="true" loading="lazy" width="520" height="660">
-            <span class="nr">11</span>
-          </div>
-          <div class="info"><p class="vor">Ivan</p><h3>Petrow</h3></div>
-        </article>
-        <article class="karte">
-          <div class="foto">
-            <img class="p1" src="spieler_frontal.png" alt="Fabian Kurz" loading="lazy" width="520" height="660">
-            <img class="p2" src="spieler_halb.png" alt="" aria-hidden="true" loading="lazy" width="520" height="660">
-            <span class="nr">19</span>
-          </div>
-          <div class="info"><p class="vor">Fabian</p><h3>Kurz</h3></div>
-        </article>
+          <article class="karte">
+            <div class="foto">
+              <img class="p1" src="spieler_frontal.png" alt="Nico Weber" loading="lazy" width="520" height="660">
+              <img class="p2" src="spieler_halb.png" alt="" aria-hidden="true" loading="lazy" width="520" height="660">
+              <span class="nr">7</span>
+            </div>
+            <div class="info"><p class="vor">Nico</p><h3>Weber</h3></div>
+          </article>
+          <article class="karte">
+            <div class="foto">
+              <img class="p1" src="spieler_frontal.png" alt="Lukas Ernst" loading="lazy" width="520" height="660">
+              <img class="p2" src="spieler_halb.png" alt="" aria-hidden="true" loading="lazy" width="520" height="660">
+              <span class="nr">9</span>
+            </div>
+            <div class="info"><p class="vor">Lukas</p><h3>Ernst</h3></div>
+          </article>
+          <article class="karte">
+            <div class="foto">
+              <img class="p1" src="spieler_frontal.png" alt="Ivan Petrow" loading="lazy" width="520" height="660">
+              <img class="p2" src="spieler_halb.png" alt="" aria-hidden="true" loading="lazy" width="520" height="660">
+              <span class="nr">11</span>
+            </div>
+            <div class="info"><p class="vor">Ivan</p><h3>Petrow</h3></div>
+          </article>
+          <article class="karte">
+            <div class="foto">
+              <img class="p1" src="spieler_frontal.png" alt="Fabian Kurz" loading="lazy" width="520" height="660">
+              <img class="p2" src="spieler_halb.png" alt="" aria-hidden="true" loading="lazy" width="520" height="660">
+              <span class="nr">19</span>
+            </div>
+            <div class="info"><p class="vor">Fabian</p><h3>Kurz</h3></div>
+          </article>
         </div>
       </section>
 
   <p class="hinweis">Vorschau mit Platzhaltern. Am Rechner dreht sich die Figur beim
   Überfahren mit dem Zeiger, am Telefon durch <b>Antippen</b> der Karte.
   Dafür braucht es <b>zwei Aufnahmen je Spieler</b>: frontal und etwa 30 Grad nach links
-  gedreht, Gesicht weiter zur Kamera. Hochformat 520 : 660, gleicher Hintergrund,
-  gleiche Kamerahöhe, Ausschnitt bis zur Hüfte.</p>
+  gedreht, Gesicht weiter zur Kamera. Hochformat 520 : 660, Ausschnitt bis zur Hüfte.</p>
 
   <footer><a href="index.html">Zurück zur Startseite</a></footer>
 </div>
 
 <script>
-/* Auf Touchgeräten übernimmt Antippen die Rolle des Überfahrens. */
 document.querySelectorAll('.karte').forEach(function(k){
   k.addEventListener('click',function(){
     var offen=k.classList.contains('gedreht');
