@@ -311,6 +311,20 @@
       .hero-cta { flex-direction:column; }
       .nav-logo span { display:none; }
     }
+
+    /* --- Nur ergänzt: Link zur Mannschaftsseite in der Kopfzeile auf Mobilgeräten.
+       Auf dem Desktop bleibt er ausgeblendet, dort steht er im Hauptmenü. --- */
+    .nav-mobil { display:none; }
+    @media(max-width:900px) {
+      .nav-mobil {
+        display:inline-block; margin-left:auto; margin-right:16px;
+        color:var(--gold); text-decoration:none; white-space:nowrap;
+        font-size:12px; letter-spacing:1.4px; text-transform:uppercase; font-weight:500;
+      }
+    }
+    @media(max-width:600px) {
+      .nav-mobil { font-size:11px; letter-spacing:1px; margin-right:12px; }
+    }
   </style>
 </head>
 <body>
@@ -327,6 +341,7 @@
       <li><a href="#news">Aktuelles</a></li>
       <li><a href="#contact">Kontakt</a></li>
     </ul>
+    <a href="mannschaft.html" class="nav-mobil">Mannschaft</a>
     <a href="#contact" class="btn-primary">Mitmachen</a>
   </nav>
 

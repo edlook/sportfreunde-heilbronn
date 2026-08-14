@@ -19,8 +19,12 @@ body{background:var(--navy-d);color:var(--paper);font-family:Oswald,system-ui,sa
  linear-gradient(180deg,#0b1540,#050b25 55%,#02050f)}
 .punkte{position:fixed;inset:0;z-index:-1;opacity:.5;pointer-events:none}
 .wrap{max-width:1240px;margin:0 auto;padding:0 20px 80px}
+.zurueck-oben{display:inline-flex;align-items:center;gap:8px;margin-top:22px;
+ color:var(--silver);text-decoration:none;font-size:12px;letter-spacing:.2em;
+ text-transform:uppercase;transition:color .25s}
+.zurueck-oben:hover{color:var(--gold-l)}
 
-header{padding:48px 0 30px;text-align:center;border-bottom:1px solid var(--line)}
+header{padding:26px 0 30px;text-align:center;border-bottom:1px solid var(--line)}
 .marke{font-size:11px;letter-spacing:.4em;color:var(--gold-l);font-weight:500;text-transform:uppercase}
 header h1{font-size:clamp(32px,8vw,72px);font-weight:700;letter-spacing:.02em;margin:10px 0 6px}
 header .ort{color:var(--silver);font-size:clamp(11px,2.6vw,14px);letter-spacing:.2em;text-transform:uppercase}
@@ -141,6 +145,8 @@ footer a{color:var(--gold-l);text-decoration:none;font-size:12px;letter-spacing:
 <circle cx="99.8%" cy="70.1%" r="0.9" fill="#7fa8d8" opacity="0.17"/></svg>
 
 <div class="wrap">
+  <a class="zurueck-oben" href="index.html">&#8592; Startseite</a>
+
   <header>
     <p class="marke">Sportfreunde 1989</p>
     <h1>Unsere Mannschaft</h1>
@@ -310,7 +316,7 @@ footer a{color:var(--gold-l);text-decoration:none;font-size:12px;letter-spacing:
 
   <p class="hinweis">Vorschau mit Platzhaltern. Am Rechner dreht sich die Figur beim
   Überfahren mit dem Zeiger, am Telefon durch <b>Antippen</b> der Karte.
-  Dafür braucht es <b>zwei Aufnahmen je Spieler</b>: frontal und etwa 30 Grad zur Seite
+  Dafür braucht es <b>zwei Aufnahmen je Spieler</b>: frontal und etwa 30 Grad nach links
   gedreht, Gesicht weiter zur Kamera. Hochformat 520 : 660, gleicher Hintergrund,
   gleiche Kamerahöhe, Ausschnitt bis zur Hüfte.</p>
 
