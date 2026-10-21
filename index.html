@@ -24,6 +24,7 @@
       --gold: #d4a32a;
     }
     * { margin:0; padding:0; box-sizing:border-box; }
+    picture { display:contents; } /* <picture> beeinflusst das Layout der Logos nicht */
     html { scroll-behavior:smooth; }
     body {
       font-family:'DM Sans',sans-serif;
@@ -91,7 +92,7 @@
       position:absolute; right:0; left:0; top:50%;
       transform:translateY(-50%);
       margin:0 auto;
-      width:52%; max-width:560px;
+      width:52%; max-width:560px; height:auto;
       display:block;
       opacity:0.13; pointer-events:none;
       filter:drop-shadow(0 0 80px rgba(45,85,212,0.4));
@@ -150,7 +151,7 @@
       border:1px solid rgba(26,63,160,0.2);
       position:relative;
     }
-    .about-logo-wrap img { width:80%; max-width:340px; object-fit:contain; filter:drop-shadow(0 8px 40px rgba(45,85,212,0.3)); }
+    .about-logo-wrap img { width:80%; max-width:340px; height:auto; object-fit:contain; filter:drop-shadow(0 8px 40px rgba(45,85,212,0.3)); }
     .about-accent-box {
       position:absolute; bottom:-20px; right:-20px;
       background:var(--gold); color:var(--black);
@@ -345,7 +346,7 @@
 
   <nav>
     <a href="#" class="nav-logo">
-      <img src="logo.png" alt="Sportfreunde Heilbronn">
+      <picture><source type="image/webp" srcset="logo-84.webp"><img src="logo-84.png" alt="Sportfreunde Heilbronn" width="84" height="86"></picture>
       <span>Sportfreunde Heilbronn</span>
     </a>
     <ul class="nav-links">
@@ -409,7 +410,7 @@
       <circle cx="250" cy="790" r="3" fill="rgba(45,85,212,0.55)"/>
       <circle cx="80" cy="920" r="2.5" fill="rgba(212,163,42,0.5)"/>
     </svg>
-    <img src="logo.png" class="hero-logo-bg" alt="">
+    <picture><source type="image/webp" srcset="logo-340.webp 340w, logo-680.webp 680w" sizes="(max-width:600px) 75vw, (max-width:900px) 48vw, min(52vw, 560px)"><img src="logo-680.png" class="hero-logo-bg" alt="" width="680" height="695"></picture>
     <div class="dots-layer">
       <div class="glow-dot gold" style="width:12px;height:12px;top:18%;left:8%"></div>
       <div class="glow-dot blue" style="width:18px;height:18px;top:35%;left:15%"></div>
@@ -451,7 +452,7 @@
       <div class="glow-dot blue" style="width:10px;height:10px;top:70%;left:90%"></div>
     </div>
     <div class="about-logo-wrap fade-in">
-      <img src="logo.png" alt="Sportfreunde Heilbronn Logo">
+      <picture><source type="image/webp" srcset="logo-340.webp 340w, logo-680.webp 680w" sizes="(max-width:900px) min(80vw, 340px), 340px"><img src="logo-680.png" alt="Sportfreunde Heilbronn Logo" width="680" height="695" loading="lazy" decoding="async"></picture>
       <div class="about-accent-box"><div class="big">1989</div><div class="small">Seit</div></div>
     </div>
     <div class="fade-in">
