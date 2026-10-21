@@ -89,6 +89,7 @@
       margin:20px 0 10px;
     }
     header h1 span { color:var(--blue-light); display:block; }
+    @media(max-width:600px) { header h1 span { display:inline; } }
     header .ort { color:var(--gray); font-size:clamp(12px,2.6vw,15px); letter-spacing:2.5px; text-transform:uppercase; }
     .strich { width:min(200px,52vw); height:2px; margin:26px auto 0;
       background:linear-gradient(90deg,transparent,var(--gold),transparent); }
@@ -195,7 +196,7 @@
 
   <header>
     <span class="marke">Sportfreunde Heilbronn 1989</span>
-    <h1>Datenschutz<span>erklärung</span></h1>
+    <h1>Datenschutz&shy;<span>erklärung</span></h1>
     <p class="ort">Informationen nach Art. 13 DSGVO</p>
     <div class="strich"></div>
   </header>
