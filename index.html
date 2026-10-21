@@ -37,7 +37,8 @@
     }
     * { margin:0; padding:0; box-sizing:border-box; }
     picture { display:contents; } /* <picture> beeinflusst das Layout der Logos nicht */
-    html { scroll-behavior:smooth; }
+    picture > source { display:none; } /* sonst zählt <source> als Flex-Element (gap) */
+    html { scroll-behavior:smooth; scroll-padding-top:90px; }
     body {
       font-family:'DM Sans',sans-serif;
       background:#23232f;
