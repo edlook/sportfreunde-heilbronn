@@ -62,6 +62,12 @@
       cursor:pointer; text-decoration:none; transition:border-color .2s, color .2s;
     }
     .btn-outline:hover { border-color:var(--gold); color:var(--gold); }
+    .btn-outline:focus-visible { border-color:var(--gold); color:var(--gold); outline:2px solid var(--gold); outline-offset:3px; }
+    /* Hauptbutton „Mitmachen“: Vereinsgold mit dunkler Schrift (Kontrast 8,4 : 1) */
+    .btn-gold { background:var(--gold); color:var(--black); transition:background .2s, transform .2s, filter .2s; }
+    .btn-gold:hover { background:var(--gold); transform:none; }
+    @media (hover:hover) { .btn-gold:hover { filter:brightness(1.08); transform:translateY(-2px); } }
+    .btn-gold:focus-visible { outline:2px solid var(--black); outline-offset:-6px; }
 
     /* HERO */
     .hero {
@@ -415,8 +421,8 @@
       <h1><span style="color:var(--white)">Sportfreunde</span><br><span>Heilbronn</span></h1>
       <p class="hero-sub">Leidenschaft, Zusammenhalt und Fußball seit über 35 Jahren. Wir sind 35 Freunde — kein Ligastress, nur echte Begeisterung.</p>
       <div class="hero-cta">
-        <a href="#about" class="btn-primary">Mehr erfahren</a>
-        <a href="#contact" class="btn-outline">Mitmachen</a>
+        <a href="#contact" class="btn-primary btn-gold">Mitmachen</a>
+        <a href="#about" class="btn-outline">Mehr erfahren</a>
       </div>
     </div>
   </section>
