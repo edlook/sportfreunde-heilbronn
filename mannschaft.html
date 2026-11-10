@@ -8,7 +8,7 @@
   <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
   <link rel="apple-touch-icon" href="apple-touch-icon.png">
   <meta name="theme-color" content="#0c0c0c">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Mannschaft · Sportfreunde 1989 Heilbronn</title>
 <meta name="description" content="Die Mannschaft der Sportfreunde 1989 Heilbronn — unsere Spieler mit Vornamen und Rückennummern.">
 <!-- vorübergehend nicht in Suchmaschinen; Positionen vorläufig, noch nicht alle Fotos -->
@@ -174,6 +174,49 @@
     .btn-gold:focus-visible { outline:2px solid var(--black); outline-offset:-6px; }
     @media(prefers-reduced-motion:reduce) { .btn-gold { transition:none; } .btn-gold:hover { transform:none; } }
     @media(max-width:900px) { .hero-deco { display:none !important; } }
+
+    /* ===== Handy-Ausbau (10.11.2026) ===== */
+    html { scroll-behavior:smooth; scroll-padding-top:72px; }
+    @media(prefers-reduced-motion:reduce) { html { scroll-behavior:auto; } }
+    .karte { cursor:pointer; -webkit-touch-callout:none; -webkit-user-select:none; user-select:none; touch-action:manipulation; }
+    .karte:focus-visible { outline:2px solid var(--gold); outline-offset:-3px; z-index:4; }
+    @media (hover:none) { .karte:active { transform:scale(.975); } }
+    .zurueck { padding:14px 6px 14px 0; margin-top:12px; min-height:44px; }
+    footer a { padding:14px 8px; min-height:44px; display:inline-flex; align-items:center; }
+    .sprung { display:none; }
+    .hinweis { display:none; }
+    @media (hover:none) {
+      .hinweis { display:block; text-align:center; color:rgba(245,245,240,.5); font-size:12px; letter-spacing:1.6px; text-transform:uppercase; margin:22px 0 -14px; }
+    }
+    @media(max-width:640px) {
+      .wrap { padding-left:max(16px,env(safe-area-inset-left)); padding-right:max(16px,env(safe-area-inset-right)); padding-bottom:max(60px,env(safe-area-inset-bottom)); }
+      header { padding:20px 0 26px; }
+      .raster { gap:8px; }
+      .karte { border-radius:8px; }
+      .info h3 { font-size:clamp(20px,5.6vw,26px); }
+      .nr { right:9px; top:5px; font-size:clamp(44px,13vw,62px); }
+      .sprung {
+        display:flex; gap:8px; position:sticky; top:0; z-index:30;
+        margin-inline:calc(50% - 50vw); padding:10px calc(50vw - 50%);
+        overflow-x:auto; scrollbar-width:none;
+        background:rgba(12,12,12,.86); -webkit-backdrop-filter:blur(10px); backdrop-filter:blur(10px);
+        border-bottom:1px solid rgba(255,255,255,.08);
+      }
+      .sprung::-webkit-scrollbar { display:none; }
+      .sprung a {
+        flex:0 0 auto; display:inline-flex; align-items:center; min-height:40px; padding:0 16px;
+        border:1px solid rgba(212,163,42,.42); border-radius:100px; color:var(--gold);
+        font-size:12px; font-weight:500; letter-spacing:2px; text-transform:uppercase; text-decoration:none;
+        -webkit-tap-highlight-color:transparent;
+      }
+      .sprung a:active { background:rgba(212,163,42,.16); }
+      .linie { margin-top:36px; }
+      .mitmachen .btn-primary { display:block; width:100%; max-width:420px; margin:0 auto; text-align:center; padding:17px 28px; font-size:14px; }
+    }
+    @media(max-width:380px) {
+      .marke { letter-spacing:1.6px; padding:7px 14px; font-size:11px; }
+      .hinweis { letter-spacing:1px; font-size:11px; }
+    }
 </style>
 </head>
 <body>
@@ -254,21 +297,26 @@
     <div class="strich"></div>
   </header>
 
-      <section class="linie">
+  <nav class="sprung" aria-label="Zu einer Linie springen">
+    <a href="#torwart">Torwart</a><a href="#abwehr">Abwehr</a><a href="#mittelfeld">Mittelfeld</a><a href="#sturm">Sturm</a>
+  </nav>
+  <p class="hinweis">Foto antippen für eine zweite Ansicht</p>
+
+      <section class="linie" id="torwart">
         <div class="linie-kopf"><h2>Torwart</h2><span class="anzahl">2</span></div>
         <div class="raster">
           <article class="karte">
             <div class="foto">
-              <picture><source type="image/webp" srcset="img/spieler/spieler-05-frontal-520.webp 520w, img/spieler/spieler-05-frontal-1040.webp 636w" sizes="(max-width:640px) 50vw, (max-width:1000px) 33vw, 286px"><img class="p1" src="img/spieler/spieler-05-frontal-520.jpg" srcset="img/spieler/spieler-05-frontal-520.jpg 520w, img/spieler/spieler-05-frontal-1040.jpg 636w" sizes="(max-width:640px) 50vw, (max-width:1000px) 33vw, 286px" alt="Eugen, Nr. 1, im Trikot der Sportfreunde Heilbronn" decoding="async" width="520" height="660"></picture>
-              <picture><source type="image/webp" srcset="img/spieler/spieler-05-halb-520.webp 520w, img/spieler/spieler-05-halb-1040.webp 668w" sizes="(max-width:640px) 50vw, (max-width:1000px) 33vw, 286px"><img class="p2" src="img/spieler/spieler-05-halb-520.jpg" srcset="img/spieler/spieler-05-halb-520.jpg 520w, img/spieler/spieler-05-halb-1040.jpg 668w" sizes="(max-width:640px) 50vw, (max-width:1000px) 33vw, 286px" alt="" aria-hidden="true" loading="lazy" decoding="async" width="520" height="660"></picture>
+              <picture><source type="image/webp" srcset="img/spieler/spieler-05-frontal-520.webp 520w, img/spieler/spieler-05-frontal-780.webp 780w" sizes="(max-width:640px) 50vw, (max-width:1000px) 33vw, 286px"><img class="p1" src="img/spieler/spieler-05-frontal-520.jpg" srcset="img/spieler/spieler-05-frontal-520.jpg 520w, img/spieler/spieler-05-frontal-780.jpg 780w" sizes="(max-width:640px) 50vw, (max-width:1000px) 33vw, 286px" alt="Eugen, Nr. 1, im Trikot der Sportfreunde Heilbronn" decoding="async" width="520" height="660"></picture>
+              <picture><source type="image/webp" data-srcset="img/spieler/spieler-05-halb-520.webp 520w, img/spieler/spieler-05-halb-780.webp 780w" sizes="(max-width:640px) 50vw, (max-width:1000px) 33vw, 286px"><img class="p2" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" data-src="img/spieler/spieler-05-halb-520.jpg" data-srcset="img/spieler/spieler-05-halb-520.jpg 520w, img/spieler/spieler-05-halb-780.jpg 780w" sizes="(max-width:640px) 50vw, (max-width:1000px) 33vw, 286px" alt="" aria-hidden="true" decoding="async" width="520" height="660"></picture>
               <span class="nr">1</span>
             </div>
             <div class="info"><h3>Eugen</h3></div>
           </article>
           <article class="karte">
             <div class="foto">
-              <img class="p1" src="spieler_frontal.png" alt="Platzhalter – Foto von Setrak folgt" decoding="async" width="520" height="660">
-              <img class="p2" src="spieler_halb.png" alt="" aria-hidden="true" loading="lazy" decoding="async" width="520" height="660">
+              <img class="p1" src="img/spieler/platzhalter-frontal.jpg" alt="Platzhalter – Foto von Setrak folgt" decoding="async" width="520" height="660">
+              <img class="p2" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" data-src="img/spieler/platzhalter-halb.jpg" alt="" aria-hidden="true" decoding="async" width="520" height="660">
               <span class="nr">77</span>
             </div>
             <div class="info"><h3>Setrak</h3></div>
@@ -276,85 +324,85 @@
         </div>
       </section>
 
-      <section class="linie">
+      <section class="linie" id="abwehr">
         <div class="linie-kopf"><h2>Abwehr</h2><span class="anzahl">10</span></div>
         <div class="raster">
           <article class="karte">
             <div class="foto">
-              <img class="p1" src="spieler_frontal.png" alt="Platzhalter – Foto von Andreas folgt" loading="lazy" decoding="async" width="520" height="660">
-              <img class="p2" src="spieler_halb.png" alt="" aria-hidden="true" loading="lazy" decoding="async" width="520" height="660">
+              <img class="p1" src="img/spieler/platzhalter-frontal.jpg" alt="Platzhalter – Foto von Andreas folgt" loading="lazy" decoding="async" width="520" height="660">
+              <img class="p2" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" data-src="img/spieler/platzhalter-halb.jpg" alt="" aria-hidden="true" decoding="async" width="520" height="660">
               <span class="nr">2</span>
             </div>
             <div class="info"><h3>Andreas</h3></div>
           </article>
           <article class="karte">
             <div class="foto">
-              <picture><source type="image/webp" srcset="img/spieler/spieler-08-frontal-520.webp 520w, img/spieler/spieler-08-frontal-1040.webp 688w" sizes="(max-width:640px) 50vw, (max-width:1000px) 33vw, 286px"><img class="p1" src="img/spieler/spieler-08-frontal-520.jpg" srcset="img/spieler/spieler-08-frontal-520.jpg 520w, img/spieler/spieler-08-frontal-1040.jpg 688w" sizes="(max-width:640px) 50vw, (max-width:1000px) 33vw, 286px" alt="Waldemar, Nr. 3, im Trikot der Sportfreunde Heilbronn" loading="lazy" decoding="async" width="520" height="660"></picture>
-              <picture><source type="image/webp" srcset="img/spieler/spieler-08-halb-520.webp 520w, img/spieler/spieler-08-halb-1040.webp 694w" sizes="(max-width:640px) 50vw, (max-width:1000px) 33vw, 286px"><img class="p2" src="img/spieler/spieler-08-halb-520.jpg" srcset="img/spieler/spieler-08-halb-520.jpg 520w, img/spieler/spieler-08-halb-1040.jpg 694w" sizes="(max-width:640px) 50vw, (max-width:1000px) 33vw, 286px" alt="" aria-hidden="true" loading="lazy" decoding="async" width="520" height="660"></picture>
+              <picture><source type="image/webp" srcset="img/spieler/spieler-08-frontal-520.webp 520w, img/spieler/spieler-08-frontal-780.webp 780w" sizes="(max-width:640px) 50vw, (max-width:1000px) 33vw, 286px"><img class="p1" src="img/spieler/spieler-08-frontal-520.jpg" srcset="img/spieler/spieler-08-frontal-520.jpg 520w, img/spieler/spieler-08-frontal-780.jpg 780w" sizes="(max-width:640px) 50vw, (max-width:1000px) 33vw, 286px" alt="Waldemar, Nr. 3, im Trikot der Sportfreunde Heilbronn" loading="lazy" decoding="async" width="520" height="660"></picture>
+              <picture><source type="image/webp" data-srcset="img/spieler/spieler-08-halb-520.webp 520w, img/spieler/spieler-08-halb-780.webp 780w" sizes="(max-width:640px) 50vw, (max-width:1000px) 33vw, 286px"><img class="p2" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" data-src="img/spieler/spieler-08-halb-520.jpg" data-srcset="img/spieler/spieler-08-halb-520.jpg 520w, img/spieler/spieler-08-halb-780.jpg 780w" sizes="(max-width:640px) 50vw, (max-width:1000px) 33vw, 286px" alt="" aria-hidden="true" decoding="async" width="520" height="660"></picture>
               <span class="nr">3</span>
             </div>
             <div class="info"><h3>Waldemar</h3></div>
           </article>
           <article class="karte">
             <div class="foto">
-              <picture><source type="image/webp" srcset="img/spieler/spieler-07-frontal-520.webp 520w, img/spieler/spieler-07-frontal-1040.webp 598w" sizes="(max-width:640px) 50vw, (max-width:1000px) 33vw, 286px"><img class="p1" src="img/spieler/spieler-07-frontal-520.jpg" srcset="img/spieler/spieler-07-frontal-520.jpg 520w, img/spieler/spieler-07-frontal-1040.jpg 598w" sizes="(max-width:640px) 50vw, (max-width:1000px) 33vw, 286px" alt="Johann, Nr. 4, im Trikot der Sportfreunde Heilbronn" loading="lazy" decoding="async" width="520" height="660"></picture>
-              <picture><source type="image/webp" srcset="img/spieler/spieler-07-halb-520.webp 520w, img/spieler/spieler-07-halb-1040.webp 618w" sizes="(max-width:640px) 50vw, (max-width:1000px) 33vw, 286px"><img class="p2" src="img/spieler/spieler-07-halb-520.jpg" srcset="img/spieler/spieler-07-halb-520.jpg 520w, img/spieler/spieler-07-halb-1040.jpg 618w" sizes="(max-width:640px) 50vw, (max-width:1000px) 33vw, 286px" alt="" aria-hidden="true" loading="lazy" decoding="async" width="520" height="660"></picture>
+              <picture><source type="image/webp" srcset="img/spieler/spieler-07-frontal-520.webp 520w, img/spieler/spieler-07-frontal-780.webp 780w" sizes="(max-width:640px) 50vw, (max-width:1000px) 33vw, 286px"><img class="p1" src="img/spieler/spieler-07-frontal-520.jpg" srcset="img/spieler/spieler-07-frontal-520.jpg 520w, img/spieler/spieler-07-frontal-780.jpg 780w" sizes="(max-width:640px) 50vw, (max-width:1000px) 33vw, 286px" alt="Johann, Nr. 4, im Trikot der Sportfreunde Heilbronn" loading="lazy" decoding="async" width="520" height="660"></picture>
+              <picture><source type="image/webp" data-srcset="img/spieler/spieler-07-halb-520.webp 520w, img/spieler/spieler-07-halb-780.webp 780w" sizes="(max-width:640px) 50vw, (max-width:1000px) 33vw, 286px"><img class="p2" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" data-src="img/spieler/spieler-07-halb-520.jpg" data-srcset="img/spieler/spieler-07-halb-520.jpg 520w, img/spieler/spieler-07-halb-780.jpg 780w" sizes="(max-width:640px) 50vw, (max-width:1000px) 33vw, 286px" alt="" aria-hidden="true" decoding="async" width="520" height="660"></picture>
               <span class="nr">4</span>
             </div>
             <div class="info"><h3>Johann</h3></div>
           </article>
           <article class="karte">
             <div class="foto">
-              <img class="p1" src="spieler_frontal.png" alt="Platzhalter – Foto von Sergej folgt" loading="lazy" decoding="async" width="520" height="660">
-              <img class="p2" src="spieler_halb.png" alt="" aria-hidden="true" loading="lazy" decoding="async" width="520" height="660">
+              <img class="p1" src="img/spieler/platzhalter-frontal.jpg" alt="Platzhalter – Foto von Sergej folgt" loading="lazy" decoding="async" width="520" height="660">
+              <img class="p2" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" data-src="img/spieler/platzhalter-halb.jpg" alt="" aria-hidden="true" decoding="async" width="520" height="660">
               <span class="nr">5</span>
             </div>
             <div class="info"><h3>Sergej</h3></div>
           </article>
           <article class="karte">
             <div class="foto">
-              <picture><source type="image/webp" srcset="img/spieler/spieler-04-frontal-520.webp 520w, img/spieler/spieler-04-frontal-1040.webp 1040w" sizes="(max-width:640px) 50vw, (max-width:1000px) 33vw, 286px"><img class="p1" src="img/spieler/spieler-04-frontal-520.jpg" srcset="img/spieler/spieler-04-frontal-520.jpg 520w, img/spieler/spieler-04-frontal-1040.jpg 1040w" sizes="(max-width:640px) 50vw, (max-width:1000px) 33vw, 286px" alt="Andreas, Nr. 6, im Trikot der Sportfreunde Heilbronn" loading="lazy" decoding="async" width="520" height="660"></picture>
-              <picture><source type="image/webp" srcset="img/spieler/spieler-04-halb-520.webp 520w, img/spieler/spieler-04-halb-1040.webp 1040w" sizes="(max-width:640px) 50vw, (max-width:1000px) 33vw, 286px"><img class="p2" src="img/spieler/spieler-04-halb-520.jpg" srcset="img/spieler/spieler-04-halb-520.jpg 520w, img/spieler/spieler-04-halb-1040.jpg 1040w" sizes="(max-width:640px) 50vw, (max-width:1000px) 33vw, 286px" alt="" aria-hidden="true" loading="lazy" decoding="async" width="520" height="660"></picture>
+              <picture><source type="image/webp" srcset="img/spieler/spieler-04-frontal-520.webp 520w, img/spieler/spieler-04-frontal-780.webp 780w" sizes="(max-width:640px) 50vw, (max-width:1000px) 33vw, 286px"><img class="p1" src="img/spieler/spieler-04-frontal-520.jpg" srcset="img/spieler/spieler-04-frontal-520.jpg 520w, img/spieler/spieler-04-frontal-780.jpg 780w" sizes="(max-width:640px) 50vw, (max-width:1000px) 33vw, 286px" alt="Andreas, Nr. 6, im Trikot der Sportfreunde Heilbronn" loading="lazy" decoding="async" width="520" height="660"></picture>
+              <picture><source type="image/webp" data-srcset="img/spieler/spieler-04-halb-520.webp 520w, img/spieler/spieler-04-halb-780.webp 780w" sizes="(max-width:640px) 50vw, (max-width:1000px) 33vw, 286px"><img class="p2" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" data-src="img/spieler/spieler-04-halb-520.jpg" data-srcset="img/spieler/spieler-04-halb-520.jpg 520w, img/spieler/spieler-04-halb-780.jpg 780w" sizes="(max-width:640px) 50vw, (max-width:1000px) 33vw, 286px" alt="" aria-hidden="true" decoding="async" width="520" height="660"></picture>
               <span class="nr">6</span>
             </div>
             <div class="info"><h3>Andreas</h3></div>
           </article>
           <article class="karte">
             <div class="foto">
-              <picture><source type="image/webp" srcset="img/spieler/spieler-09-frontal-520.webp 520w, img/spieler/spieler-09-frontal-1040.webp 706w" sizes="(max-width:640px) 50vw, (max-width:1000px) 33vw, 286px"><img class="p1" src="img/spieler/spieler-09-frontal-520.jpg" srcset="img/spieler/spieler-09-frontal-520.jpg 520w, img/spieler/spieler-09-frontal-1040.jpg 706w" sizes="(max-width:640px) 50vw, (max-width:1000px) 33vw, 286px" alt="Vitali, Nr. 12, im Trikot der Sportfreunde Heilbronn" loading="lazy" decoding="async" width="520" height="660"></picture>
-              <picture><source type="image/webp" srcset="img/spieler/spieler-09-halb-520.webp 520w, img/spieler/spieler-09-halb-1040.webp 708w" sizes="(max-width:640px) 50vw, (max-width:1000px) 33vw, 286px"><img class="p2" src="img/spieler/spieler-09-halb-520.jpg" srcset="img/spieler/spieler-09-halb-520.jpg 520w, img/spieler/spieler-09-halb-1040.jpg 708w" sizes="(max-width:640px) 50vw, (max-width:1000px) 33vw, 286px" alt="" aria-hidden="true" loading="lazy" decoding="async" width="520" height="660"></picture>
+              <picture><source type="image/webp" srcset="img/spieler/spieler-09-frontal-520.webp 520w, img/spieler/spieler-09-frontal-780.webp 780w" sizes="(max-width:640px) 50vw, (max-width:1000px) 33vw, 286px"><img class="p1" src="img/spieler/spieler-09-frontal-520.jpg" srcset="img/spieler/spieler-09-frontal-520.jpg 520w, img/spieler/spieler-09-frontal-780.jpg 780w" sizes="(max-width:640px) 50vw, (max-width:1000px) 33vw, 286px" alt="Vitali, Nr. 12, im Trikot der Sportfreunde Heilbronn" loading="lazy" decoding="async" width="520" height="660"></picture>
+              <picture><source type="image/webp" data-srcset="img/spieler/spieler-09-halb-520.webp 520w, img/spieler/spieler-09-halb-780.webp 780w" sizes="(max-width:640px) 50vw, (max-width:1000px) 33vw, 286px"><img class="p2" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" data-src="img/spieler/spieler-09-halb-520.jpg" data-srcset="img/spieler/spieler-09-halb-520.jpg 520w, img/spieler/spieler-09-halb-780.jpg 780w" sizes="(max-width:640px) 50vw, (max-width:1000px) 33vw, 286px" alt="" aria-hidden="true" decoding="async" width="520" height="660"></picture>
               <span class="nr">12</span>
             </div>
             <div class="info"><h3>Vitali</h3></div>
           </article>
           <article class="karte">
             <div class="foto">
-              <img class="p1" src="spieler_frontal.png" alt="Platzhalter – Foto von Eugen (Nr. 13) folgt" loading="lazy" decoding="async" width="520" height="660">
-              <img class="p2" src="spieler_halb.png" alt="" aria-hidden="true" loading="lazy" decoding="async" width="520" height="660">
+              <img class="p1" src="img/spieler/platzhalter-frontal.jpg" alt="Platzhalter – Foto von Eugen (Nr. 13) folgt" loading="lazy" decoding="async" width="520" height="660">
+              <img class="p2" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" data-src="img/spieler/platzhalter-halb.jpg" alt="" aria-hidden="true" decoding="async" width="520" height="660">
               <span class="nr">13</span>
             </div>
             <div class="info"><h3>Eugen</h3></div>
           </article>
           <article class="karte">
             <div class="foto">
-              <picture><source type="image/webp" srcset="img/spieler/spieler-10-frontal-520.webp 520w, img/spieler/spieler-10-frontal-1040.webp 618w" sizes="(max-width:640px) 50vw, (max-width:1000px) 33vw, 286px"><img class="p1" src="img/spieler/spieler-10-frontal-520.jpg" srcset="img/spieler/spieler-10-frontal-520.jpg 520w, img/spieler/spieler-10-frontal-1040.jpg 618w" sizes="(max-width:640px) 50vw, (max-width:1000px) 33vw, 286px" alt="Eugen, Nr. 15, im Trikot der Sportfreunde Heilbronn" loading="lazy" decoding="async" width="520" height="660"></picture>
-              <picture><source type="image/webp" srcset="img/spieler/spieler-10-halb-520.webp 520w, img/spieler/spieler-10-halb-1040.webp 668w" sizes="(max-width:640px) 50vw, (max-width:1000px) 33vw, 286px"><img class="p2" src="img/spieler/spieler-10-halb-520.jpg" srcset="img/spieler/spieler-10-halb-520.jpg 520w, img/spieler/spieler-10-halb-1040.jpg 668w" sizes="(max-width:640px) 50vw, (max-width:1000px) 33vw, 286px" alt="" aria-hidden="true" loading="lazy" decoding="async" width="520" height="660"></picture>
+              <picture><source type="image/webp" srcset="img/spieler/spieler-10-frontal-520.webp 520w, img/spieler/spieler-10-frontal-780.webp 780w" sizes="(max-width:640px) 50vw, (max-width:1000px) 33vw, 286px"><img class="p1" src="img/spieler/spieler-10-frontal-520.jpg" srcset="img/spieler/spieler-10-frontal-520.jpg 520w, img/spieler/spieler-10-frontal-780.jpg 780w" sizes="(max-width:640px) 50vw, (max-width:1000px) 33vw, 286px" alt="Eugen, Nr. 15, im Trikot der Sportfreunde Heilbronn" loading="lazy" decoding="async" width="520" height="660"></picture>
+              <picture><source type="image/webp" data-srcset="img/spieler/spieler-10-halb-520.webp 520w, img/spieler/spieler-10-halb-780.webp 780w" sizes="(max-width:640px) 50vw, (max-width:1000px) 33vw, 286px"><img class="p2" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" data-src="img/spieler/spieler-10-halb-520.jpg" data-srcset="img/spieler/spieler-10-halb-520.jpg 520w, img/spieler/spieler-10-halb-780.jpg 780w" sizes="(max-width:640px) 50vw, (max-width:1000px) 33vw, 286px" alt="" aria-hidden="true" decoding="async" width="520" height="660"></picture>
               <span class="nr">15</span>
             </div>
             <div class="info"><h3>Eugen</h3></div>
           </article>
           <article class="karte">
             <div class="foto">
-              <picture><source type="image/webp" srcset="img/spieler/spieler-21-frontal-520.webp 520w, img/spieler/spieler-21-frontal-1040.webp 592w" sizes="(max-width:640px) 50vw, (max-width:1000px) 33vw, 286px"><img class="p1" src="img/spieler/spieler-21-frontal-520.jpg" srcset="img/spieler/spieler-21-frontal-520.jpg 520w, img/spieler/spieler-21-frontal-1040.jpg 592w" sizes="(max-width:640px) 50vw, (max-width:1000px) 33vw, 286px" alt="Eduard, Nr. 24, im Trikot der Sportfreunde Heilbronn" loading="lazy" decoding="async" width="520" height="660"></picture>
-              <picture><source type="image/webp" srcset="img/spieler/spieler-21-halb-520.webp 520w, img/spieler/spieler-21-halb-1040.webp 646w" sizes="(max-width:640px) 50vw, (max-width:1000px) 33vw, 286px"><img class="p2" src="img/spieler/spieler-21-halb-520.jpg" srcset="img/spieler/spieler-21-halb-520.jpg 520w, img/spieler/spieler-21-halb-1040.jpg 646w" sizes="(max-width:640px) 50vw, (max-width:1000px) 33vw, 286px" alt="" aria-hidden="true" loading="lazy" decoding="async" width="520" height="660"></picture>
+              <picture><source type="image/webp" srcset="img/spieler/spieler-21-frontal-520.webp 520w, img/spieler/spieler-21-frontal-780.webp 780w" sizes="(max-width:640px) 50vw, (max-width:1000px) 33vw, 286px"><img class="p1" src="img/spieler/spieler-21-frontal-520.jpg" srcset="img/spieler/spieler-21-frontal-520.jpg 520w, img/spieler/spieler-21-frontal-780.jpg 780w" sizes="(max-width:640px) 50vw, (max-width:1000px) 33vw, 286px" alt="Eduard, Nr. 24, im Trikot der Sportfreunde Heilbronn" loading="lazy" decoding="async" width="520" height="660"></picture>
+              <picture><source type="image/webp" data-srcset="img/spieler/spieler-21-halb-520.webp 520w, img/spieler/spieler-21-halb-780.webp 780w" sizes="(max-width:640px) 50vw, (max-width:1000px) 33vw, 286px"><img class="p2" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" data-src="img/spieler/spieler-21-halb-520.jpg" data-srcset="img/spieler/spieler-21-halb-520.jpg 520w, img/spieler/spieler-21-halb-780.jpg 780w" sizes="(max-width:640px) 50vw, (max-width:1000px) 33vw, 286px" alt="" aria-hidden="true" decoding="async" width="520" height="660"></picture>
               <span class="nr">24</span>
             </div>
             <div class="info"><h3>Eduard</h3></div>
           </article>
           <article class="karte">
             <div class="foto">
-              <img class="p1" src="spieler_frontal.png" alt="Platzhalter – Foto von Dmitrij folgt" loading="lazy" decoding="async" width="520" height="660">
-              <img class="p2" src="spieler_halb.png" alt="" aria-hidden="true" loading="lazy" decoding="async" width="520" height="660">
+              <img class="p1" src="img/spieler/platzhalter-frontal.jpg" alt="Platzhalter – Foto von Dmitrij folgt" loading="lazy" decoding="async" width="520" height="660">
+              <img class="p2" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" data-src="img/spieler/platzhalter-halb.jpg" alt="" aria-hidden="true" decoding="async" width="520" height="660">
               <span class="nr">26</span>
             </div>
             <div class="info"><h3>Dmitrij</h3></div>
@@ -362,101 +410,101 @@
         </div>
       </section>
 
-      <section class="linie">
+      <section class="linie" id="mittelfeld">
         <div class="linie-kopf"><h2>Mittelfeld</h2><span class="anzahl">12</span></div>
         <div class="raster">
           <article class="karte">
             <div class="foto">
-              <img class="p1" src="spieler_frontal.png" alt="Platzhalter – Foto von Elly folgt" loading="lazy" decoding="async" width="520" height="660">
-              <img class="p2" src="spieler_halb.png" alt="" aria-hidden="true" loading="lazy" decoding="async" width="520" height="660">
+              <img class="p1" src="img/spieler/platzhalter-frontal.jpg" alt="Platzhalter – Foto von Elly folgt" loading="lazy" decoding="async" width="520" height="660">
+              <img class="p2" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" data-src="img/spieler/platzhalter-halb.jpg" alt="" aria-hidden="true" decoding="async" width="520" height="660">
               <span class="nr">0</span>
             </div>
             <div class="info"><h3>Elly</h3></div>
           </article>
           <article class="karte">
             <div class="foto">
-              <picture><source type="image/webp" srcset="img/spieler/spieler-13-frontal-520.webp 520w, img/spieler/spieler-13-frontal-1040.webp 624w" sizes="(max-width:640px) 50vw, (max-width:1000px) 33vw, 286px"><img class="p1" src="img/spieler/spieler-13-frontal-520.jpg" srcset="img/spieler/spieler-13-frontal-520.jpg 520w, img/spieler/spieler-13-frontal-1040.jpg 624w" sizes="(max-width:640px) 50vw, (max-width:1000px) 33vw, 286px" alt="Konstantin, Nr. 8, im Trikot der Sportfreunde Heilbronn" loading="lazy" decoding="async" width="520" height="660"></picture>
-              <picture><source type="image/webp" srcset="img/spieler/spieler-13-halb-520.webp 520w, img/spieler/spieler-13-halb-1040.webp 670w" sizes="(max-width:640px) 50vw, (max-width:1000px) 33vw, 286px"><img class="p2" src="img/spieler/spieler-13-halb-520.jpg" srcset="img/spieler/spieler-13-halb-520.jpg 520w, img/spieler/spieler-13-halb-1040.jpg 670w" sizes="(max-width:640px) 50vw, (max-width:1000px) 33vw, 286px" alt="" aria-hidden="true" loading="lazy" decoding="async" width="520" height="660"></picture>
+              <picture><source type="image/webp" srcset="img/spieler/spieler-13-frontal-520.webp 520w, img/spieler/spieler-13-frontal-780.webp 780w" sizes="(max-width:640px) 50vw, (max-width:1000px) 33vw, 286px"><img class="p1" src="img/spieler/spieler-13-frontal-520.jpg" srcset="img/spieler/spieler-13-frontal-520.jpg 520w, img/spieler/spieler-13-frontal-780.jpg 780w" sizes="(max-width:640px) 50vw, (max-width:1000px) 33vw, 286px" alt="Konstantin, Nr. 8, im Trikot der Sportfreunde Heilbronn" loading="lazy" decoding="async" width="520" height="660"></picture>
+              <picture><source type="image/webp" data-srcset="img/spieler/spieler-13-halb-520.webp 520w, img/spieler/spieler-13-halb-780.webp 780w" sizes="(max-width:640px) 50vw, (max-width:1000px) 33vw, 286px"><img class="p2" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" data-src="img/spieler/spieler-13-halb-520.jpg" data-srcset="img/spieler/spieler-13-halb-520.jpg 520w, img/spieler/spieler-13-halb-780.jpg 780w" sizes="(max-width:640px) 50vw, (max-width:1000px) 33vw, 286px" alt="" aria-hidden="true" decoding="async" width="520" height="660"></picture>
               <span class="nr">8</span>
             </div>
             <div class="info"><h3>Konstantin</h3></div>
           </article>
           <article class="karte">
             <div class="foto">
-              <picture><source type="image/webp" srcset="img/spieler/spieler-18-frontal-520.webp 520w, img/spieler/spieler-18-frontal-1040.webp 1040w" sizes="(max-width:640px) 50vw, (max-width:1000px) 33vw, 286px"><img class="p1" src="img/spieler/spieler-18-frontal-520.jpg" srcset="img/spieler/spieler-18-frontal-520.jpg 520w, img/spieler/spieler-18-frontal-1040.jpg 1040w" sizes="(max-width:640px) 50vw, (max-width:1000px) 33vw, 286px" alt="Wanja, Nr. 10, im Trikot der Sportfreunde Heilbronn" loading="lazy" decoding="async" width="520" height="660"></picture>
-              <picture><source type="image/webp" srcset="img/spieler/spieler-18-halb-520.webp 520w, img/spieler/spieler-18-halb-1040.webp 1040w" sizes="(max-width:640px) 50vw, (max-width:1000px) 33vw, 286px"><img class="p2" src="img/spieler/spieler-18-halb-520.jpg" srcset="img/spieler/spieler-18-halb-520.jpg 520w, img/spieler/spieler-18-halb-1040.jpg 1040w" sizes="(max-width:640px) 50vw, (max-width:1000px) 33vw, 286px" alt="" aria-hidden="true" loading="lazy" decoding="async" width="520" height="660"></picture>
+              <picture><source type="image/webp" srcset="img/spieler/spieler-18-frontal-520.webp 520w, img/spieler/spieler-18-frontal-780.webp 780w" sizes="(max-width:640px) 50vw, (max-width:1000px) 33vw, 286px"><img class="p1" src="img/spieler/spieler-18-frontal-520.jpg" srcset="img/spieler/spieler-18-frontal-520.jpg 520w, img/spieler/spieler-18-frontal-780.jpg 780w" sizes="(max-width:640px) 50vw, (max-width:1000px) 33vw, 286px" alt="Wanja, Nr. 10, im Trikot der Sportfreunde Heilbronn" loading="lazy" decoding="async" width="520" height="660"></picture>
+              <picture><source type="image/webp" data-srcset="img/spieler/spieler-18-halb-520.webp 520w, img/spieler/spieler-18-halb-780.webp 780w" sizes="(max-width:640px) 50vw, (max-width:1000px) 33vw, 286px"><img class="p2" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" data-src="img/spieler/spieler-18-halb-520.jpg" data-srcset="img/spieler/spieler-18-halb-520.jpg 520w, img/spieler/spieler-18-halb-780.jpg 780w" sizes="(max-width:640px) 50vw, (max-width:1000px) 33vw, 286px" alt="" aria-hidden="true" decoding="async" width="520" height="660"></picture>
               <span class="nr">10</span>
             </div>
             <div class="info"><h3>Wanja</h3></div>
           </article>
           <article class="karte">
             <div class="foto">
-              <img class="p1" src="spieler_frontal.png" alt="Platzhalter – Foto von Dchadon folgt" loading="lazy" decoding="async" width="520" height="660">
-              <img class="p2" src="spieler_halb.png" alt="" aria-hidden="true" loading="lazy" decoding="async" width="520" height="660">
+              <img class="p1" src="img/spieler/platzhalter-frontal.jpg" alt="Platzhalter – Foto von Dchadon folgt" loading="lazy" decoding="async" width="520" height="660">
+              <img class="p2" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" data-src="img/spieler/platzhalter-halb.jpg" alt="" aria-hidden="true" decoding="async" width="520" height="660">
               <span class="nr">14</span>
             </div>
             <div class="info"><h3>Dchadon</h3></div>
           </article>
           <article class="karte">
             <div class="foto">
-              <picture><source type="image/webp" srcset="img/spieler/spieler-06-frontal-520.webp 520w, img/spieler/spieler-06-frontal-1040.webp 656w" sizes="(max-width:640px) 50vw, (max-width:1000px) 33vw, 286px"><img class="p1" src="img/spieler/spieler-06-frontal-520.jpg" srcset="img/spieler/spieler-06-frontal-520.jpg 520w, img/spieler/spieler-06-frontal-1040.jpg 656w" sizes="(max-width:640px) 50vw, (max-width:1000px) 33vw, 286px" alt="Ivan, Nr. 17, im Trikot der Sportfreunde Heilbronn" loading="lazy" decoding="async" width="520" height="660"></picture>
-              <picture><source type="image/webp" srcset="img/spieler/spieler-06-halb-520.webp 520w, img/spieler/spieler-06-halb-1040.webp 636w" sizes="(max-width:640px) 50vw, (max-width:1000px) 33vw, 286px"><img class="p2" src="img/spieler/spieler-06-halb-520.jpg" srcset="img/spieler/spieler-06-halb-520.jpg 520w, img/spieler/spieler-06-halb-1040.jpg 636w" sizes="(max-width:640px) 50vw, (max-width:1000px) 33vw, 286px" alt="" aria-hidden="true" loading="lazy" decoding="async" width="520" height="660"></picture>
+              <picture><source type="image/webp" srcset="img/spieler/spieler-06-frontal-520.webp 520w, img/spieler/spieler-06-frontal-780.webp 780w" sizes="(max-width:640px) 50vw, (max-width:1000px) 33vw, 286px"><img class="p1" src="img/spieler/spieler-06-frontal-520.jpg" srcset="img/spieler/spieler-06-frontal-520.jpg 520w, img/spieler/spieler-06-frontal-780.jpg 780w" sizes="(max-width:640px) 50vw, (max-width:1000px) 33vw, 286px" alt="Ivan, Nr. 17, im Trikot der Sportfreunde Heilbronn" loading="lazy" decoding="async" width="520" height="660"></picture>
+              <picture><source type="image/webp" data-srcset="img/spieler/spieler-06-halb-520.webp 520w, img/spieler/spieler-06-halb-780.webp 780w" sizes="(max-width:640px) 50vw, (max-width:1000px) 33vw, 286px"><img class="p2" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" data-src="img/spieler/spieler-06-halb-520.jpg" data-srcset="img/spieler/spieler-06-halb-520.jpg 520w, img/spieler/spieler-06-halb-780.jpg 780w" sizes="(max-width:640px) 50vw, (max-width:1000px) 33vw, 286px" alt="" aria-hidden="true" decoding="async" width="520" height="660"></picture>
               <span class="nr">17</span>
             </div>
             <div class="info"><h3>Ivan</h3></div>
           </article>
           <article class="karte">
             <div class="foto">
-              <picture><source type="image/webp" srcset="img/spieler/spieler-14-frontal-520.webp 520w, img/spieler/spieler-14-frontal-1040.webp 646w" sizes="(max-width:640px) 50vw, (max-width:1000px) 33vw, 286px"><img class="p1" src="img/spieler/spieler-14-frontal-520.jpg" srcset="img/spieler/spieler-14-frontal-520.jpg 520w, img/spieler/spieler-14-frontal-1040.jpg 646w" sizes="(max-width:640px) 50vw, (max-width:1000px) 33vw, 286px" alt="Oleg, Nr. 18, im Trikot der Sportfreunde Heilbronn" loading="lazy" decoding="async" width="520" height="660"></picture>
-              <picture><source type="image/webp" srcset="img/spieler/spieler-14-halb-520.webp 520w, img/spieler/spieler-14-halb-1040.webp 702w" sizes="(max-width:640px) 50vw, (max-width:1000px) 33vw, 286px"><img class="p2" src="img/spieler/spieler-14-halb-520.jpg" srcset="img/spieler/spieler-14-halb-520.jpg 520w, img/spieler/spieler-14-halb-1040.jpg 702w" sizes="(max-width:640px) 50vw, (max-width:1000px) 33vw, 286px" alt="" aria-hidden="true" loading="lazy" decoding="async" width="520" height="660"></picture>
+              <picture><source type="image/webp" srcset="img/spieler/spieler-14-frontal-520.webp 520w, img/spieler/spieler-14-frontal-780.webp 780w" sizes="(max-width:640px) 50vw, (max-width:1000px) 33vw, 286px"><img class="p1" src="img/spieler/spieler-14-frontal-520.jpg" srcset="img/spieler/spieler-14-frontal-520.jpg 520w, img/spieler/spieler-14-frontal-780.jpg 780w" sizes="(max-width:640px) 50vw, (max-width:1000px) 33vw, 286px" alt="Oleg, Nr. 18, im Trikot der Sportfreunde Heilbronn" loading="lazy" decoding="async" width="520" height="660"></picture>
+              <picture><source type="image/webp" data-srcset="img/spieler/spieler-14-halb-520.webp 520w, img/spieler/spieler-14-halb-780.webp 780w" sizes="(max-width:640px) 50vw, (max-width:1000px) 33vw, 286px"><img class="p2" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" data-src="img/spieler/spieler-14-halb-520.jpg" data-srcset="img/spieler/spieler-14-halb-520.jpg 520w, img/spieler/spieler-14-halb-780.jpg 780w" sizes="(max-width:640px) 50vw, (max-width:1000px) 33vw, 286px" alt="" aria-hidden="true" decoding="async" width="520" height="660"></picture>
               <span class="nr">18</span>
             </div>
             <div class="info"><h3>Oleg</h3></div>
           </article>
           <article class="karte">
             <div class="foto">
-              <picture><source type="image/webp" srcset="img/spieler/spieler-20-frontal-520.webp 520w, img/spieler/spieler-20-frontal-1040.webp 698w" sizes="(max-width:640px) 50vw, (max-width:1000px) 33vw, 286px"><img class="p1" src="img/spieler/spieler-20-frontal-520.jpg" srcset="img/spieler/spieler-20-frontal-520.jpg 520w, img/spieler/spieler-20-frontal-1040.jpg 698w" sizes="(max-width:640px) 50vw, (max-width:1000px) 33vw, 286px" alt="Eugen, Nr. 20, im Trikot der Sportfreunde Heilbronn" loading="lazy" decoding="async" width="520" height="660"></picture>
-              <picture><source type="image/webp" srcset="img/spieler/spieler-20-halb-520.webp 520w, img/spieler/spieler-20-halb-1040.webp 686w" sizes="(max-width:640px) 50vw, (max-width:1000px) 33vw, 286px"><img class="p2" src="img/spieler/spieler-20-halb-520.jpg" srcset="img/spieler/spieler-20-halb-520.jpg 520w, img/spieler/spieler-20-halb-1040.jpg 686w" sizes="(max-width:640px) 50vw, (max-width:1000px) 33vw, 286px" alt="" aria-hidden="true" loading="lazy" decoding="async" width="520" height="660"></picture>
+              <picture><source type="image/webp" srcset="img/spieler/spieler-20-frontal-520.webp 520w, img/spieler/spieler-20-frontal-780.webp 780w" sizes="(max-width:640px) 50vw, (max-width:1000px) 33vw, 286px"><img class="p1" src="img/spieler/spieler-20-frontal-520.jpg" srcset="img/spieler/spieler-20-frontal-520.jpg 520w, img/spieler/spieler-20-frontal-780.jpg 780w" sizes="(max-width:640px) 50vw, (max-width:1000px) 33vw, 286px" alt="Eugen, Nr. 20, im Trikot der Sportfreunde Heilbronn" loading="lazy" decoding="async" width="520" height="660"></picture>
+              <picture><source type="image/webp" data-srcset="img/spieler/spieler-20-halb-520.webp 520w, img/spieler/spieler-20-halb-780.webp 780w" sizes="(max-width:640px) 50vw, (max-width:1000px) 33vw, 286px"><img class="p2" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" data-src="img/spieler/spieler-20-halb-520.jpg" data-srcset="img/spieler/spieler-20-halb-520.jpg 520w, img/spieler/spieler-20-halb-780.jpg 780w" sizes="(max-width:640px) 50vw, (max-width:1000px) 33vw, 286px" alt="" aria-hidden="true" decoding="async" width="520" height="660"></picture>
               <span class="nr">20</span>
             </div>
             <div class="info"><h3>Eugen</h3></div>
           </article>
           <article class="karte">
             <div class="foto">
-              <picture><source type="image/webp" srcset="img/spieler/spieler-12-frontal-520.webp 520w, img/spieler/spieler-12-frontal-1040.webp 694w" sizes="(max-width:640px) 50vw, (max-width:1000px) 33vw, 286px"><img class="p1" src="img/spieler/spieler-12-frontal-520.jpg" srcset="img/spieler/spieler-12-frontal-520.jpg 520w, img/spieler/spieler-12-frontal-1040.jpg 694w" sizes="(max-width:640px) 50vw, (max-width:1000px) 33vw, 286px" alt="Nikolaj, Nr. 21, im Trikot der Sportfreunde Heilbronn" loading="lazy" decoding="async" width="520" height="660"></picture>
-              <picture><source type="image/webp" srcset="img/spieler/spieler-12-halb-520.webp 520w, img/spieler/spieler-12-halb-1040.webp 728w" sizes="(max-width:640px) 50vw, (max-width:1000px) 33vw, 286px"><img class="p2" src="img/spieler/spieler-12-halb-520.jpg" srcset="img/spieler/spieler-12-halb-520.jpg 520w, img/spieler/spieler-12-halb-1040.jpg 728w" sizes="(max-width:640px) 50vw, (max-width:1000px) 33vw, 286px" alt="" aria-hidden="true" loading="lazy" decoding="async" width="520" height="660"></picture>
+              <picture><source type="image/webp" srcset="img/spieler/spieler-12-frontal-520.webp 520w, img/spieler/spieler-12-frontal-780.webp 780w" sizes="(max-width:640px) 50vw, (max-width:1000px) 33vw, 286px"><img class="p1" src="img/spieler/spieler-12-frontal-520.jpg" srcset="img/spieler/spieler-12-frontal-520.jpg 520w, img/spieler/spieler-12-frontal-780.jpg 780w" sizes="(max-width:640px) 50vw, (max-width:1000px) 33vw, 286px" alt="Nikolaj, Nr. 21, im Trikot der Sportfreunde Heilbronn" loading="lazy" decoding="async" width="520" height="660"></picture>
+              <picture><source type="image/webp" data-srcset="img/spieler/spieler-12-halb-520.webp 520w, img/spieler/spieler-12-halb-780.webp 780w" sizes="(max-width:640px) 50vw, (max-width:1000px) 33vw, 286px"><img class="p2" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" data-src="img/spieler/spieler-12-halb-520.jpg" data-srcset="img/spieler/spieler-12-halb-520.jpg 520w, img/spieler/spieler-12-halb-780.jpg 780w" sizes="(max-width:640px) 50vw, (max-width:1000px) 33vw, 286px" alt="" aria-hidden="true" decoding="async" width="520" height="660"></picture>
               <span class="nr">21</span>
             </div>
             <div class="info"><h3>Nikolaj</h3></div>
           </article>
           <article class="karte">
             <div class="foto">
-              <img class="p1" src="spieler_frontal.png" alt="Platzhalter – Foto von Konstantin folgt" loading="lazy" decoding="async" width="520" height="660">
-              <img class="p2" src="spieler_halb.png" alt="" aria-hidden="true" loading="lazy" decoding="async" width="520" height="660">
+              <img class="p1" src="img/spieler/platzhalter-frontal.jpg" alt="Platzhalter – Foto von Konstantin folgt" loading="lazy" decoding="async" width="520" height="660">
+              <img class="p2" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" data-src="img/spieler/platzhalter-halb.jpg" alt="" aria-hidden="true" decoding="async" width="520" height="660">
               <span class="nr">22</span>
             </div>
             <div class="info"><h3>Konstantin</h3></div>
           </article>
           <article class="karte">
             <div class="foto">
-              <picture><source type="image/webp" srcset="img/spieler/spieler-15-frontal-520.webp 520w, img/spieler/spieler-15-frontal-1040.webp 716w" sizes="(max-width:640px) 50vw, (max-width:1000px) 33vw, 286px"><img class="p1" src="img/spieler/spieler-15-frontal-520.jpg" srcset="img/spieler/spieler-15-frontal-520.jpg 520w, img/spieler/spieler-15-frontal-1040.jpg 716w" sizes="(max-width:640px) 50vw, (max-width:1000px) 33vw, 286px" alt="Paul, Nr. 23, im Trikot der Sportfreunde Heilbronn" loading="lazy" decoding="async" width="520" height="660"></picture>
-              <picture><source type="image/webp" srcset="img/spieler/spieler-15-halb-520.webp 520w, img/spieler/spieler-15-halb-1040.webp 628w" sizes="(max-width:640px) 50vw, (max-width:1000px) 33vw, 286px"><img class="p2" src="img/spieler/spieler-15-halb-520.jpg" srcset="img/spieler/spieler-15-halb-520.jpg 520w, img/spieler/spieler-15-halb-1040.jpg 628w" sizes="(max-width:640px) 50vw, (max-width:1000px) 33vw, 286px" alt="" aria-hidden="true" loading="lazy" decoding="async" width="520" height="660"></picture>
+              <picture><source type="image/webp" srcset="img/spieler/spieler-15-frontal-520.webp 520w, img/spieler/spieler-15-frontal-780.webp 780w" sizes="(max-width:640px) 50vw, (max-width:1000px) 33vw, 286px"><img class="p1" src="img/spieler/spieler-15-frontal-520.jpg" srcset="img/spieler/spieler-15-frontal-520.jpg 520w, img/spieler/spieler-15-frontal-780.jpg 780w" sizes="(max-width:640px) 50vw, (max-width:1000px) 33vw, 286px" alt="Paul, Nr. 23, im Trikot der Sportfreunde Heilbronn" loading="lazy" decoding="async" width="520" height="660"></picture>
+              <picture><source type="image/webp" data-srcset="img/spieler/spieler-15-halb-520.webp 520w, img/spieler/spieler-15-halb-780.webp 780w" sizes="(max-width:640px) 50vw, (max-width:1000px) 33vw, 286px"><img class="p2" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" data-src="img/spieler/spieler-15-halb-520.jpg" data-srcset="img/spieler/spieler-15-halb-520.jpg 520w, img/spieler/spieler-15-halb-780.jpg 780w" sizes="(max-width:640px) 50vw, (max-width:1000px) 33vw, 286px" alt="" aria-hidden="true" decoding="async" width="520" height="660"></picture>
               <span class="nr">23</span>
             </div>
             <div class="info"><h3>Paul</h3></div>
           </article>
           <article class="karte">
             <div class="foto">
-              <picture><source type="image/webp" srcset="img/spieler/spieler-19-frontal-520.webp 520w, img/spieler/spieler-19-frontal-1040.webp 624w" sizes="(max-width:640px) 50vw, (max-width:1000px) 33vw, 286px"><img class="p1" src="img/spieler/spieler-19-frontal-520.jpg" srcset="img/spieler/spieler-19-frontal-520.jpg 520w, img/spieler/spieler-19-frontal-1040.jpg 624w" sizes="(max-width:640px) 50vw, (max-width:1000px) 33vw, 286px" alt="Viktor, Nr. 65, im Trikot der Sportfreunde Heilbronn" loading="lazy" decoding="async" width="520" height="660"></picture>
-              <picture><source type="image/webp" srcset="img/spieler/spieler-19-halb-520.webp 520w, img/spieler/spieler-19-halb-1040.webp 650w" sizes="(max-width:640px) 50vw, (max-width:1000px) 33vw, 286px"><img class="p2" src="img/spieler/spieler-19-halb-520.jpg" srcset="img/spieler/spieler-19-halb-520.jpg 520w, img/spieler/spieler-19-halb-1040.jpg 650w" sizes="(max-width:640px) 50vw, (max-width:1000px) 33vw, 286px" alt="" aria-hidden="true" loading="lazy" decoding="async" width="520" height="660"></picture>
+              <picture><source type="image/webp" srcset="img/spieler/spieler-19-frontal-520.webp 520w, img/spieler/spieler-19-frontal-780.webp 780w" sizes="(max-width:640px) 50vw, (max-width:1000px) 33vw, 286px"><img class="p1" src="img/spieler/spieler-19-frontal-520.jpg" srcset="img/spieler/spieler-19-frontal-520.jpg 520w, img/spieler/spieler-19-frontal-780.jpg 780w" sizes="(max-width:640px) 50vw, (max-width:1000px) 33vw, 286px" alt="Viktor, Nr. 65, im Trikot der Sportfreunde Heilbronn" loading="lazy" decoding="async" width="520" height="660"></picture>
+              <picture><source type="image/webp" data-srcset="img/spieler/spieler-19-halb-520.webp 520w, img/spieler/spieler-19-halb-780.webp 780w" sizes="(max-width:640px) 50vw, (max-width:1000px) 33vw, 286px"><img class="p2" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" data-src="img/spieler/spieler-19-halb-520.jpg" data-srcset="img/spieler/spieler-19-halb-520.jpg 520w, img/spieler/spieler-19-halb-780.jpg 780w" sizes="(max-width:640px) 50vw, (max-width:1000px) 33vw, 286px" alt="" aria-hidden="true" decoding="async" width="520" height="660"></picture>
               <span class="nr">65</span>
             </div>
             <div class="info"><h3>Viktor</h3></div>
           </article>
           <article class="karte">
             <div class="foto">
-              <img class="p1" src="spieler_frontal.png" alt="Platzhalter – Foto von Waldemar folgt" loading="lazy" decoding="async" width="520" height="660">
-              <img class="p2" src="spieler_halb.png" alt="" aria-hidden="true" loading="lazy" decoding="async" width="520" height="660">
+              <img class="p1" src="img/spieler/platzhalter-frontal.jpg" alt="Platzhalter – Foto von Waldemar folgt" loading="lazy" decoding="async" width="520" height="660">
+              <img class="p2" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" data-src="img/spieler/platzhalter-halb.jpg" alt="" aria-hidden="true" decoding="async" width="520" height="660">
               <span class="nr">80</span>
             </div>
             <div class="info"><h3>Waldemar</h3></div>
@@ -464,85 +512,85 @@
         </div>
       </section>
 
-      <section class="linie">
+      <section class="linie" id="sturm">
         <div class="linie-kopf"><h2>Sturm</h2><span class="anzahl">10</span></div>
         <div class="raster">
           <article class="karte">
             <div class="foto">
-              <picture><source type="image/webp" srcset="img/spieler/spieler-11-frontal-520.webp 520w, img/spieler/spieler-11-frontal-1040.webp 1040w" sizes="(max-width:640px) 50vw, (max-width:1000px) 33vw, 286px"><img class="p1" src="img/spieler/spieler-11-frontal-520.jpg" srcset="img/spieler/spieler-11-frontal-520.jpg 520w, img/spieler/spieler-11-frontal-1040.jpg 1040w" sizes="(max-width:640px) 50vw, (max-width:1000px) 33vw, 286px" alt="Josef, Nr. 7, im Trikot der Sportfreunde Heilbronn" loading="lazy" decoding="async" width="520" height="660"></picture>
-              <picture><source type="image/webp" srcset="img/spieler/spieler-11-halb-520.webp 520w, img/spieler/spieler-11-halb-1040.webp 1040w" sizes="(max-width:640px) 50vw, (max-width:1000px) 33vw, 286px"><img class="p2" src="img/spieler/spieler-11-halb-520.jpg" srcset="img/spieler/spieler-11-halb-520.jpg 520w, img/spieler/spieler-11-halb-1040.jpg 1040w" sizes="(max-width:640px) 50vw, (max-width:1000px) 33vw, 286px" alt="" aria-hidden="true" loading="lazy" decoding="async" width="520" height="660"></picture>
+              <picture><source type="image/webp" srcset="img/spieler/spieler-11-frontal-520.webp 520w, img/spieler/spieler-11-frontal-780.webp 780w" sizes="(max-width:640px) 50vw, (max-width:1000px) 33vw, 286px"><img class="p1" src="img/spieler/spieler-11-frontal-520.jpg" srcset="img/spieler/spieler-11-frontal-520.jpg 520w, img/spieler/spieler-11-frontal-780.jpg 780w" sizes="(max-width:640px) 50vw, (max-width:1000px) 33vw, 286px" alt="Josef, Nr. 7, im Trikot der Sportfreunde Heilbronn" loading="lazy" decoding="async" width="520" height="660"></picture>
+              <picture><source type="image/webp" data-srcset="img/spieler/spieler-11-halb-520.webp 520w, img/spieler/spieler-11-halb-780.webp 780w" sizes="(max-width:640px) 50vw, (max-width:1000px) 33vw, 286px"><img class="p2" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" data-src="img/spieler/spieler-11-halb-520.jpg" data-srcset="img/spieler/spieler-11-halb-520.jpg 520w, img/spieler/spieler-11-halb-780.jpg 780w" sizes="(max-width:640px) 50vw, (max-width:1000px) 33vw, 286px" alt="" aria-hidden="true" decoding="async" width="520" height="660"></picture>
               <span class="nr">7</span>
             </div>
             <div class="info"><h3>Josef</h3></div>
           </article>
           <article class="karte">
             <div class="foto">
-              <img class="p1" src="spieler_frontal.png" alt="Platzhalter – Foto von Alex folgt" loading="lazy" decoding="async" width="520" height="660">
-              <img class="p2" src="spieler_halb.png" alt="" aria-hidden="true" loading="lazy" decoding="async" width="520" height="660">
+              <img class="p1" src="img/spieler/platzhalter-frontal.jpg" alt="Platzhalter – Foto von Alex folgt" loading="lazy" decoding="async" width="520" height="660">
+              <img class="p2" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" data-src="img/spieler/platzhalter-halb.jpg" alt="" aria-hidden="true" decoding="async" width="520" height="660">
               <span class="nr">9</span>
             </div>
             <div class="info"><h3>Alex</h3></div>
           </article>
           <article class="karte">
             <div class="foto">
-              <picture><source type="image/webp" srcset="img/spieler/spieler-03-frontal-520.webp 520w, img/spieler/spieler-03-frontal-1040.webp 1040w" sizes="(max-width:640px) 50vw, (max-width:1000px) 33vw, 286px"><img class="p1" src="img/spieler/spieler-03-frontal-520.jpg" srcset="img/spieler/spieler-03-frontal-520.jpg 520w, img/spieler/spieler-03-frontal-1040.jpg 1040w" sizes="(max-width:640px) 50vw, (max-width:1000px) 33vw, 286px" alt="Andrej, Nr. 11, im Trikot der Sportfreunde Heilbronn" loading="lazy" decoding="async" width="520" height="660"></picture>
-              <picture><source type="image/webp" srcset="img/spieler/spieler-03-halb-520.webp 520w, img/spieler/spieler-03-halb-1040.webp 984w" sizes="(max-width:640px) 50vw, (max-width:1000px) 33vw, 286px"><img class="p2" src="img/spieler/spieler-03-halb-520.jpg" srcset="img/spieler/spieler-03-halb-520.jpg 520w, img/spieler/spieler-03-halb-1040.jpg 984w" sizes="(max-width:640px) 50vw, (max-width:1000px) 33vw, 286px" alt="" aria-hidden="true" loading="lazy" decoding="async" width="520" height="660"></picture>
+              <picture><source type="image/webp" srcset="img/spieler/spieler-03-frontal-520.webp 520w, img/spieler/spieler-03-frontal-780.webp 780w" sizes="(max-width:640px) 50vw, (max-width:1000px) 33vw, 286px"><img class="p1" src="img/spieler/spieler-03-frontal-520.jpg" srcset="img/spieler/spieler-03-frontal-520.jpg 520w, img/spieler/spieler-03-frontal-780.jpg 780w" sizes="(max-width:640px) 50vw, (max-width:1000px) 33vw, 286px" alt="Andrej, Nr. 11, im Trikot der Sportfreunde Heilbronn" loading="lazy" decoding="async" width="520" height="660"></picture>
+              <picture><source type="image/webp" data-srcset="img/spieler/spieler-03-halb-520.webp 520w, img/spieler/spieler-03-halb-780.webp 780w" sizes="(max-width:640px) 50vw, (max-width:1000px) 33vw, 286px"><img class="p2" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" data-src="img/spieler/spieler-03-halb-520.jpg" data-srcset="img/spieler/spieler-03-halb-520.jpg 520w, img/spieler/spieler-03-halb-780.jpg 780w" sizes="(max-width:640px) 50vw, (max-width:1000px) 33vw, 286px" alt="" aria-hidden="true" decoding="async" width="520" height="660"></picture>
               <span class="nr">11</span>
             </div>
             <div class="info"><h3>Andrej</h3></div>
           </article>
           <article class="karte">
             <div class="foto">
-              <img class="p1" src="spieler_frontal.png" alt="Platzhalter – Foto von Daniil folgt" loading="lazy" decoding="async" width="520" height="660">
-              <img class="p2" src="spieler_halb.png" alt="" aria-hidden="true" loading="lazy" decoding="async" width="520" height="660">
+              <img class="p1" src="img/spieler/platzhalter-frontal.jpg" alt="Platzhalter – Foto von Daniil folgt" loading="lazy" decoding="async" width="520" height="660">
+              <img class="p2" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" data-src="img/spieler/platzhalter-halb.jpg" alt="" aria-hidden="true" decoding="async" width="520" height="660">
               <span class="nr">19</span>
             </div>
             <div class="info"><h3>Daniil</h3></div>
           </article>
           <article class="karte">
             <div class="foto">
-              <picture><source type="image/webp" srcset="img/spieler/spieler-17-frontal-520.webp 520w, img/spieler/spieler-17-frontal-1040.webp 1040w" sizes="(max-width:640px) 50vw, (max-width:1000px) 33vw, 286px"><img class="p1" src="img/spieler/spieler-17-frontal-520.jpg" srcset="img/spieler/spieler-17-frontal-520.jpg 520w, img/spieler/spieler-17-frontal-1040.jpg 1040w" sizes="(max-width:640px) 50vw, (max-width:1000px) 33vw, 286px" alt="Roman, Nr. 27, im Trikot der Sportfreunde Heilbronn" loading="lazy" decoding="async" width="520" height="660"></picture>
-              <picture><source type="image/webp" srcset="img/spieler/spieler-17-halb-520.webp 520w, img/spieler/spieler-17-halb-1040.webp 1040w" sizes="(max-width:640px) 50vw, (max-width:1000px) 33vw, 286px"><img class="p2" src="img/spieler/spieler-17-halb-520.jpg" srcset="img/spieler/spieler-17-halb-520.jpg 520w, img/spieler/spieler-17-halb-1040.jpg 1040w" sizes="(max-width:640px) 50vw, (max-width:1000px) 33vw, 286px" alt="" aria-hidden="true" loading="lazy" decoding="async" width="520" height="660"></picture>
+              <picture><source type="image/webp" srcset="img/spieler/spieler-17-frontal-520.webp 520w, img/spieler/spieler-17-frontal-780.webp 780w" sizes="(max-width:640px) 50vw, (max-width:1000px) 33vw, 286px"><img class="p1" src="img/spieler/spieler-17-frontal-520.jpg" srcset="img/spieler/spieler-17-frontal-520.jpg 520w, img/spieler/spieler-17-frontal-780.jpg 780w" sizes="(max-width:640px) 50vw, (max-width:1000px) 33vw, 286px" alt="Roman, Nr. 27, im Trikot der Sportfreunde Heilbronn" loading="lazy" decoding="async" width="520" height="660"></picture>
+              <picture><source type="image/webp" data-srcset="img/spieler/spieler-17-halb-520.webp 520w, img/spieler/spieler-17-halb-780.webp 780w" sizes="(max-width:640px) 50vw, (max-width:1000px) 33vw, 286px"><img class="p2" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" data-src="img/spieler/spieler-17-halb-520.jpg" data-srcset="img/spieler/spieler-17-halb-520.jpg 520w, img/spieler/spieler-17-halb-780.jpg 780w" sizes="(max-width:640px) 50vw, (max-width:1000px) 33vw, 286px" alt="" aria-hidden="true" decoding="async" width="520" height="660"></picture>
               <span class="nr">27</span>
             </div>
             <div class="info"><h3>Roman</h3></div>
           </article>
           <article class="karte">
             <div class="foto">
-              <img class="p1" src="spieler_frontal.png" alt="Platzhalter – Foto von Eidan folgt" loading="lazy" decoding="async" width="520" height="660">
-              <img class="p2" src="spieler_halb.png" alt="" aria-hidden="true" loading="lazy" decoding="async" width="520" height="660">
+              <img class="p1" src="img/spieler/platzhalter-frontal.jpg" alt="Platzhalter – Foto von Eidan folgt" loading="lazy" decoding="async" width="520" height="660">
+              <img class="p2" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" data-src="img/spieler/platzhalter-halb.jpg" alt="" aria-hidden="true" decoding="async" width="520" height="660">
               <span class="nr">69</span>
             </div>
             <div class="info"><h3>Eidan</h3></div>
           </article>
           <article class="karte">
             <div class="foto">
-              <picture><source type="image/webp" srcset="img/spieler/spieler-01-frontal-520.webp 520w, img/spieler/spieler-01-frontal-1040.webp 1040w" sizes="(max-width:640px) 50vw, (max-width:1000px) 33vw, 286px"><img class="p1" src="img/spieler/spieler-01-frontal-520.jpg" srcset="img/spieler/spieler-01-frontal-520.jpg 520w, img/spieler/spieler-01-frontal-1040.jpg 1040w" sizes="(max-width:640px) 50vw, (max-width:1000px) 33vw, 286px" alt="Sascha, Nr. 76, im Trikot der Sportfreunde Heilbronn" loading="lazy" decoding="async" width="520" height="660"></picture>
-              <picture><source type="image/webp" srcset="img/spieler/spieler-01-halb-520.webp 520w, img/spieler/spieler-01-halb-1040.webp 1040w" sizes="(max-width:640px) 50vw, (max-width:1000px) 33vw, 286px"><img class="p2" src="img/spieler/spieler-01-halb-520.jpg" srcset="img/spieler/spieler-01-halb-520.jpg 520w, img/spieler/spieler-01-halb-1040.jpg 1040w" sizes="(max-width:640px) 50vw, (max-width:1000px) 33vw, 286px" alt="" aria-hidden="true" loading="lazy" decoding="async" width="520" height="660"></picture>
+              <picture><source type="image/webp" srcset="img/spieler/spieler-01-frontal-520.webp 520w, img/spieler/spieler-01-frontal-780.webp 780w" sizes="(max-width:640px) 50vw, (max-width:1000px) 33vw, 286px"><img class="p1" src="img/spieler/spieler-01-frontal-520.jpg" srcset="img/spieler/spieler-01-frontal-520.jpg 520w, img/spieler/spieler-01-frontal-780.jpg 780w" sizes="(max-width:640px) 50vw, (max-width:1000px) 33vw, 286px" alt="Sascha, Nr. 76, im Trikot der Sportfreunde Heilbronn" loading="lazy" decoding="async" width="520" height="660"></picture>
+              <picture><source type="image/webp" data-srcset="img/spieler/spieler-01-halb-520.webp 520w, img/spieler/spieler-01-halb-780.webp 780w" sizes="(max-width:640px) 50vw, (max-width:1000px) 33vw, 286px"><img class="p2" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" data-src="img/spieler/spieler-01-halb-520.jpg" data-srcset="img/spieler/spieler-01-halb-520.jpg 520w, img/spieler/spieler-01-halb-780.jpg 780w" sizes="(max-width:640px) 50vw, (max-width:1000px) 33vw, 286px" alt="" aria-hidden="true" decoding="async" width="520" height="660"></picture>
               <span class="nr">76</span>
             </div>
             <div class="info"><h3>Sascha</h3></div>
           </article>
           <article class="karte">
             <div class="foto">
-              <picture><source type="image/webp" srcset="img/spieler/spieler-16-frontal-520.webp 520w, img/spieler/spieler-16-frontal-1040.webp 1040w" sizes="(max-width:640px) 50vw, (max-width:1000px) 33vw, 286px"><img class="p1" src="img/spieler/spieler-16-frontal-520.jpg" srcset="img/spieler/spieler-16-frontal-520.jpg 520w, img/spieler/spieler-16-frontal-1040.jpg 1040w" sizes="(max-width:640px) 50vw, (max-width:1000px) 33vw, 286px" alt="Roman, Nr. 78, im Trikot der Sportfreunde Heilbronn" loading="lazy" decoding="async" width="520" height="660"></picture>
-              <picture><source type="image/webp" srcset="img/spieler/spieler-16-halb-520.webp 520w, img/spieler/spieler-16-halb-1040.webp 1040w" sizes="(max-width:640px) 50vw, (max-width:1000px) 33vw, 286px"><img class="p2" src="img/spieler/spieler-16-halb-520.jpg" srcset="img/spieler/spieler-16-halb-520.jpg 520w, img/spieler/spieler-16-halb-1040.jpg 1040w" sizes="(max-width:640px) 50vw, (max-width:1000px) 33vw, 286px" alt="" aria-hidden="true" loading="lazy" decoding="async" width="520" height="660"></picture>
+              <picture><source type="image/webp" srcset="img/spieler/spieler-16-frontal-520.webp 520w, img/spieler/spieler-16-frontal-780.webp 780w" sizes="(max-width:640px) 50vw, (max-width:1000px) 33vw, 286px"><img class="p1" src="img/spieler/spieler-16-frontal-520.jpg" srcset="img/spieler/spieler-16-frontal-520.jpg 520w, img/spieler/spieler-16-frontal-780.jpg 780w" sizes="(max-width:640px) 50vw, (max-width:1000px) 33vw, 286px" alt="Roman, Nr. 78, im Trikot der Sportfreunde Heilbronn" loading="lazy" decoding="async" width="520" height="660"></picture>
+              <picture><source type="image/webp" data-srcset="img/spieler/spieler-16-halb-520.webp 520w, img/spieler/spieler-16-halb-780.webp 780w" sizes="(max-width:640px) 50vw, (max-width:1000px) 33vw, 286px"><img class="p2" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" data-src="img/spieler/spieler-16-halb-520.jpg" data-srcset="img/spieler/spieler-16-halb-520.jpg 520w, img/spieler/spieler-16-halb-780.jpg 780w" sizes="(max-width:640px) 50vw, (max-width:1000px) 33vw, 286px" alt="" aria-hidden="true" decoding="async" width="520" height="660"></picture>
               <span class="nr">78</span>
             </div>
             <div class="info"><h3>Roman</h3></div>
           </article>
           <article class="karte">
             <div class="foto">
-              <img class="p1" src="spieler_frontal.png" alt="Platzhalter – Foto von Edvard folgt" loading="lazy" decoding="async" width="520" height="660">
-              <img class="p2" src="spieler_halb.png" alt="" aria-hidden="true" loading="lazy" decoding="async" width="520" height="660">
+              <img class="p1" src="img/spieler/platzhalter-frontal.jpg" alt="Platzhalter – Foto von Edvard folgt" loading="lazy" decoding="async" width="520" height="660">
+              <img class="p2" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" data-src="img/spieler/platzhalter-halb.jpg" alt="" aria-hidden="true" decoding="async" width="520" height="660">
               <span class="nr">91</span>
             </div>
             <div class="info"><h3>Edvard</h3></div>
           </article>
           <article class="karte">
             <div class="foto">
-              <picture><source type="image/webp" srcset="img/spieler/spieler-02-frontal-520.webp 520w, img/spieler/spieler-02-frontal-1040.webp 690w" sizes="(max-width:640px) 50vw, (max-width:1000px) 33vw, 286px"><img class="p1" src="img/spieler/spieler-02-frontal-520.jpg" srcset="img/spieler/spieler-02-frontal-520.jpg 520w, img/spieler/spieler-02-frontal-1040.jpg 690w" sizes="(max-width:640px) 50vw, (max-width:1000px) 33vw, 286px" alt="Andrei, Nr. 99, im Trikot der Sportfreunde Heilbronn" loading="lazy" decoding="async" width="520" height="660"></picture>
-              <picture><source type="image/webp" srcset="img/spieler/spieler-02-halb-520.webp 520w, img/spieler/spieler-02-halb-1040.webp 742w" sizes="(max-width:640px) 50vw, (max-width:1000px) 33vw, 286px"><img class="p2" src="img/spieler/spieler-02-halb-520.jpg" srcset="img/spieler/spieler-02-halb-520.jpg 520w, img/spieler/spieler-02-halb-1040.jpg 742w" sizes="(max-width:640px) 50vw, (max-width:1000px) 33vw, 286px" alt="" aria-hidden="true" loading="lazy" decoding="async" width="520" height="660"></picture>
+              <picture><source type="image/webp" srcset="img/spieler/spieler-02-frontal-520.webp 520w, img/spieler/spieler-02-frontal-780.webp 780w" sizes="(max-width:640px) 50vw, (max-width:1000px) 33vw, 286px"><img class="p1" src="img/spieler/spieler-02-frontal-520.jpg" srcset="img/spieler/spieler-02-frontal-520.jpg 520w, img/spieler/spieler-02-frontal-780.jpg 780w" sizes="(max-width:640px) 50vw, (max-width:1000px) 33vw, 286px" alt="Andrei, Nr. 99, im Trikot der Sportfreunde Heilbronn" loading="lazy" decoding="async" width="520" height="660"></picture>
+              <picture><source type="image/webp" data-srcset="img/spieler/spieler-02-halb-520.webp 520w, img/spieler/spieler-02-halb-780.webp 780w" sizes="(max-width:640px) 50vw, (max-width:1000px) 33vw, 286px"><img class="p2" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" data-src="img/spieler/spieler-02-halb-520.jpg" data-srcset="img/spieler/spieler-02-halb-520.jpg 520w, img/spieler/spieler-02-halb-780.jpg 780w" sizes="(max-width:640px) 50vw, (max-width:1000px) 33vw, 286px" alt="" aria-hidden="true" decoding="async" width="520" height="660"></picture>
               <span class="nr">99</span>
             </div>
             <div class="info"><h3>Andrei</h3></div>
@@ -559,18 +607,46 @@
 </div>
 
 <script>
-document.querySelectorAll('.karte').forEach(function(k){
-  k.addEventListener('click',function(){
+(function(){
+  var karten=document.querySelectorAll('.karte');
+  function laden(k){
+    if(k.dataset.geladen) return; k.dataset.geladen='1';
+    var im=k.querySelector('img.p2'); if(!im||!im.dataset.src) return;
+    im.parentNode.querySelectorAll('source[data-srcset]').forEach(function(q){ q.srcset=q.dataset.srcset; });
+    if(im.dataset.srcset) im.srcset=im.dataset.srcset;
+    im.src=im.dataset.src;
+  }
+  function schliessen(ausser){
+    document.querySelectorAll('.karte.gedreht').forEach(function(x){
+      if(x!==ausser){ x.classList.remove('gedreht'); x.setAttribute('aria-pressed','false'); }
+    });
+  }
+  function umschalten(k){
+    laden(k);
     var offen=k.classList.contains('gedreht');
-    document.querySelectorAll('.karte.gedreht').forEach(function(x){x.classList.remove('gedreht');});
-    if(!offen) k.classList.add('gedreht');
+    schliessen(null);
+    if(!offen){ k.classList.add('gedreht'); k.setAttribute('aria-pressed','true'); }
+  }
+  karten.forEach(function(k){
+    var name=(k.querySelector('h3')||{}).textContent||'Spieler';
+    var nr=(k.querySelector('.nr')||{}).textContent||'';
+    k.setAttribute('tabindex','0');
+    k.setAttribute('role','button');
+    k.setAttribute('aria-pressed','false');
+    k.setAttribute('aria-label',name+(nr?', Nummer '+nr:'')+' – zweite Ansicht umschalten');
+    ['pointerdown','mouseenter','focus'].forEach(function(ev){ k.addEventListener(ev,function(){ laden(k); },{once:true,passive:true}); });
+    k.addEventListener('click',function(){ umschalten(k); });
+    k.addEventListener('keydown',function(e){
+      if(e.key==='Enter'||e.key===' '){ e.preventDefault(); umschalten(k); }
+      else if(e.key==='Escape'){ schliessen(null); }
+    });
   });
-});
-/* Tipp neben eine Karte schließt geöffnete Karten */
-document.addEventListener('click',function(e){
-  if(e.target.closest('.karte')) return;
-  document.querySelectorAll('.karte.gedreht').forEach(function(x){x.classList.remove('gedreht');});
-});
+  /* Tipp neben eine Karte schließt geöffnete Karten */
+  document.addEventListener('click',function(e){
+    if(e.target.closest('.karte')) return;
+    schliessen(null);
+  });
+})();
 </script>
 </body>
 </html>

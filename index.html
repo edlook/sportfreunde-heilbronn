@@ -330,7 +330,15 @@
     @media(max-width:600px) {
       .nav-mobil { font-size:11px; letter-spacing:1px; margin-right:12px; }
     }
-  </style>
+  
+    /* Handy (10.11.2026): iPhone zoomt bei < 16 px in Eingabefelder; Tippflächen mind. 44 px */
+    @media(max-width:768px) {
+      .form-group input, .form-group textarea { font-size:16px; }
+      .contact-value a { display:inline-block; padding:12px 0; margin:-12px 0; }
+      .footer-links a { display:inline-flex; align-items:center; min-height:44px; padding:0 10px; }
+      .nav-mobil { padding:14px 6px; margin-right:6px; }
+    }
+</style>
 </head>
 <body>
 
