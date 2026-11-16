@@ -121,11 +121,62 @@
       text-underline-offset:3px; overflow-wrap:anywhere; transition:color .2s, text-decoration-color .2s; }
     .text a:hover, .text a:focus-visible { color:var(--gold); text-decoration-color:var(--gold); }
     .text .stand { margin-top:clamp(36px,6vw,48px); font-size:13px; color:var(--gray); }
+    /* ===== Design-Upgrade (16.11.2026): weichere Formen, schwebende Segmente ===== */
+    :root { --hex:polygon(50% 0,100% 25%,100% 75%,50% 100%,0 75%,0 25%); }
+
+    /* Schwebende Segmente im Hintergrund (nur transform/opacity, GPU) */
+    .schweber { position:fixed; inset:0; z-index:1; pointer-events:none; overflow:hidden; }
+    .schweber svg { position:absolute; display:block; overflow:visible; will-change:transform; animation:schweb var(--t,22s) ease-in-out var(--d,0s) infinite alternate; }
+    .schweber .hx { fill:none; stroke:currentColor; stroke-width:1.6; }
+    .schweber .hx.voll { fill:currentColor; stroke:none; }
+    .schweber .bg { fill:none; stroke:currentColor; stroke-width:2; stroke-linecap:round; }
+    .schweber .b { color:rgba(45,85,212,.55); } .schweber .g { color:rgba(212,163,42,.5); } .schweber .w { color:rgba(255,255,255,.22); }
+    .schweber .voll.b { color:rgba(45,85,212,.12); } .schweber .voll.g { color:rgba(212,163,42,.10); }
+    @keyframes schweb {
+      0%   { transform:translate3d(0,0,0) rotate(var(--r0,0deg)); }
+      100% { transform:translate3d(var(--dx,14px),var(--dy,-34px),0) rotate(var(--r1,18deg)); }
+    }
+    @media(max-width:700px){ .schweber .gross-nur { display:none; } .schweber svg { opacity:.8; } }
+
+    /* Kopfbereich */
+    header { position:relative; }
+    header::before { content:""; position:absolute; left:50%; top:30%; width:min(620px,92vw); height:340px; translate:-50% -50%;
+      background:radial-gradient(closest-side, rgba(45,85,212,.30), transparent); filter:blur(20px); z-index:-1; pointer-events:none; }
+    .marke { background:rgba(212,163,42,.08); box-shadow:0 0 28px -6px rgba(212,163,42,.35); }
+    header h1 { text-shadow:0 8px 40px rgba(26,63,160,.45); }
+    .strich { position:relative; height:1px; }
+    .strich::after { content:""; position:absolute; left:50%; top:50%; width:12px; height:14px; translate:-50% -50%;
+      clip-path:var(--hex); background:var(--gold); box-shadow:0 0 0 4px #0d1220; }
+
+
+    .text h2 { display:flex; align-items:center; gap:12px; }
+    .text h2::before { content:""; flex:0 0 auto; width:13px; height:15px; clip-path:var(--hex); background:linear-gradient(160deg,var(--gold),#8a6a14); }
+    .text { padding:clamp(20px,4vw,34px); border-radius:28px; border:1px solid rgba(255,255,255,.08);
+      background:linear-gradient(165deg,rgba(255,255,255,.05),rgba(255,255,255,.015)); max-width:640px; }
+    @media(max-width:600px){ .text { padding:20px 18px; border-radius:22px; } }
+    footer { border-top-color:rgba(212,163,42,.2); }
+    .zurueck { min-height:44px; }
 </style>
 </head>
 <body>
 
 <div class="seiten-bg"></div>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><defs>
+  <symbol id="hx" viewBox="0 0 100 115"><polygon points="50,2 98,29 98,86 50,113 2,86 2,29"/></symbol>
+  <symbol id="bg" viewBox="0 0 100 100"><path d="M8 78 A46 46 0 0 1 78 8"/></symbol>
+</defs></svg>
+<div class="schweber" aria-hidden="true">
+  <svg class="gross-nur" style="left:4%;top:14%;width:92px;height:106px;--t:24s;--dy:-40px;--dx:18px;--r1:20deg" viewBox="0 0 100 115"><use href="#hx" class="hx b"/></svg>
+  <svg style="left:86%;top:10%;width:64px;height:74px;--t:19s;--d:-4s;--dy:-30px;--dx:-14px;--r0:12deg;--r1:-16deg" viewBox="0 0 100 115"><use href="#hx" class="hx voll b"/></svg>
+  <svg style="left:90%;top:42%;width:120px;height:138px;--t:28s;--d:-9s;--dy:-46px;--dx:-20px;--r1:24deg" viewBox="0 0 100 115"><use href="#hx" class="hx g"/></svg>
+  <svg class="gross-nur" style="left:2%;top:52%;width:70px;height:80px;--t:21s;--d:-6s;--dy:-34px;--dx:16px;--r1:-22deg" viewBox="0 0 100 115"><use href="#hx" class="hx voll g"/></svg>
+  <svg style="left:78%;top:74%;width:84px;height:97px;--t:26s;--d:-12s;--dy:-38px;--dx:12px;--r1:18deg" viewBox="0 0 100 115"><use href="#hx" class="hx b"/></svg>
+  <svg class="gross-nur" style="left:12%;top:82%;width:110px;height:126px;--t:30s;--d:-3s;--dy:-50px;--dx:-18px;--r1:-18deg" viewBox="0 0 100 115"><use href="#hx" class="hx w"/></svg>
+  <svg style="left:70%;top:24%;width:120px;height:120px;--t:23s;--d:-7s;--dy:-36px;--dx:-24px;--r0:0deg;--r1:40deg" viewBox="0 0 100 100"><use href="#bg" class="bg g"/></svg>
+  <svg class="gross-nur" style="left:22%;top:34%;width:90px;height:90px;--t:25s;--d:-14s;--dy:-30px;--dx:22px;--r0:180deg;--r1:230deg" viewBox="0 0 100 100"><use href="#bg" class="bg b"/></svg>
+  <svg style="left:48%;top:92%;width:100px;height:100px;--t:27s;--d:-5s;--dy:-28px;--dx:20px;--r0:90deg;--r1:140deg" viewBox="0 0 100 100"><use href="#bg" class="bg w"/></svg>
+</div>
+
 <svg class="hero-deco hero-deco-left" viewBox="0 0 320 1000" xmlns="http://www.w3.org/2000/svg">
       <line x1="290" y1="0" x2="290" y2="1000" stroke="rgba(255,255,255,0.07)" stroke-width="1"/>
       <line x1="220" y1="0" x2="220" y2="1000" stroke="rgba(255,255,255,0.03)" stroke-width="1"/>

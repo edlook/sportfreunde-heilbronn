@@ -338,9 +338,124 @@
       .footer-links a { display:inline-flex; align-items:center; min-height:44px; padding:0 10px; }
       .nav-mobil { padding:14px 6px; margin-right:6px; }
     }
+
+    /* ===== Design-Upgrade (16.11.2026): weiche Formen, Sechsecke, schwebende Segmente ===== */
+    :root { --hex:polygon(50% 0,100% 25%,100% 75%,50% 100%,0 75%,0 25%); }
+
+    /* Schwebende Segmente (nur transform/opacity) */
+    .sw { position:absolute; inset:0; z-index:1; pointer-events:none; overflow:hidden; border-radius:inherit; }
+    .sw svg { position:absolute; display:block; overflow:visible; will-change:transform; animation:schweb var(--t,22s) ease-in-out var(--d,0s) infinite alternate; }
+    .sw .hx { fill:none; stroke:currentColor; stroke-width:1.6; }
+    .sw .hx.voll { fill:currentColor; stroke:none; }
+    .sw .bg { fill:none; stroke:currentColor; stroke-width:2; stroke-linecap:round; }
+    .sw .b { color:rgba(45,85,212,.55); } .sw .g { color:rgba(212,163,42,.5); } .sw .w { color:rgba(255,255,255,.2); }
+    .sw .voll.b { color:rgba(45,85,212,.14); } .sw .voll.g { color:rgba(212,163,42,.11); }
+    @keyframes schweb {
+      0%   { transform:translate3d(0,0,0) rotate(var(--r0,0deg)); }
+      100% { transform:translate3d(var(--dx,14px),var(--dy,-34px),0) rotate(var(--r1,18deg)); }
+    }
+    @keyframes logoschweb { 0%{ translate:0 0; } 100%{ translate:0 -18px; } }
+    .hero-logo-bg { animation:logoschweb 9s ease-in-out infinite alternate; }
+
+    /* Navigation: schwebende Glas-Leiste */
+    nav { top:12px; left:clamp(10px,2vw,28px); right:clamp(10px,2vw,28px); padding:10px 26px 10px 20px; border-radius:100px;
+      border:1px solid rgba(255,255,255,.10); background:rgba(26,28,42,.78); box-shadow:0 14px 40px -18px rgba(0,0,0,.7);
+      -webkit-backdrop-filter:blur(14px); backdrop-filter:blur(14px); }
+    html { scroll-padding-top:100px; }
+
+    /* Buttons: rund statt eckig */
+    .btn-primary { clip-path:none; border-radius:100px; padding:13px 30px; }
+    .btn-gold { box-shadow:0 10px 30px -10px rgba(212,163,42,.6); }
+    .btn-outline { border-radius:100px; padding:13px 30px; }
+    .btn-primary:focus-visible { outline-offset:3px; }
+    .btn-gold:focus-visible { outline:2px solid var(--white); outline-offset:3px; }
+    button.btn-primary { background:var(--blue); }
+
+    /* Hero */
+    .hero-badge { background:rgba(212,163,42,.08); border-color:rgba(212,163,42,.4); box-shadow:0 0 28px -8px rgba(212,163,42,.4); }
+    .hero-badge::before { border-radius:0; width:8px; height:9px; clip-path:var(--hex); }
+    .hero h1 { text-shadow:0 10px 50px rgba(26,63,160,.5); }
+    .hero-content::before { content:""; position:absolute; left:-80px; bottom:-60px; width:520px; height:420px;
+      background:radial-gradient(closest-side, rgba(45,85,212,.22), transparent); filter:blur(24px); z-index:-1; pointer-events:none; }
+
+    /* Statistik: weiche Kacheln */
+    .stats-bar { padding:32px clamp(16px,4vw,48px) 76px; gap:16px; justify-content:center; }
+    .stat-item { flex:1 1 170px; max-width:260px; padding:20px 18px 18px; border-radius:22px; border:1px solid rgba(255,255,255,.08);
+      background:linear-gradient(160deg,rgba(255,255,255,.07),rgba(255,255,255,.02)); }
+    .stat-num { text-shadow:0 0 24px rgba(212,163,42,.35); }
+
+    /* Abschnitte: runde Oberkante, fließende Übergänge */
+    .about, .cards-section, .contact { border-radius:44px 44px 0 0; margin-top:-44px; z-index:2; }
+    .cards-section, .contact { box-shadow:0 -18px 40px -24px rgba(0,0,0,.6); }
+    .about { box-shadow:0 -18px 40px -24px rgba(0,0,0,.6); padding-top:140px; }
+    .cards-section, .contact { padding-top:144px; }
+    footer { border-radius:36px 36px 0 0; margin-top:-36px; position:relative; z-index:3; padding-top:48px; }
+    .contact { padding-bottom:136px; }
+
+    .section-tag { display:inline-flex; align-items:center; gap:9px; padding:6px 15px; border-radius:100px;
+      border:1px solid rgba(45,85,212,.45); background:rgba(26,63,160,.18); color:#8fa8f0; }
+    .section-tag::before { content:""; width:8px; height:9px; clip-path:var(--hex); background:var(--gold); }
+    .section-title { text-shadow:0 8px 40px rgba(26,63,160,.35); }
+
+    /* Über uns */
+    .about-logo-wrap { border-radius:32px; border:1px solid rgba(212,163,42,.22);
+      background:radial-gradient(circle at 50% 40%, rgba(45,85,212,.25), rgba(12,12,12,0) 70%), linear-gradient(135deg, rgba(26,63,160,.15) 0%, rgba(12,12,12,0) 100%);
+      box-shadow:0 30px 60px -30px rgba(0,0,0,.7); }
+    .about-accent-box { border-radius:20px; box-shadow:0 16px 36px -12px rgba(212,163,42,.55); }
+    .about-item::before { width:10px; height:11px; clip-path:var(--hex); background:var(--gold); }
+
+    /* Karten */
+    .cards-grid { gap:18px; }
+    .card { border-radius:24px; padding:34px 28px 30px; background:linear-gradient(165deg,#2f2f40,#262634); border:1px solid rgba(255,255,255,.08);
+      box-shadow:0 18px 40px -22px rgba(0,0,0,.75);
+      transition:transform .4s cubic-bezier(.2,.7,.2,1), box-shadow .4s, border-color .3s, background .3s, opacity .6s ease; }
+    .card::before { display:none; }
+    .card::after { content:""; position:absolute; right:-40px; top:-40px; width:150px; height:150px; border-radius:50%;
+      background:radial-gradient(closest-side, rgba(45,85,212,.28), transparent); opacity:.7; transition:opacity .4s, transform .6s; pointer-events:none; }
+    @media (hover:hover) {
+      .card:hover { background:linear-gradient(165deg,#2f2f42,#202a44); transform:translateY(-6px); border-color:rgba(212,163,42,.45);
+        box-shadow:0 28px 56px -22px rgba(45,85,212,.55); }
+      .card:hover::after { opacity:1; transform:scale(1.3); }
+    }
+    .card-icon { width:56px; height:62px; display:grid; place-items:center; font-size:24px; margin-bottom:20px;
+      clip-path:var(--hex); background:linear-gradient(160deg,rgba(212,163,42,.55),rgba(212,163,42,.18)); position:relative; }
+    .card-icon::before { content:""; position:absolute; inset:2px; clip-path:var(--hex); background:#262634; z-index:-1; }
+
+    /* Kontakt */
+    .contact-icon { width:46px; height:46px; border-radius:15px; background:rgba(212,163,42,.12); border:1px solid rgba(212,163,42,.28); }
+    .form-group input, .form-group textarea { border-radius:16px; background:rgba(255,255,255,.07); transition:border-color .2s, box-shadow .2s, background .2s; }
+    .form-group input:focus, .form-group textarea:focus { background:rgba(255,255,255,.1); box-shadow:0 0 0 4px rgba(45,85,212,.25); }
+
+    @media(max-width:900px) {
+      nav { padding:9px 16px; }
+      .about, .cards-section, .contact { border-radius:32px 32px 0 0; margin-top:-32px; }
+      .about { padding-top:104px; } .cards-section, .contact { padding-top:108px; }
+      .stats-bar { padding-bottom:64px; }
+      footer { border-radius:28px 28px 0 0; margin-top:-28px; padding-top:40px; }
+      .contact { padding-bottom:100px; }
+      .about-logo-wrap { border-radius:26px; }
+    }
+    @media(max-width:600px) {
+      nav { top:8px; left:8px; right:8px; border-radius:26px; padding:8px 12px; }
+      html { scroll-padding-top:84px; }
+      .cards-grid { gap:12px !important; }
+      .card { border-radius:20px; padding:26px 20px 24px; }
+      .card-icon { width:48px; height:54px; font-size:21px; margin-bottom:16px; }
+      .stat-item { flex:1 1 40%; padding:14px 10px; border-radius:18px; }
+      .about, .cards-section, .contact { border-radius:28px 28px 0 0; margin-top:-28px; }
+      .about { padding-top:92px; } .cards-section, .contact { padding-top:96px; }
+      .stats-bar { padding-bottom:56px; }
+      .sw .gross-nur { display:none; }
+    }
+    @media(prefers-reduced-motion:reduce) { .sw svg, .hero-logo-bg { animation:none; } }
 </style>
 </head>
 <body>
+
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><defs>
+    <symbol id="hx" viewBox="0 0 100 115"><polygon points="50,2 98,29 98,86 50,113 2,86 2,29"/></symbol>
+    <symbol id="bg" viewBox="0 0 100 100"><path d="M8 78 A46 46 0 0 1 78 8"/></symbol>
+  </defs></svg>
 
   <nav>
     <a href="#" class="nav-logo">
@@ -360,6 +475,12 @@
   <!-- HERO -->
   <section class="hero">
     <div class="hero-bg"></div>
+    <div class="sw" aria-hidden="true">
+      <svg class="gross-nur" style="left:3%;top:18%;width:86px;height:99px;--t:24s;--d:0s;--dx:18px;--dy:-40px;--r0:0deg;--r1:20deg" viewBox="0 0 100 115"><use href="#hx" class="hx b"/></svg>
+      <svg style="left:84%;top:12%;width:64px;height:74px;--t:19s;--d:-4s;--dx:-14px;--dy:-30px;--r0:12deg;--r1:-16deg" viewBox="0 0 100 115"><use href="#hx" class="hx voll g"/></svg>
+      <svg style="left:72%;top:52%;width:110px;height:110px;--t:23s;--d:-7s;--dx:-24px;--dy:-36px;--r0:0deg;--r1:40deg" viewBox="0 0 100 100"><use href="#bg" class="bg g"/></svg>
+      <svg class="gross-nur" style="left:92%;top:70%;width:96px;height:110px;--t:28s;--d:-9s;--dx:-20px;--dy:-44px;--r0:0deg;--r1:24deg" viewBox="0 0 100 115"><use href="#hx" class="hx g"/></svg>
+    </div>
     <!-- Decorative SVG elements -->
     <svg class="hero-deco hero-deco-left" viewBox="0 0 320 1000" xmlns="http://www.w3.org/2000/svg">
       <line x1="290" y1="0" x2="290" y2="1000" stroke="rgba(255,255,255,0.07)" stroke-width="1"/>
@@ -438,6 +559,11 @@
 
   <!-- ABOUT -->
   <section class="about" id="about">
+    <div class="sw" aria-hidden="true">
+      <svg style="left:50%;top:6%;width:70px;height:80px;--t:22s;--d:-3s;--dx:16px;--dy:-34px;--r0:0deg;--r1:18deg" viewBox="0 0 100 115"><use href="#hx" class="hx b"/></svg>
+      <svg class="gross-nur" style="left:3%;top:70%;width:100px;height:100px;--t:25s;--d:-8s;--dx:18px;--dy:-30px;--r0:0deg;--r1:40deg" viewBox="0 0 100 100"><use href="#bg" class="bg g"/></svg>
+      <svg style="left:92%;top:60%;width:80px;height:92px;--t:26s;--d:-5s;--dx:-16px;--dy:-40px;--r0:0deg;--r1:-20deg" viewBox="0 0 100 115"><use href="#hx" class="hx voll b"/></svg>
+    </div>
     <div class="dots-layer">
       <div class="glow-dot gold" style="width:10px;height:10px;top:12%;left:22%"></div>
       <div class="glow-dot blue" style="width:14px;height:14px;top:45%;left:38%"></div>
@@ -468,6 +594,11 @@
 
   <!-- CARDS -->
   <section class="cards-section" id="community">
+    <div class="sw" aria-hidden="true">
+      <svg class="gross-nur" style="left:90%;top:8%;width:90px;height:103px;--t:27s;--d:-6s;--dx:-18px;--dy:-40px;--r0:0deg;--r1:22deg" viewBox="0 0 100 115"><use href="#hx" class="hx g"/></svg>
+      <svg style="left:2%;top:44%;width:100px;height:100px;--t:24s;--d:-10s;--dx:20px;--dy:-30px;--r0:180deg;--r1:230deg" viewBox="0 0 100 100"><use href="#bg" class="bg b"/></svg>
+      <svg style="left:94%;top:76%;width:70px;height:80px;--t:21s;--d:-2s;--dx:-12px;--dy:-34px;--r0:0deg;--r1:-18deg" viewBox="0 0 100 115"><use href="#hx" class="hx voll g"/></svg>
+    </div>
     <div class="dots-layer">
       <div class="glow-dot gold" style="width:11px;height:11px;top:8%;left:18%"></div>
       <div class="glow-dot blue" style="width:14px;height:14px;top:30%;left:42%"></div>
@@ -494,6 +625,11 @@
 
   <!-- CONTACT -->
   <section class="contact" id="contact">
+    <div class="sw" aria-hidden="true">
+      <svg class="gross-nur" style="left:46%;top:10%;width:84px;height:97px;--t:26s;--d:-4s;--dx:14px;--dy:-38px;--r0:0deg;--r1:20deg" viewBox="0 0 100 115"><use href="#hx" class="hx w"/></svg>
+      <svg style="left:93%;top:40%;width:100px;height:100px;--t:23s;--d:-9s;--dx:-22px;--dy:-30px;--r0:0deg;--r1:36deg" viewBox="0 0 100 100"><use href="#bg" class="bg g"/></svg>
+      <svg style="left:4%;top:78%;width:76px;height:87px;--t:29s;--d:-11s;--dx:16px;--dy:-36px;--r0:0deg;--r1:-22deg" viewBox="0 0 100 115"><use href="#hx" class="hx b"/></svg>
+    </div>
     <div class="dots-layer">
       <div class="glow-dot white" style="width:11px;height:11px;top:10%;left:20%"></div>
       <div class="glow-dot gold" style="width:13px;height:13px;top:35%;left:48%"></div>
