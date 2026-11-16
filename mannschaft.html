@@ -109,6 +109,7 @@
       border-radius:2px; padding:2px 8px;
     }
     .linie-kopf::after { content:""; flex:1; height:1px; background:rgba(255,255,255,0.08); }
+    @media(max-width:520px){ .linie-kopf h2 { white-space:normal; letter-spacing:2px; line-height:1.1; } }
 
     .raster { display:grid; grid-template-columns:repeat(4,1fr); gap:2px; }
     @media(max-width:1000px) { .raster { grid-template-columns:repeat(3,1fr); } }
@@ -303,7 +304,7 @@
   <p class="hinweis">Foto antippen für eine zweite Ansicht</p>
 
       <section class="linie" id="veteranen">
-        <div class="linie-kopf"><h2>Veteranen</h2><span class="anzahl">3</span></div>
+        <div class="linie-kopf"><h2>Unsere wertvollen Veteranen</h2><span class="anzahl">3</span></div>
         <div class="raster">
           <article class="karte">
             <div class="foto">
