@@ -23,7 +23,7 @@
   <meta property="og:image:height" content="695">
   <meta property="og:image:alt" content="Wappen der Sportfreunde Heilbronn 1989">
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=DM+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@600;700&family=DM+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
   <style>
     :root {
       --blue: #1a3fa0;
@@ -57,7 +57,7 @@
     }
     .nav-logo { display:flex; align-items:center; gap:10px; text-decoration:none; }
     .nav-logo img { height:42px; width:42px; object-fit:contain; }
-    .nav-logo span { font-family:'Barlow Condensed','Arial Narrow',sans-serif; font-size:18px; letter-spacing:2px; color:var(--gold); }
+    .nav-logo span { font-family:'Rubik',sans-serif; font-size:18px; letter-spacing:2px; color:var(--gold); }
     .nav-links { display:flex; gap:36px; list-style:none; }
     .nav-links a { color:rgba(245,245,240,0.7); text-decoration:none; font-size:13px; letter-spacing:1.5px; text-transform:uppercase; font-weight:500; transition:color .2s; }
     .nav-links a:hover { color:var(--gold); }
@@ -126,7 +126,7 @@
     }
     @keyframes pulse { 0%,100% { opacity:1; transform:scale(1); } 50% { opacity:.4; transform:scale(.8); } }
     .hero h1 {
-      font-family:'Barlow Condensed','Arial Narrow',sans-serif;
+      font-family:'Rubik',sans-serif;
       font-size:clamp(64px,10vw,110px);
       line-height:.95; letter-spacing:2px; margin-bottom:24px;
     }
@@ -146,13 +146,13 @@
       display:flex; justify-content:space-around; flex-wrap:wrap; gap:24px;
     }
     .stat-item { text-align:center; }
-    .stat-num { font-family:'Barlow Condensed','Arial Narrow',sans-serif; font-size:48px; color:var(--gold); line-height:1; }
+    .stat-num { font-family:'Rubik',sans-serif; font-size:48px; color:var(--gold); line-height:1; }
     .stat-label { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:rgba(245,245,240,0.5); margin-top:4px; }
 
     /* SECTIONS */
     section { padding:100px 48px; position:relative; }
     .section-tag { font-size:11px; letter-spacing:3px; text-transform:uppercase; color:var(--blue-light); margin-bottom:16px; }
-    .section-title { font-family:'Barlow Condensed','Arial Narrow',sans-serif; font-size:clamp(40px,6vw,64px); line-height:1; margin-bottom:20px; }
+    .section-title { font-family:'Rubik',sans-serif; font-size:clamp(40px,6vw,64px); line-height:1; margin-bottom:20px; }
     .section-sub { font-size:16px; color:rgba(245,245,240,0.55); font-weight:300; max-width:520px; line-height:1.75; }
 
     /* ABOUT */
@@ -168,7 +168,7 @@
     .about-accent-box {
       position:absolute; bottom:-20px; right:-20px;
       background:var(--gold); color:var(--black);
-      padding:16px 24px; font-family:'Barlow Condensed','Arial Narrow',sans-serif;
+      padding:16px 24px; font-family:'Rubik',sans-serif;
     }
     .about-accent-box .big { font-size:36px; line-height:1; }
     .about-accent-box .small { font-size:11px; letter-spacing:1px; }
@@ -196,7 +196,7 @@
     .card:hover { background:#131a2a; transform:translateY(-4px); }
     .card:hover::before { height:100%; }
     .card-icon { font-size:26px; margin-bottom:16px; }
-    .card-name { font-family:'Barlow Condensed','Arial Narrow',sans-serif; font-size:22px; letter-spacing:1px; margin-bottom:8px; }
+    .card-name { font-family:'Rubik',sans-serif; font-size:22px; letter-spacing:1px; margin-bottom:8px; }
     .card-desc { font-size:13px; color:rgba(245,245,240,0.45); line-height:1.6; }
     .section-cta { margin-top:48px; display:flex; position:relative; z-index:2; }
 
@@ -229,7 +229,7 @@
       display:flex; justify-content:space-between; align-items:center;
       border-top:1px solid rgba(255,255,255,0.06); flex-wrap:wrap; gap:20px;
     }
-    .footer-logo { font-family:'Barlow Condensed','Arial Narrow',sans-serif; font-size:18px; letter-spacing:2px; color:var(--gold); }
+    .footer-logo { font-family:'Rubik',sans-serif; font-size:18px; letter-spacing:2px; color:var(--gold); }
     .footer-copy { font-size:12px; color:rgba(245,245,240,0.3); }
     .footer-links { display:flex; gap:24px; }
     .footer-links a { font-size:12px; color:rgba(245,245,240,0.35); text-decoration:none; transition:color .2s; }
@@ -449,14 +449,31 @@
     }
     @media(prefers-reduced-motion:reduce) { .sw svg, .hero-logo-bg { animation:none; } }
 
-    /* Schrift (17.11.2026): Barlow Condensed statt Bebas Neue - weichere Rundungen, passt zu den neuen Formen */
+    /* Schrift (17.11.2026): Rubik - runde Ecken, passt zu den weichen Formen */
     h1, h2, h3, .nr, .stat-num, .card-name, .footer-logo, .nav-logo span, .about-accent-box, .section-title { font-weight:700; }
     h1, h2, h3, .nr, .stat-num, .card-name, .footer-logo, .nav-logo span, .about-accent-box .big, .about-accent-box .small, .section-title { text-transform:uppercase; }
-    h1, .hero h1, .section-title, .stat-num { font-weight:800; }
-    .hero h1 { font-size:clamp(54px,10vw,110px); letter-spacing:1px; }
-    .nr, .info h3, .linie-kopf h2 { letter-spacing:.6px; }
-    .info h3 { font-size:clamp(20px,4.6vw,29px); }
-    @media(max-width:600px) { .hero h1 { font-size:clamp(40px,14vw,84px); } header h1 { font-size:clamp(38px,12.5vw,64px); } }
+    .hero h1 { font-size:clamp(32px,10.2vw,84px); letter-spacing:.5px; line-height:1.02; }
+    header h1 { font-size:clamp(32px,10vw,84px); letter-spacing:.5px; line-height:1.02; }
+    .section-title { font-size:clamp(30px,5vw,50px); line-height:1.08; letter-spacing:.3px; }
+    .stat-num { font-size:clamp(26px,3.4vw,38px); letter-spacing:.3px; }
+    .card-name { font-size:19px; letter-spacing:.4px; }
+    .linie-kopf h2 { font-size:clamp(17px,3.2vw,22px); letter-spacing:1.5px; }
+    .info h3 { font-size:clamp(15px,3.6vw,21px); letter-spacing:.3px; line-height:1.1; }
+    .nr { letter-spacing:0; font-size:18px; }
+    .nav-logo span { font-size:15px; letter-spacing:1px; }
+    .footer-logo { font-size:16px; letter-spacing:1px; }
+    .about-accent-box .big { font-size:30px; }
+    @media(min-width:601px) { .hero h1 { font-size:clamp(48px,7.2vw,84px); } header h1 { font-size:clamp(44px,7vw,84px); } }
+    @media(max-width:640px) { .nr { font-size:15px; } .stat-num { font-size:24px; } .section-title { font-size:clamp(28px,8.4vw,40px); } }
+
+    /* Schwebende Segmente: deutlich schneller und größerer Weg */
+    .sw svg, .schweber svg { animation-duration:calc(var(--t,22s) / 4); }
+    @keyframes schweb {
+      0%   { transform:translate3d(0,0,0) rotate(var(--r0,0deg)); }
+      100% { transform:translate3d(calc(var(--dx,14px) * 2),calc(var(--dy,-34px) * 2),0) rotate(calc(var(--r1,18deg) * 1.6)); }
+    }
+    @keyframes logoschweb { 0%{ translate:0 0; } 100%{ translate:0 -26px; } }
+    .hero-logo-bg { animation-duration:5s; }
 </style>
 </head>
 <body>
