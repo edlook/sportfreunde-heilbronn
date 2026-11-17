@@ -24,7 +24,7 @@
 <meta property="og:image:alt" content="Wappen der Sportfreunde Heilbronn 1989">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Rubik:wght@600;700&family=DM+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600&family=DM+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
 <style>
     :root {
       --blue: #1a3fa0;
@@ -84,7 +84,7 @@
       color:var(--gold); font-weight:500;
     }
     header h1 {
-      font-family:'Rubik',sans-serif; font-weight:400;
+      font-family:'Outfit',sans-serif; font-weight:400;
       font-size:clamp(48px,9vw,104px); line-height:0.95; letter-spacing:1px;
       margin:20px 0 10px;
     }
@@ -107,7 +107,7 @@
     /* Datenschutztext */
     .text { max-width:560px; /* ca. 70 Zeichen je Zeile */ margin:clamp(20px,4vw,40px) auto 0; }
     .text h2 {
-      font-family:'Rubik',sans-serif; font-weight:400; color:var(--gold);
+      font-family:'Outfit',sans-serif; font-weight:400; color:var(--gold);
       font-size:clamp(22px,4vw,28px); letter-spacing:1.5px; line-height:1.1;
       margin:clamp(36px,6vw,48px) 0 12px;
     }
@@ -157,8 +157,8 @@
     footer { border-top-color:rgba(212,163,42,.2); }
     .zurueck { min-height:44px; }
 
-    /* Schrift (17.11.2026): Rubik - runde Ecken, passt zu den weichen Formen */
-    h1, h2, h3, .nr, .stat-num, .card-name, .footer-logo, .nav-logo span, .about-accent-box, .section-title { font-weight:700; }
+    /* Schrift (17.11.2026): Outfit - schlank, geometrisch, passt zu den weichen Formen */
+    h1, h2, h3, .nr, .stat-num, .card-name, .footer-logo, .nav-logo span, .about-accent-box, .section-title { font-weight:500; }
     h1, h2, h3, .nr, .stat-num, .card-name, .footer-logo, .nav-logo span, .about-accent-box .big, .about-accent-box .small, .section-title { text-transform:uppercase; }
     .hero h1 { font-size:clamp(32px,10.2vw,84px); letter-spacing:.5px; line-height:1.02; }
     header h1 { font-size:clamp(32px,10vw,84px); letter-spacing:.5px; line-height:1.02; }
@@ -182,6 +182,11 @@
     }
     @keyframes logoschweb { 0%{ translate:0 0; } 100%{ translate:0 -26px; } }
     .hero-logo-bg { animation-duration:5s; }
+    h1, .hero h1, .section-title, .stat-num, .nr, .about-accent-box { font-weight:600; }
+    .hero h1, header h1 { letter-spacing:1px; }
+    .linie-kopf h2, .info h3, .card-name { letter-spacing:1px; }
+    .text h2 { font-size:clamp(16px,4.6vw,22px); letter-spacing:.8px; overflow-wrap:anywhere; min-width:0; }
+    .text h2 { align-items:flex-start; } .text h2::before { margin-top:.3em; }
 </style>
 </head>
 <body>
@@ -189,7 +194,7 @@
 <div class="seiten-bg"></div>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><defs>
   <symbol id="hx" viewBox="0 0 100 115"><polygon points="50,2 98,29 98,86 50,113 2,86 2,29"/></symbol>
-  <symbol id="bg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="44"/></symbol>
+  <symbol id="bg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="44"/><path d="M50.0 36.0 L63.3 45.7 L58.2 61.3 L41.8 61.3 L36.7 45.7 Z M50.0 36.0 L50.0 21.0 M50.0 21.0 L30.0 10.8 M50.0 21.0 L70.0 10.8 M63.3 45.7 L77.6 41.0 M77.6 41.0 L81.1 18.9 M77.6 41.0 L93.5 56.9 M58.2 61.3 L67.0 73.5 M67.0 73.5 L89.2 70.0 M67.0 73.5 L56.9 93.5 M41.8 61.3 L33.0 73.5 M33.0 73.5 L43.1 93.5 M33.0 73.5 L10.8 70.0 M36.7 45.7 L22.4 41.0 M22.4 41.0 L6.5 56.9 M22.4 41.0 L18.9 18.9" stroke-linejoin="round"/></symbol>
 </defs></svg>
 <div class="schweber" aria-hidden="true">
   <svg class="gross-nur" style="left:4%;top:14%;width:92px;height:106px;--t:24s;--dy:-40px;--dx:18px;--r1:20deg" viewBox="0 0 100 115"><use href="#hx" class="hx b"/></svg>
@@ -290,7 +295,7 @@
     <p>Rechtsgrundlage ist unser berechtigtes Interesse an einer sicheren und funktionsfähigen Website (Art. 6 Abs. 1 lit. f DSGVO). Dabei können Daten in die USA übermittelt werden. Weitere Informationen: <a href="https://docs.github.com/de/site-policy/privacy-policies/github-general-privacy-statement" target="_blank" rel="noopener">Datenschutzerklärung von GitHub</a>.</p>
 
     <h2>4. Schriftarten (Google Fonts)</h2>
-    <p>Für die Darstellung der Schriften „Rubik“ und „DM Sans“ lädt Ihr Browser beim Seitenaufruf Schriftdateien von Servern von Google (fonts.googleapis.com, fonts.gstatic.com). Dabei wird Ihre IP-Adresse an Google übermittelt. Anbieter ist die Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Irland. Eine Übermittlung in die USA ist nicht ausgeschlossen.</p>
+    <p>Für die Darstellung der Schriften „Outfit“ und „DM Sans“ lädt Ihr Browser beim Seitenaufruf Schriftdateien von Servern von Google (fonts.googleapis.com, fonts.gstatic.com). Dabei wird Ihre IP-Adresse an Google übermittelt. Anbieter ist die Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Irland. Eine Übermittlung in die USA ist nicht ausgeschlossen.</p>
     <p>Rechtsgrundlage ist unser berechtigtes Interesse an einer einheitlichen Darstellung der Website (Art. 6 Abs. 1 lit. f DSGVO). Weitere Informationen: <a href="https://policies.google.com/privacy?hl=de" target="_blank" rel="noopener">Datenschutzerklärung von Google</a>.</p>
 
     <h2>5. Kontaktformular (Formspree)</h2>

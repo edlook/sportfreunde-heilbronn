@@ -23,7 +23,7 @@
   <meta property="og:image:height" content="695">
   <meta property="og:image:alt" content="Wappen der Sportfreunde Heilbronn 1989">
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@600;700&family=DM+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600&family=DM+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
   <style>
     :root {
       --blue: #1a3fa0;
@@ -57,7 +57,7 @@
     }
     .nav-logo { display:flex; align-items:center; gap:10px; text-decoration:none; }
     .nav-logo img { height:42px; width:42px; object-fit:contain; }
-    .nav-logo span { font-family:'Rubik',sans-serif; font-size:18px; letter-spacing:2px; color:var(--gold); }
+    .nav-logo span { font-family:'Outfit',sans-serif; font-size:18px; letter-spacing:2px; color:var(--gold); }
     .nav-links { display:flex; gap:36px; list-style:none; }
     .nav-links a { color:rgba(245,245,240,0.7); text-decoration:none; font-size:13px; letter-spacing:1.5px; text-transform:uppercase; font-weight:500; transition:color .2s; }
     .nav-links a:hover { color:var(--gold); }
@@ -126,7 +126,7 @@
     }
     @keyframes pulse { 0%,100% { opacity:1; transform:scale(1); } 50% { opacity:.4; transform:scale(.8); } }
     .hero h1 {
-      font-family:'Rubik',sans-serif;
+      font-family:'Outfit',sans-serif;
       font-size:clamp(64px,10vw,110px);
       line-height:.95; letter-spacing:2px; margin-bottom:24px;
     }
@@ -146,13 +146,13 @@
       display:flex; justify-content:space-around; flex-wrap:wrap; gap:24px;
     }
     .stat-item { text-align:center; }
-    .stat-num { font-family:'Rubik',sans-serif; font-size:48px; color:var(--gold); line-height:1; }
+    .stat-num { font-family:'Outfit',sans-serif; font-size:48px; color:var(--gold); line-height:1; }
     .stat-label { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:rgba(245,245,240,0.5); margin-top:4px; }
 
     /* SECTIONS */
     section { padding:100px 48px; position:relative; }
     .section-tag { font-size:11px; letter-spacing:3px; text-transform:uppercase; color:var(--blue-light); margin-bottom:16px; }
-    .section-title { font-family:'Rubik',sans-serif; font-size:clamp(40px,6vw,64px); line-height:1; margin-bottom:20px; }
+    .section-title { font-family:'Outfit',sans-serif; font-size:clamp(40px,6vw,64px); line-height:1; margin-bottom:20px; }
     .section-sub { font-size:16px; color:rgba(245,245,240,0.55); font-weight:300; max-width:520px; line-height:1.75; }
 
     /* ABOUT */
@@ -168,7 +168,7 @@
     .about-accent-box {
       position:absolute; bottom:-20px; right:-20px;
       background:var(--gold); color:var(--black);
-      padding:16px 24px; font-family:'Rubik',sans-serif;
+      padding:16px 24px; font-family:'Outfit',sans-serif;
     }
     .about-accent-box .big { font-size:36px; line-height:1; }
     .about-accent-box .small { font-size:11px; letter-spacing:1px; }
@@ -196,7 +196,7 @@
     .card:hover { background:#131a2a; transform:translateY(-4px); }
     .card:hover::before { height:100%; }
     .card-icon { font-size:26px; margin-bottom:16px; }
-    .card-name { font-family:'Rubik',sans-serif; font-size:22px; letter-spacing:1px; margin-bottom:8px; }
+    .card-name { font-family:'Outfit',sans-serif; font-size:22px; letter-spacing:1px; margin-bottom:8px; }
     .card-desc { font-size:13px; color:rgba(245,245,240,0.45); line-height:1.6; }
     .section-cta { margin-top:48px; display:flex; position:relative; z-index:2; }
 
@@ -229,7 +229,7 @@
       display:flex; justify-content:space-between; align-items:center;
       border-top:1px solid rgba(255,255,255,0.06); flex-wrap:wrap; gap:20px;
     }
-    .footer-logo { font-family:'Rubik',sans-serif; font-size:18px; letter-spacing:2px; color:var(--gold); }
+    .footer-logo { font-family:'Outfit',sans-serif; font-size:18px; letter-spacing:2px; color:var(--gold); }
     .footer-copy { font-size:12px; color:rgba(245,245,240,0.3); }
     .footer-links { display:flex; gap:24px; }
     .footer-links a { font-size:12px; color:rgba(245,245,240,0.35); text-decoration:none; transition:color .2s; }
@@ -449,8 +449,8 @@
     }
     @media(prefers-reduced-motion:reduce) { .sw svg, .hero-logo-bg { animation:none; } }
 
-    /* Schrift (17.11.2026): Rubik - runde Ecken, passt zu den weichen Formen */
-    h1, h2, h3, .nr, .stat-num, .card-name, .footer-logo, .nav-logo span, .about-accent-box, .section-title { font-weight:700; }
+    /* Schrift (17.11.2026): Outfit - schlank, geometrisch, passt zu den weichen Formen */
+    h1, h2, h3, .nr, .stat-num, .card-name, .footer-logo, .nav-logo span, .about-accent-box, .section-title { font-weight:500; }
     h1, h2, h3, .nr, .stat-num, .card-name, .footer-logo, .nav-logo span, .about-accent-box .big, .about-accent-box .small, .section-title { text-transform:uppercase; }
     .hero h1 { font-size:clamp(32px,10.2vw,84px); letter-spacing:.5px; line-height:1.02; }
     header h1 { font-size:clamp(32px,10vw,84px); letter-spacing:.5px; line-height:1.02; }
@@ -474,13 +474,16 @@
     }
     @keyframes logoschweb { 0%{ translate:0 0; } 100%{ translate:0 -26px; } }
     .hero-logo-bg { animation-duration:5s; }
+    h1, .hero h1, .section-title, .stat-num, .nr, .about-accent-box { font-weight:600; }
+    .hero h1, header h1 { letter-spacing:1px; }
+    .linie-kopf h2, .info h3, .card-name { letter-spacing:1px; }
 </style>
 </head>
 <body>
 
   <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><defs>
     <symbol id="hx" viewBox="0 0 100 115"><polygon points="50,2 98,29 98,86 50,113 2,86 2,29"/></symbol>
-    <symbol id="bg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="44"/></symbol>
+    <symbol id="bg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="44"/><path d="M50.0 36.0 L63.3 45.7 L58.2 61.3 L41.8 61.3 L36.7 45.7 Z M50.0 36.0 L50.0 21.0 M50.0 21.0 L30.0 10.8 M50.0 21.0 L70.0 10.8 M63.3 45.7 L77.6 41.0 M77.6 41.0 L81.1 18.9 M77.6 41.0 L93.5 56.9 M58.2 61.3 L67.0 73.5 M67.0 73.5 L89.2 70.0 M67.0 73.5 L56.9 93.5 M41.8 61.3 L33.0 73.5 M33.0 73.5 L43.1 93.5 M33.0 73.5 L10.8 70.0 M36.7 45.7 L22.4 41.0 M22.4 41.0 L6.5 56.9 M22.4 41.0 L18.9 18.9" stroke-linejoin="round"/></symbol>
   </defs></svg>
 
   <nav>
