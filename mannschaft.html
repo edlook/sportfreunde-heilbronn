@@ -330,6 +330,15 @@
     h1, .hero h1, .section-title, .stat-num, .nr, .about-accent-box { font-weight:600; }
     .hero h1, header h1 { letter-spacing:1px; }
     .linie-kopf h2, .info h3, .card-name { letter-spacing:1px; }
+    /* ===== Handy (18.11.2026): Sprungleiste ohne Wischen, zweite Ansicht wechselt automatisch ===== */
+    @media(max-width:640px) {
+      .sprung {
+        position:static; flex-wrap:wrap; justify-content:center; overflow:visible; gap:8px;
+        margin-inline:0; padding:4px 0 2px; background:none; border-bottom:0;
+        -webkit-backdrop-filter:none; backdrop-filter:none;
+      }
+      .sprung a { min-height:38px; padding:0 15px; font-size:11.5px; letter-spacing:1.6px; background:rgba(212,163,42,.08); }
+    }
 </style>
 </head>
 <body>
@@ -429,7 +438,7 @@
   <nav class="sprung" aria-label="Zu einer Linie springen">
     <a href="#veteranen">Veteranen</a><a href="#torwart">Torwart</a><a href="#abwehr">Abwehr</a><a href="#mittelfeld">Mittelfeld</a><a href="#sturm">Sturm</a>
   </nav>
-  <p class="hinweis">Foto antippen für eine zweite Ansicht</p>
+  <p class="hinweis">Die Fotos wechseln von selbst – antippen zum Umschalten</p>
 
       <section class="linie" id="veteranen">
         <div class="linie-kopf"><h2>Unsere wertvollen Veteranen</h2><span class="anzahl">3</span></div>
@@ -735,7 +744,10 @@
     if(im.dataset.srcset) im.srcset=im.dataset.srcset;
     im.src=im.dataset.src;
   }
+  var beruehrung=matchMedia('(hover:none)').matches;
+  var reduziert=matchMedia('(prefers-reduced-motion:reduce)').matches;
   function schliessen(ausser){
+    if(beruehrung) return;
     document.querySelectorAll('.karte.gedreht').forEach(function(x){
       if(x!==ausser){ x.classList.remove('gedreht'); x.setAttribute('aria-pressed','false'); }
     });
@@ -745,6 +757,8 @@
     var offen=k.classList.contains('gedreht');
     schliessen(null);
     if(!offen){ k.classList.add('gedreht'); k.setAttribute('aria-pressed','true'); }
+    else { k.classList.remove('gedreht'); k.setAttribute('aria-pressed','false'); }
+    k.__pause=Date.now()+9000;
   }
   karten.forEach(function(k){
     var name=(k.querySelector('h3')||{}).textContent||'Spieler';
@@ -771,6 +785,24 @@
     });
     /* Sicherheitsnetz: falls der Beobachter nichts meldet, alles zeigen */
     setTimeout(function(){ if(!document.querySelector('.karte.sichtbar')) document.querySelectorAll('.karte').forEach(function(k){ k.classList.add('sichtbar'); }); },2500);
+  }
+  /* Zweite Ansicht vorab laden (kein leeres Bild beim Umschalten) */
+  function allesLaden(){ var i=0; (function next(){ if(i>=karten.length) return; laden(karten[i++]); setTimeout(next,60); })(); }
+  if(document.readyState==='complete') setTimeout(allesLaden,400); else window.addEventListener('load',function(){ setTimeout(allesLaden,400); });
+  /* Auf dem Handy wechseln die sichtbaren Karten selbstständig zwischen beiden Fotos */
+  if(beruehrung && !reduziert && 'IntersectionObserver' in window){
+    var sichtbar=new Set();
+    var io2=new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting) sichtbar.add(e.target); else sichtbar.delete(e.target); }); },{threshold:.35});
+    karten.forEach(function(k,i){ k.__tick=-(i%4); io2.observe(k); });
+    setInterval(function(){
+      if(document.hidden) return;
+      var jetzt=Date.now();
+      sichtbar.forEach(function(k){
+        if(!k.dataset.geladen || (k.__pause&&k.__pause>jetzt)) return;
+        k.__tick=(k.__tick||0)+1;
+        if(k.__tick>=3){ k.__tick=0; k.classList.toggle('gedreht'); }
+      });
+    },1000);
   }
   /* Tipp neben eine Karte schließt geöffnete Karten */
   document.addEventListener('click',function(e){
