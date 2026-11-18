@@ -339,6 +339,24 @@
       }
       .sprung a { min-height:38px; padding:0 15px; font-size:11.5px; letter-spacing:1.6px; background:rgba(212,163,42,.08); }
     }
+    /* ===== Handy (18.11.2026, 2): ruhige, einheitliche Ansicht – ein Umschalter für alle Fotos ===== */
+    .ansicht-leiste { display:none; }
+    @media (hover:none) {
+      .ansicht-leiste {
+        display:flex; justify-content:center; position:sticky; top:0; z-index:30;
+        padding:10px 0; margin:14px 0 0; pointer-events:none;
+      }
+      .ansicht { pointer-events:auto; display:inline-flex; padding:4px; gap:4px; border-radius:100px; background:rgba(14,18,34,.88); border:1px solid rgba(212,163,42,.45); box-shadow:0 8px 24px rgba(0,0,0,.45); -webkit-backdrop-filter:blur(10px); backdrop-filter:blur(10px); }
+      .ansicht button {
+        font:500 12px 'Outfit',sans-serif; letter-spacing:2px; text-transform:uppercase; color:rgba(245,245,240,.75);
+        background:none; border:0; border-radius:100px; min-height:40px; padding:0 22px; cursor:pointer;
+        -webkit-tap-highlight-color:transparent; transition:background .25s ease, color .25s ease;
+      }
+      .ansicht button[aria-pressed="true"] { background:var(--gold); color:#0c0c0c; font-weight:600; }
+      /* gleichmäßiges Einblenden: kein Versatz, keine Bewegung */
+      .rv .karte:not(.sichtbar) { translate:0 0; }
+      .rv .karte { transition-delay:0s; }
+    }
 </style>
 </head>
 <body>
@@ -438,7 +456,12 @@
   <nav class="sprung" aria-label="Zu einer Linie springen">
     <a href="#veteranen">Veteranen</a><a href="#torwart">Torwart</a><a href="#abwehr">Abwehr</a><a href="#mittelfeld">Mittelfeld</a><a href="#sturm">Sturm</a>
   </nav>
-  <p class="hinweis">Die Fotos wechseln von selbst – antippen zum Umschalten</p>
+  <div class="ansicht-leiste" role="group" aria-label="Fotoansicht für alle Spieler">
+    <div class="ansicht">
+      <button type="button" data-v="1" aria-pressed="true">Frontal</button>
+      <button type="button" data-v="2" aria-pressed="false">Seitlich</button>
+    </div>
+  </div>
 
       <section class="linie" id="veteranen">
         <div class="linie-kopf"><h2>Unsere wertvollen Veteranen</h2><span class="anzahl">3</span></div>
@@ -763,11 +786,12 @@
   karten.forEach(function(k){
     var name=(k.querySelector('h3')||{}).textContent||'Spieler';
     var nr=(k.querySelector('.nr')||{}).textContent||'';
-    k.setAttribute('tabindex','0');
+    if(!beruehrung){ k.setAttribute('tabindex','0');
     k.setAttribute('role','button');
     k.setAttribute('aria-pressed','false');
-    k.setAttribute('aria-label',name+(nr?', Nummer '+nr:'')+' – zweite Ansicht umschalten');
+    k.setAttribute('aria-label',name+(nr?', Nummer '+nr:'')+' – zweite Ansicht umschalten'); }
     ['pointerdown','mouseenter','focus'].forEach(function(ev){ k.addEventListener(ev,function(){ laden(k); },{once:true,passive:true}); });
+    if(beruehrung){ return; }
     k.addEventListener('click',function(){ umschalten(k); });
     k.addEventListener('keydown',function(e){
       if(e.key==='Enter'||e.key===' '){ e.preventDefault(); umschalten(k); }
@@ -789,20 +813,19 @@
   /* Zweite Ansicht vorab laden (kein leeres Bild beim Umschalten) */
   function allesLaden(){ var i=0; (function next(){ if(i>=karten.length) return; laden(karten[i++]); setTimeout(next,60); })(); }
   if(document.readyState==='complete') setTimeout(allesLaden,400); else window.addEventListener('load',function(){ setTimeout(allesLaden,400); });
-  /* Auf dem Handy wechseln die sichtbaren Karten selbstständig zwischen beiden Fotos */
-  if(beruehrung && !reduziert && 'IntersectionObserver' in window){
-    var sichtbar=new Set();
-    var io2=new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting) sichtbar.add(e.target); else sichtbar.delete(e.target); }); },{threshold:.35});
-    karten.forEach(function(k,i){ k.__tick=-(i%4); io2.observe(k); });
-    setInterval(function(){
-      if(document.hidden) return;
-      var jetzt=Date.now();
-      sichtbar.forEach(function(k){
-        if(!k.dataset.geladen || (k.__pause&&k.__pause>jetzt)) return;
-        k.__tick=(k.__tick||0)+1;
-        if(k.__tick>=3){ k.__tick=0; k.classList.toggle('gedreht'); }
-      });
-    },1000);
+  /* Handy: ein Umschalter ändert die Ansicht aller Karten gleichzeitig */
+  var leiste=document.querySelector('.ansicht');
+  function ansicht(v){
+    allesLaden();
+    karten.forEach(function(k){ k.classList.toggle('gedreht',v===2); });
+    leiste.querySelectorAll('button').forEach(function(bt){ bt.setAttribute('aria-pressed',String(+bt.dataset.v===v)); });
+  }
+  if(beruehrung && leiste){
+    var aktuell=1;
+    leiste.addEventListener('click',function(e){
+      var bt=e.target.closest('button'); if(!bt) return;
+      aktuell=+bt.dataset.v; ansicht(aktuell);
+    });
   }
   /* Tipp neben eine Karte schließt geöffnete Karten */
   document.addEventListener('click',function(e){
