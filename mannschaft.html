@@ -339,24 +339,52 @@
       }
       .sprung a { min-height:38px; padding:0 15px; font-size:11.5px; letter-spacing:1.6px; background:rgba(212,163,42,.08); }
     }
-    /* ===== Handy (18.11.2026, 2): ruhige, einheitliche Ansicht – ein Umschalter für alle Fotos ===== */
-    .ansicht-leiste { display:none; }
     @media (hover:none) {
-      .ansicht-leiste {
-        display:flex; justify-content:center; position:sticky; top:0; z-index:30;
-        padding:10px 0; margin:14px 0 0; pointer-events:none;
-      }
-      .ansicht { pointer-events:auto; display:inline-flex; padding:4px; gap:4px; border-radius:100px; background:rgba(14,18,34,.88); border:1px solid rgba(212,163,42,.45); box-shadow:0 8px 24px rgba(0,0,0,.45); -webkit-backdrop-filter:blur(10px); backdrop-filter:blur(10px); }
-      .ansicht button {
-        font:500 12px 'Outfit',sans-serif; letter-spacing:2px; text-transform:uppercase; color:rgba(245,245,240,.75);
-        background:none; border:0; border-radius:100px; min-height:40px; padding:0 22px; cursor:pointer;
-        -webkit-tap-highlight-color:transparent; transition:background .25s ease, color .25s ease;
-      }
-      .ansicht button[aria-pressed="true"] { background:var(--gold); color:#0c0c0c; font-weight:600; }
       /* gleichmäßiges Einblenden: kein Versatz, keine Bewegung */
       .rv .karte:not(.sichtbar) { translate:0 0; }
       .rv .karte { transition-delay:0s; }
     }
+    /* ===== Handy (19.11.2026): Tipp öffnet große Spielerkarte (Bottom-Sheet) ===== */
+    .sh-sperre { overflow:hidden; }
+    .sh { position:fixed; inset:0; z-index:200; visibility:hidden; pointer-events:none; }
+    .sh.offen { visibility:visible; pointer-events:auto; }
+    .sh-grund { position:absolute; inset:0; background:rgba(6,8,18,.72); opacity:0; transition:opacity .3s ease; -webkit-backdrop-filter:blur(6px); backdrop-filter:blur(6px); }
+    .sh.offen .sh-grund { opacity:1; }
+    .sh-blatt {
+      position:absolute; left:0; right:0; bottom:0; margin:0 auto; max-width:520px; max-height:96dvh; overflow:hidden;
+      display:flex; flex-direction:column; align-items:center; padding:8px 16px calc(14px + env(safe-area-inset-bottom));
+      background:linear-gradient(180deg,#171c33 0%,#0e1222 100%); border:1px solid rgba(212,163,42,.35); border-bottom:0;
+      border-radius:28px 28px 0 0; box-shadow:0 -20px 60px rgba(0,0,0,.6);
+      transform:translateY(105%); transition:transform .42s cubic-bezier(.32,.72,0,1); will-change:transform;
+    }
+    .sh.offen .sh-blatt { transform:translateY(0); }
+    .sh-blatt.zieht { transition:none; }
+    .sh-griff { width:100%; padding:6px 0 12px; display:flex; justify-content:center; touch-action:none; cursor:grab; }
+    .sh-griff i { width:44px; height:5px; border-radius:5px; background:rgba(245,245,240,.3); }
+    .sh-zu { position:absolute; right:12px; top:12px; z-index:5; width:40px; height:40px; border-radius:50%; border:1px solid rgba(212,163,42,.45); background:rgba(10,12,24,.7); color:#f5f5f0; font-size:20px; line-height:1; cursor:pointer; -webkit-tap-highlight-color:transparent; }
+    .sh-bild { position:relative; width:min(100%, calc(54dvh * 520 / 660)); aspect-ratio:520/660; border-radius:20px; overflow:hidden; background:#10121c; box-shadow:0 0 0 1.5px rgba(212,163,42,.6); }
+    .sh-spur { display:flex; height:100%; overflow-x:auto; scroll-snap-type:x mandatory; scrollbar-width:none; -webkit-overflow-scrolling:touch; overscroll-behavior-x:contain; }
+    .sh-spur::-webkit-scrollbar { display:none; }
+    .sh-spur > div { flex:0 0 100%; scroll-snap-align:center; scroll-snap-stop:always; }
+    .sh-spur img { width:100%; height:100%; object-fit:cover; display:block; -webkit-user-drag:none; }
+    .sh-bild::after { content:""; position:absolute; inset:0; pointer-events:none; background:linear-gradient(180deg,transparent 62%,rgba(10,12,22,.8) 100%); }
+    .sh-punkte { position:absolute; left:0; right:0; bottom:12px; z-index:2; display:flex; justify-content:center; gap:8px; }
+    .sh-punkte button { width:9px; height:9px; padding:0; border-radius:50%; border:0; background:rgba(245,245,240,.45); transition:all .25s ease; -webkit-tap-highlight-color:transparent; }
+    .sh-punkte button[aria-current="true"] { width:24px; border-radius:9px; background:var(--gold); }
+    .sh-wechsel { position:absolute; left:10px; right:10px; bottom:30px; z-index:2; display:flex; justify-content:space-between; pointer-events:none; }
+    .sh-wechsel span { font:500 11px 'Outfit',sans-serif; letter-spacing:2px; text-transform:uppercase; color:rgba(245,245,240,.8); background:rgba(10,12,24,.6); border-radius:100px; padding:5px 10px; }
+    .sh-kopf { width:100%; display:flex; align-items:center; justify-content:space-between; gap:12px; padding:14px 4px 4px; }
+    .sh-kopf h3 { margin:0; font:600 clamp(26px,8vw,34px)/1.05 'Outfit',sans-serif; letter-spacing:1px; text-transform:uppercase; color:#f5f5f0; }
+    .sh-kopf p { margin:5px 0 0; font:500 12px 'Outfit',sans-serif; letter-spacing:2.4px; text-transform:uppercase; color:var(--gold); }
+    .sh-nr { position:relative; z-index:0; flex:none; width:62px; height:70px; display:grid; place-items:center; clip-path:var(--hex); background:linear-gradient(160deg,var(--gold),#7a5c10); font:600 26px 'Outfit',sans-serif; color:var(--gold); }
+    .sh-nr::before { content:""; position:absolute; inset:2px; clip-path:var(--hex); background:#10142a; z-index:-1; }
+    .sh-nav { width:100%; display:flex; gap:10px; margin-top:12px; }
+    .sh-nav button { flex:1; min-height:48px; border-radius:100px; border:1px solid rgba(212,163,42,.4); background:rgba(212,163,42,.08); color:#f5f5f0; font:500 13px 'Outfit',sans-serif; letter-spacing:1.4px; text-transform:uppercase; cursor:pointer; -webkit-tap-highlight-color:transparent; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; padding:0 14px; }
+    .sh-nav button:active { background:rgba(212,163,42,.25); }
+    @media (hover:none) {
+      .karte.gedreht .p1 { opacity:1; transform:none; } .karte.gedreht .p2 { opacity:0; }
+    }
+    @media (prefers-reduced-motion:reduce) { .sh-blatt, .sh-grund { transition:none; } }
 </style>
 </head>
 <body>
@@ -456,12 +484,6 @@
   <nav class="sprung" aria-label="Zu einer Linie springen">
     <a href="#veteranen">Veteranen</a><a href="#torwart">Torwart</a><a href="#abwehr">Abwehr</a><a href="#mittelfeld">Mittelfeld</a><a href="#sturm">Sturm</a>
   </nav>
-  <div class="ansicht-leiste" role="group" aria-label="Fotoansicht für alle Spieler">
-    <div class="ansicht">
-      <button type="button" data-v="1" aria-pressed="true">Frontal</button>
-      <button type="button" data-v="2" aria-pressed="false">Seitlich</button>
-    </div>
-  </div>
 
       <section class="linie" id="veteranen">
         <div class="linie-kopf"><h2>Unsere wertvollen Veteranen</h2><span class="anzahl">3</span></div>
@@ -813,25 +835,95 @@
   /* Zweite Ansicht vorab laden (kein leeres Bild beim Umschalten) */
   function allesLaden(){ var i=0; (function next(){ if(i>=karten.length) return; laden(karten[i++]); setTimeout(next,60); })(); }
   if(document.readyState==='complete') setTimeout(allesLaden,400); else window.addEventListener('load',function(){ setTimeout(allesLaden,400); });
-  /* Handy: ein Umschalter ändert die Ansicht aller Karten gleichzeitig */
-  var leiste=document.querySelector('.ansicht');
-  function ansicht(v){
-    allesLaden();
-    karten.forEach(function(k){ k.classList.toggle('gedreht',v===2); });
-    leiste.querySelectorAll('button').forEach(function(bt){ bt.setAttribute('aria-pressed',String(+bt.dataset.v===v)); });
-  }
-  if(beruehrung && leiste){
-    var aktuell=1;
-    leiste.addEventListener('click',function(e){
-      var bt=e.target.closest('button'); if(!bt) return;
-      aktuell=+bt.dataset.v; ansicht(aktuell);
-    });
-  }
   /* Tipp neben eine Karte schließt geöffnete Karten */
   document.addEventListener('click',function(e){
     if(e.target.closest('.karte')) return;
     schliessen(null);
   });
+})();
+</script>
+
+<script>
+/* Spielerkarte als Bottom-Sheet (Handy). Auf dem Computer: Hover-Ansicht, ?sheet zum Testen. */
+(function(){
+  var modus=matchMedia('(hover:none)').matches || /[?&]sheet/.test(location.search);
+  if(!modus) return;
+  var karten=[].slice.call(document.querySelectorAll('.karte'));
+  var LINIE={veteranen:'Veteran',torwart:'Torwart',abwehr:'Abwehr',mittelfeld:'Mittelfeld',sturm:'Sturm'};
+  function letzte(s){ if(!s) return ''; var t=s.split(','); return t[t.length-1].trim().split(' ')[0]; }
+  function daten(k){
+    var p1=k.querySelector('img.p1'), p2=k.querySelector('img.p2');
+    var w1=p1.parentNode.querySelector('source'), w2=p2.parentNode.querySelector('source');
+    var sec=k.closest('.linie');
+    return {
+      name:k.querySelector('h3').textContent, nr:k.querySelector('.nr').textContent,
+      pos:LINIE[sec&&sec.id]||'',
+      f:{ jpg:letzte(p1.getAttribute('srcset'))||p1.getAttribute('src'), webp:w1?letzte(w1.getAttribute('srcset')):'' },
+      s:{ jpg:letzte(p2.getAttribute('data-srcset')||p2.getAttribute('srcset'))||p2.getAttribute('data-src'),
+          webp:w2?letzte(w2.getAttribute('data-srcset')||w2.getAttribute('srcset')):'' }
+    };
+  }
+  var liste=karten.map(daten);
+  var sh=document.createElement('div'); sh.className='sh'; sh.setAttribute('role','dialog'); sh.setAttribute('aria-modal','true'); sh.setAttribute('aria-label','Spielerkarte');
+  sh.innerHTML='<div class="sh-grund"></div><div class="sh-blatt"><button class="sh-zu" type="button" aria-label="Schließen">&times;</button>'
+   +'<div class="sh-griff"><i></i></div>'
+   +'<div class="sh-bild"><div class="sh-spur"></div><div class="sh-wechsel"><span>Frontal</span><span>Seitlich</span></div><div class="sh-punkte"><button type="button" aria-label="Frontal"></button><button type="button" aria-label="Seitlich"></button></div></div>'
+   +'<div class="sh-kopf"><div><h3></h3><p></p></div><div class="sh-nr"></div></div>'
+   +'<div class="sh-nav"><button type="button" data-r="-1"></button><button type="button" data-r="1"></button></div></div>';
+  document.body.appendChild(sh);
+  var blatt=sh.querySelector('.sh-blatt'), spur=sh.querySelector('.sh-spur'), pk=sh.querySelectorAll('.sh-punkte button');
+  var wechsel=sh.querySelector('.sh-wechsel'); wechsel.style.display='none';
+  var idx=0, offen=false, vomHistory=false;
+  function bild(d,alt){ return '<div><picture>'+(d.webp?'<source type="image/webp" srcset="'+d.webp+'">':'')+'<img src="'+d.jpg+'" alt="'+alt+'" decoding="async" draggable="false"></picture></div>'; }
+  function fuell(i){
+    idx=(i+liste.length)%liste.length; var d=liste[idx];
+    spur.innerHTML=bild(d.f,d.name+', Nr. '+d.nr+', frontal')+bild(d.s,d.name+', Nr. '+d.nr+', seitlich');
+    spur.scrollLeft=0; punkte();
+    sh.querySelector('h3').textContent=d.name; sh.querySelector('.sh-kopf p').textContent=d.pos;
+    sh.querySelector('.sh-nr').textContent=d.nr;
+    var b=sh.querySelectorAll('.sh-nav button');
+    b[0].textContent='‹ '+liste[(idx-1+liste.length)%liste.length].name;
+    b[1].textContent=liste[(idx+1)%liste.length].name+' ›';
+    /* Nachbarn vorladen */
+    [idx-1,idx+1].forEach(function(j){ var n=liste[(j+liste.length)%liste.length]; [n.f,n.s].forEach(function(x){ var im=new Image(); im.src=x.webp||x.jpg; }); });
+  }
+  function punkte(){
+    var s=spur.scrollLeft>spur.clientWidth/2?1:0;
+    pk.forEach(function(b,i){ b.setAttribute('aria-current',String(i===s)); });
+    wechsel.style.display='none';
+  }
+  spur.addEventListener('scroll',punkte,{passive:true});
+  pk.forEach(function(b,i){ b.addEventListener('click',function(){ spur.scrollTo({left:i*spur.clientWidth,behavior:'smooth'}); }); });
+  sh.querySelectorAll('.sh-nav button').forEach(function(b){ b.addEventListener('click',function(){ fuell(idx+(+b.dataset.r)); }); });
+  function auf(i){
+    fuell(i); offen=true; sh.classList.add('offen'); document.documentElement.classList.add('sh-sperre');
+    if(!vomHistory){ history.pushState({sh:1},''); vomHistory=true; }
+    setTimeout(function(){ try{ sh.querySelector('.sh-zu').focus({preventScroll:true}); }catch(e){} },60);
+  }
+  function zu(vonHistory){
+    if(!offen) return; offen=false; sh.classList.remove('offen'); document.documentElement.classList.remove('sh-sperre');
+    blatt.style.transform='';
+    if(vomHistory && !vonHistory){ vomHistory=false; history.back(); } else vomHistory=false;
+  }
+  window.addEventListener('popstate',function(){ zu(true); });
+  sh.querySelector('.sh-grund').addEventListener('click',function(){ zu(); });
+  sh.querySelector('.sh-zu').addEventListener('click',function(){ zu(); });
+  document.addEventListener('keydown',function(e){ if(!offen) return; if(e.key==='Escape') zu(); else if(e.key==='ArrowLeft') fuell(idx-1); else if(e.key==='ArrowRight') fuell(idx+1); });
+  /* Nach unten ziehen schließt */
+  (function(){
+    var g=sh.querySelector('.sh-griff'), y0=0, dy=0, an=false;
+    g.addEventListener('pointerdown',function(e){ an=true; y0=e.clientY; dy=0; blatt.classList.add('zieht'); g.setPointerCapture(e.pointerId); });
+    g.addEventListener('pointermove',function(e){ if(!an) return; dy=Math.max(0,e.clientY-y0); blatt.style.transform='translateY('+dy+'px)'; });
+    function ende(){ if(!an) return; an=false; blatt.classList.remove('zieht'); if(dy>90) zu(); else blatt.style.transform=''; }
+    g.addEventListener('pointerup',ende); g.addEventListener('pointercancel',ende);
+  })();
+  /* Tipp auf Karte (vor den alten Handlern abfangen) */
+  document.addEventListener('click',function(e){
+    var k=e.target.closest&&e.target.closest('.karte'); if(!k) return;
+    e.stopPropagation(); e.preventDefault(); auf(karten.indexOf(k));
+  },true);
+  karten.forEach(function(k){ k.setAttribute('tabindex','0'); k.setAttribute('role','button'); k.setAttribute('aria-label',k.querySelector('h3').textContent+', Nummer '+k.querySelector('.nr').textContent+' – Karte öffnen');
+    k.addEventListener('keydown',function(e){ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); auf(karten.indexOf(k)); } }); });
 })();
 </script>
 </body>
